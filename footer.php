@@ -119,6 +119,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       centerPadding: '60px',
       slidesToShow: 3,
       variableWidth: true,
+      infinite: true,
       responsive: [
         {
           breakpoint: 768,

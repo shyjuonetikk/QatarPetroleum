@@ -33,3 +33,34 @@ foreach ( $understrap_includes as $file ) {
 	}
 	require_once $filepath;
 }
+
+// Function for changing the username label from admin side //
+
+add_filter( 'gettext', 'qpid_gettext', 10, 2 );
+function qpid_gettext( $translation, $original )
+{
+    if ( 'Username' == $original ) {
+        return 'Qatar ID';
+    }
+    return $translation;
+}
+
+
+// Function to change sender name
+
+function wpb_sender_name( $original_email_from ) {
+    return 'Qatar Petroleum';
+}
+add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
+
+
+// Function chnage the email body after adding user
+
+// add_filter( 'wp_new_user_notification_email', 'custom_wp_new_user_notification_email', 10, 3 );
+
+// function custom_wp_new_user_notification_email( $wp_new_user_notification_email, $user, $blogname ) {
+//     $wp_new_user_notification_email['subject'] = sprintf( 'Registration');
+//     $wp_new_user_notification_email['message'] = sprintf( "%s ( %s ) has registerd to your website %s. We recommend you to reset your password for security purpose. Your current password is %s", $user->user_login, $user->user_email, $blogname,$user->plaintext_password );
+//     return $wp_new_user_notification_email;
+// }
+

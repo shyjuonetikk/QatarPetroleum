@@ -16,36 +16,138 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
 
-<div class="wrapper" id="wrapper-footer">
-
-	<div class="<?php echo esc_attr( $container ); ?>">
-
-		<div class="row">
-
-			<div class="col-md-12">
-
-				<footer class="site-footer" id="colophon">
-
-					<div class="site-info">
-
-						<?php understrap_site_info(); ?>
-
-					</div><!-- .site-info -->
-
-				</footer><!-- #colophon -->
-
-			</div><!--col end -->
-
-		</div><!-- row end -->
-
-	</div><!-- container end -->
-
-</div><!-- wrapper end -->
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 h-100 text-center text-lg-left my-auto">
+          <p class="text-white small mb-lg-0 Copyright">Copyrightⓒ 2019 All right reserved. Qatar Petrol</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="#">JOB PORTAL</a>
+            </li>
+            <li class="list-inline-item">
+            <a href="#">NEWS</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">FAQ</a>
+            </li>
+            <li class="list-inline-item">
+            <a href="#">ABOUT QP</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">UPCOMING EVENTS</a>
+            </li>
+            <li class="list-inline-item">
+            <a href="#">MULTIMEDIA</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">MULTIMEDIA</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer(); ?>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+  var $jq = jQuery.noConflict();
+   $(document).ready(function(){
+      var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+      var page = 1; 
 
+    $("#btn-shw").click(function(){
+
+      var post_type = $(this).data('post-type');
+      var post_per_page = $(this).data('posts-per-page');
+      var max_pages = $(this).data('max-pages');
+      var filtertype = $("#filter .active").data('filter-type');
+
+      $.post(ajaxUrl,{action:"more_news_ajax",
+        offset: (page * post_per_page) + 1,
+        ppp: post_per_page,
+        posttype: post_type,
+        filtertype: filtertype,
+      },
+         function(data){
+          if(data == ''){
+            $("#loading-indicator").toggle();
+            $("#btn-shw").hide();
+          }
+          else{
+             page++;
+             $(".news-container").append(data);
+             $("#loading-indicator").toggle();
+             if(max_pages == page){
+              $("#btn-shw").hide();
+             }else{
+              $("#btn-shw").show();
+             }
+          }
+        });
+
+    });
+
+    // filter
+    
+    $("#filter li").click(function(){
+      $("#btn-shw").show();
+      var filtertype = $(this).data('filter-type');
+      var post_type = $(this).data('post-type');
+      $(this).addClass('active').siblings().removeClass('active');
+      $.post(ajaxUrl,{action:"news_filter",
+        posttype: post_type,
+        filtertype: filtertype,
+      },
+         function(data){
+            $("#loading-indicator").toggle();
+            $("#news-main").html(data);
+        });
+    });
+
+    // Slick
+    $jq('.center').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      variableWidth: true,
+      infinite: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+
+   });
+
+</script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="<?php //echo get_template_directory_uri(); ?>/js/custom.js"></script> -->
 </body>
 
 </html>

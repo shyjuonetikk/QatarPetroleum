@@ -64,3 +64,228 @@ add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
 //     return $wp_new_user_notification_email;
 // }
 
+// Load more news
+
+function more_news_ajax() {
+
+	$offset = $_POST["offset"];
+	$ppp = 4;
+	$postype = $_POST["posttype"];
+	$filtertype = $_POST["filtertype"];
+	$year = date('Y');
+	$month = date('m');
+	switch ($filtertype) {
+	    case "all":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+			));
+	        break;
+	    case "monthly":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'year=' => $year,
+				'monthnum' => $month,
+				'paged' => $offset,
+			));
+	        break;
+	    case "weekly":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+				'orderby' => 'date',
+				'order' => 'DESC',
+				'date_query' => array(
+				    array(
+				        'after' => '1 week ago'
+				    )
+				)
+			));
+	        break;
+	    case "daily":
+	    	$day = date('j');
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+				'day' => $day,
+				'orderby' => 'date',
+				'order' => 'DESC',
+			));
+	        break;
+	} // Switch Ends
+		
+	if ($query->have_posts()) {
+
+		while ($query->have_posts()) {
+			$query->the_post();
+			$post_id = get_the_ID();
+			$post_title = get_the_title();
+			$post_content = get_the_excerpt();
+			$post_url = get_the_permalink();
+			$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+			?>
+			<div class="qp-h-latestnews-content">
+              <div class="row">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 post-image float-left">
+                  <a href="#">
+                    <img src="<?php echo $featured_img_url; ?>" class="img-fluid  border-0" alt="">
+                  </a>
+                </div>
+                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 post-content pt-4">
+                  <div class="post-date text-left"> <span><?php echo get_the_date('M j, Y'); ?></span>
+                  </div>
+                  <h5 class="text-left"><a href="#"><?php echo $post_title; ?></a></h5>
+                  <a class="readmore-arrow" href=""><i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+				<?php	}
+		wp_reset_query();
+	} else {
+	}
+	exit;
+}
+add_action('wp_ajax_nopriv_more_news_ajax', 'more_news_ajax');
+add_action('wp_ajax_more_news_ajax', 'more_news_ajax');
+
+// filter using types
+
+function news_filter(){
+	$filtertype = $_POST['filter'];
+	$posttype = $_POST['posttype'];
+	$year = date('Y');
+	$month = date('m');
+	switch ($filtertype) {
+	    case "all":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+			));
+	        break;
+	    case "monthly":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'year=' => $year,
+				'monthnum' => $month,
+				'paged' => $offset,
+			));
+	        break;
+	    case "weekly":
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+				'orderby' => 'date',
+				'order' => 'DESC',
+				'date_query' => array(
+				    array(
+				        'after' => '1 week ago'
+				    )
+				)
+			));
+	        break;
+	    case "daily":
+	    	$day = date('j');
+	        $query = new WP_Query(array(
+				'post_type' => $postype,
+				'post_status' => 'publish',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+				'day' => $day,
+				'orderby' => 'date',
+				'order' => 'DESC',
+			));
+	        break;
+	} // Switch Ends
+	$maxpages = $query->max_num_pages;   
+	echo '<div class="news-container">';
+				if ($query->have_posts()) {
+					while ($query->have_posts()) {
+						$query->the_post();
+						$post_id = get_the_ID();
+						$post_title = get_the_title();
+						$post_content = get_the_excerpt();
+						$post_url = get_the_permalink();
+						if (has_post_thumbnail()) {
+							$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+						} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+			?>
+			<div class="qp-h-latestnews-content">
+              <div class="row">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 post-image float-left">
+                  <a href="#">
+                    <img src="<?php echo $featured_img_url; ?>" class="img-fluid  border-0" alt="">
+                  </a>
+                </div>
+                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 post-content pt-4">
+                  <div class="post-date text-left"> <span><?php echo get_the_date('M j, Y'); ?></span>
+                  </div>
+                  <h5 class="text-left"><a href="#"><?php echo $post_title; ?></a></h5>
+                  <a class="readmore-arrow" href=""><i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+		<?php	} wp_reset_query(); ?>
+		</div> <!-- news-container -->
+		<hr>
+			<?php if ($maxpages > 1) {?>
+					<a id="btn-shw" data-post-type="qp_news" data-posts-per-page="1" data-max-pages="<?php echo $maxpages; ?>" class="hvr-icon-wobble-horizontal">Show more <i class="fa fa-arrow-right hvr-icon"></i></a>
+				<?php }?>
+			<?php } else { echo "<div class='row w-100 pt-4'><h4 class='purple-color m-auto'> No News found.. </h4></div>";} ?>
+
+<script type="text/javascript">
+   jQuery(document).ready(function(){
+      var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+      var page = 1; 
+
+    $("#btn-shw").click(function(){
+
+      var post_type = $(this).data('post-type');
+      var post_per_page = $(this).data('posts-per-page');
+      var max_pages = $(this).data('max-pages');
+      var filtertype = $("#filter .active").data('filter-type');
+
+      $.post(ajaxUrl,{action:"more_news_ajax",
+        offset: (page * post_per_page) + 1,
+        ppp: post_per_page,
+        posttype: post_type,
+        filtertype: filtertype,
+      },
+         function(data){
+          if(data == ''){
+            $("#loading-indicator").toggle();
+            $("#btn-shw").hide();
+          }
+          else{
+             page++;
+             $(".news-container").append(data);
+             $("#loading-indicator").toggle();
+             if(max_pages == page){
+              $("#btn-shw").hide();
+             }else{
+              $("#btn-shw").show();
+             }
+          }
+        });
+
+    });
+   });
+
+</script>
+<?php exit; }
+
+add_action('wp_ajax_nopriv_news_filter', 'news_filter');
+add_action('wp_ajax_news_filter', 'news_filter');

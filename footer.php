@@ -61,10 +61,44 @@ $container = get_theme_mod( 'understrap_container_type' );
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript">
+  $(window).load(function(){
+   // PAGE IS FULLY LOADED  
+   // FADE OUT YOUR OVERLAYING DIV
+   $('#overlay').fadeOut();
+});
   var $jq = jQuery.noConflict();
    $(document).ready(function(){
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
-      var page = 1; 
+      var page = 1;
+
+    // Slick
+    $jq('.center').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      variableWidth: true,
+      infinite: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
 
     $("#btn-shw").click(function(){
 
@@ -113,35 +147,6 @@ $container = get_theme_mod( 'understrap_container_type' );
             $("#loading-indicator").toggle();
             $("#news-main").html(data);
         });
-    });
-
-    // Slick
-    $jq('.center').slick({
-      centerMode: true,
-      centerPadding: '60px',
-      slidesToShow: 3,
-      variableWidth: true,
-      infinite: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-          }
-        }
-      ]
     });
 
    });

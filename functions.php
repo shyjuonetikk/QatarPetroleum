@@ -159,35 +159,35 @@ add_action('wp_ajax_more_news_ajax', 'more_news_ajax');
 // filter using types
 
 function news_filter(){
-	$filtertype = $_POST['filter'];
+	$filtertype = $_POST['filtertype'];
 	$posttype = $_POST['posttype'];
+	$ppp = 4;
 	$year = date('Y');
 	$month = date('m');
 	switch ($filtertype) {
 	    case "all":
 	        $query = new WP_Query(array(
-				'post_type' => $postype,
+				'post_type' => $posttype,
 				'post_status' => 'publish',
 				'posts_per_page' => $ppp,
-				'paged' => $offset,
 			));
+			$maxpages = $query->max_num_pages;
 	        break;
 	    case "monthly":
 	        $query = new WP_Query(array(
-				'post_type' => $postype,
+				'post_type' => $posttype,
 				'post_status' => 'publish',
 				'posts_per_page' => $ppp,
 				'year=' => $year,
 				'monthnum' => $month,
-				'paged' => $offset,
 			));
+			$maxpages = $query->max_num_pages;
 	        break;
 	    case "weekly":
 	        $query = new WP_Query(array(
-				'post_type' => $postype,
+				'post_type' => $posttype,
 				'post_status' => 'publish',
 				'posts_per_page' => $ppp,
-				'paged' => $offset,
 				'orderby' => 'date',
 				'order' => 'DESC',
 				'date_query' => array(
@@ -196,21 +196,22 @@ function news_filter(){
 				    )
 				)
 			));
+			$maxpages = $query->max_num_pages;
 	        break;
 	    case "daily":
 	    	$day = date('j');
 	        $query = new WP_Query(array(
-				'post_type' => $postype,
+				'post_type' => $posttype,
 				'post_status' => 'publish',
 				'posts_per_page' => $ppp,
-				'paged' => $offset,
 				'day' => $day,
 				'orderby' => 'date',
 				'order' => 'DESC',
 			));
+			$maxpages = $query->max_num_pages;
 	        break;
 	} // Switch Ends
-	$maxpages = $query->max_num_pages;   
+
 	echo '<div class="news-container">';
 				if ($query->have_posts()) {
 					while ($query->have_posts()) {
@@ -247,7 +248,7 @@ function news_filter(){
 			<?php } else { echo "<div class='row w-100 pt-4'><h4 class='purple-color m-auto'> No News found.. </h4></div>";} ?>
 
 <script type="text/javascript">
-   jQuery(document).ready(function(){
+   $(document).ready(function(){
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
       var page = 1; 
 

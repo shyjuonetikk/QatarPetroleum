@@ -55,6 +55,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php wp_footer(); ?>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -145,9 +147,6 @@ $container = get_theme_mod( 'understrap_container_type' );
    });
 
 </script>
-<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="<?php //echo get_template_directory_uri(); ?>/js/custom.js"></script> -->
 </body>
 
 </html>

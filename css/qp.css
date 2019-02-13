@@ -254,7 +254,7 @@ footer .list-inline-item a:hover{
 }
 .news-slider-image img{
   display:block;
-  height: 266px;
+  height: 342px;
 }
 .news-slider-image-content {
   position: absolute;
@@ -414,3 +414,30 @@ footer .list-inline-item a:hover{
 }
 
 /************Home Page*******************/
+
+
+/************Contact us*******************/
+
+.phone-icon {
+    display: inline-block;
+    font-size: 80px;
+    padding-right: 30px;
+    color: #71CC98;
+}
+.phone-num {
+    display: inline-block;
+}
+.phone-num p {
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.phone-num span {
+    font-size: 28px;
+    font-weight: 900;
+}
+.contact-bg {
+    background: #003C71;
+    color: #fff;
+}
+/************Contact us*******************/

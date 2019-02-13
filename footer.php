@@ -22,8 +22,8 @@ $container = get_theme_mod( 'understrap_container_type' );
         <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 h-100 text-center text-lg-left my-auto">
           <p class="text-white small mb-lg-0 Copyright">Copyrightⓒ 2019 All right reserved. Qatar Petrol</p>
         </div>
-        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto">
-          <ul class="list-inline mb-0">
+        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto list-inline">
+          <!-- <ul class="list-inline mb-0">
             <li class="list-inline-item">
               <a href="#">JOB PORTAL</a>
             </li>
@@ -45,7 +45,18 @@ $container = get_theme_mod( 'understrap_container_type' );
             <li class="list-inline-item">
               <a href="#">MULTIMEDIA</a>
             </li>
-          </ul>
+          </ul> -->
+          <?php 
+              wp_nav_menu(
+              array(
+                'theme_location'  => 'footermenu',
+                'fallback_cb'     => '',
+                'menu'         => 'footermenu',
+                'menu_class' => 'footer-menu list-inline mb-0',
+                'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
+              )
+            ); 
+          ?>
         </div>
       </div>
     </div>
@@ -79,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       variableWidth: true,
       infinite: true,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 5000,
       responsive: [
         {
           breakpoint: 768,

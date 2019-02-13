@@ -401,4 +401,16 @@ footer .list-inline-item a:hover{
   animation-iteration-count: 1;
 }
 
+.footer-menu li{
+  display: inline-block;
+}
+
+.footer-menu li a{
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 5px 8px !important;;
+}
+
 /************Home Page*******************/

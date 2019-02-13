@@ -79,6 +79,7 @@ function more_news_ajax() {
 	        $query = new WP_Query(array(
 				'post_type' => $postype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'paged' => $offset,
 			));
@@ -87,6 +88,7 @@ function more_news_ajax() {
 	        $query = new WP_Query(array(
 				'post_type' => $postype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'year=' => $year,
 				'monthnum' => $month,
@@ -97,6 +99,7 @@ function more_news_ajax() {
 	        $query = new WP_Query(array(
 				'post_type' => $postype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'paged' => $offset,
 				'orderby' => 'date',
@@ -113,6 +116,7 @@ function more_news_ajax() {
 	        $query = new WP_Query(array(
 				'post_type' => $postype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'paged' => $offset,
 				'day' => $day,
@@ -169,6 +173,7 @@ function news_filter(){
 	        $query = new WP_Query(array(
 				'post_type' => $posttype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 			));
 			$maxpages = $query->max_num_pages;
@@ -177,6 +182,7 @@ function news_filter(){
 	        $query = new WP_Query(array(
 				'post_type' => $posttype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'year=' => $year,
 				'monthnum' => $month,
@@ -187,6 +193,7 @@ function news_filter(){
 	        $query = new WP_Query(array(
 				'post_type' => $posttype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'orderby' => 'date',
 				'order' => 'DESC',
@@ -203,6 +210,7 @@ function news_filter(){
 	        $query = new WP_Query(array(
 				'post_type' => $posttype,
 				'post_status' => 'publish',
+				'tag' => 'latest-news',
 				'posts_per_page' => $ppp,
 				'day' => $day,
 				'orderby' => 'date',

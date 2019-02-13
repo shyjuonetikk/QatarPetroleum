@@ -78,6 +78,8 @@ $container = get_theme_mod( 'understrap_container_type' );
       slidesToShow: 3,
       variableWidth: true,
       infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
       responsive: [
         {
           breakpoint: 768,

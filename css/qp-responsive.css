@@ -35,3 +35,8 @@ footer .list-inline-item a {
     font-size: 1rem;
 }
 }
+@media screen and (max-width: 1400px) {
+ .news-slider-image-content h1 {
+    font-size: 1rem;
+}
+}

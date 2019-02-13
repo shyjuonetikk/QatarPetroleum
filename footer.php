@@ -7,14 +7,14 @@
  * @package QP
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod('understrap_container_type');
 ?>
 
-<?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
+<?php get_template_part('sidebar-templates/sidebar', 'footerfull');?>
 
 <footer class="footer">
     <div class="container">
@@ -46,17 +46,17 @@ $container = get_theme_mod( 'understrap_container_type' );
               <a href="#">MULTIMEDIA</a>
             </li>
           </ul> -->
-          <?php 
-              wp_nav_menu(
-              array(
-                'theme_location'  => 'footermenu',
-                'fallback_cb'     => '',
-                'menu'         => 'footermenu',
-                'menu_class' => 'footer-menu list-inline mb-0',
-                'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
-              )
-            ); 
-          ?>
+          <?php
+wp_nav_menu(
+	array(
+		'theme_location' => 'footermenu',
+		'fallback_cb' => '',
+		'menu' => 'footermenu',
+		'menu_class' => 'footer-menu list-inline mb-0',
+		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
+	)
+);
+?>
         </div>
       </div>
     </div>
@@ -64,16 +64,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 </div><!-- #page we need this extra closing tag here -->
 
-<?php wp_footer(); ?>
+<?php wp_footer();?>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
   $(window).load(function(){
-   // PAGE IS FULLY LOADED  
+   // PAGE IS FULLY LOADED
    // FADE OUT YOUR OVERLAYING DIV
    $('#overlay').fadeOut();
 });
@@ -146,7 +147,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     });
 
     // filter
-    
+
     $("#filter li").click(function(){
       $("#btn-shw").show();
       var filtertype = $(this).data('filter-type');

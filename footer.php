@@ -16,7 +16,7 @@ $container = get_theme_mod('understrap_container_type');
 
 <?php get_template_part('sidebar-templates/sidebar', 'footerfull');?>
 
-<footer class="footer">
+<footer class="footer float-left w-100">
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 h-100 text-center text-lg-left my-auto">

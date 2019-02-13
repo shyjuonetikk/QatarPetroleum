@@ -165,6 +165,51 @@ wp_nav_menu(
         });
     });
 
+    // FAQ page
+    
+      $(window).scroll(function(){ 
+          if ($(this).scrollTop() > 100) { 
+              $('#scroll').fadeIn(); 
+          } else { 
+              $('#scroll').fadeOut(); 
+          } 
+      }); 
+      $('#scroll').click(function(){ 
+          $("html, body").animate({ scrollTop: 0 }, 600); 
+          return false; 
+      });
+
+      $("#job-offer").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-job").offset().top
+          }, 2000);
+      });
+
+      $("#theory").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-theory").offset().top
+          }, 2000);
+      });
+
+      $("#learn").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-learn").offset().top
+          }, 2000);
+      });
+
+      $("#onboard").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-onboard").offset().top
+          }, 2000);
+      });
+
+      $("#isdn").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-isdn").offset().top
+          }, 2000);
+      });
+
+
    });
 
 </script>

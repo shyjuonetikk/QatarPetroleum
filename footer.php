@@ -7,16 +7,16 @@
  * @package QP
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod('understrap_container_type');
 ?>
 
-<?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
+<?php get_template_part('sidebar-templates/sidebar', 'footerfull');?>
 
-<footer class="footer">
+<footer class="footer float-left w-100">
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 h-100 text-center text-lg-left my-auto">
@@ -46,17 +46,17 @@ $container = get_theme_mod( 'understrap_container_type' );
               <a href="#">MULTIMEDIA</a>
             </li>
           </ul> -->
-          <?php 
-              wp_nav_menu(
-              array(
-                'theme_location'  => 'footermenu',
-                'fallback_cb'     => '',
-                'menu'         => 'footermenu',
-                'menu_class' => 'footer-menu list-inline mb-0',
-                'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
-              )
-            ); 
-          ?>
+          <?php
+wp_nav_menu(
+	array(
+		'theme_location' => 'footermenu',
+		'fallback_cb' => '',
+		'menu' => 'footermenu',
+		'menu_class' => 'footer-menu list-inline mb-0',
+		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
+	)
+);
+?>
         </div>
       </div>
     </div>
@@ -64,16 +64,19 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 </div><!-- #page we need this extra closing tag here -->
 
-<?php wp_footer(); ?>
+<?php wp_footer();?>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
   $(window).load(function(){
-   // PAGE IS FULLY LOADED  
+   // PAGE IS FULLY LOADED
    // FADE OUT YOUR OVERLAYING DIV
    $('#overlay').fadeOut();
 });
@@ -146,7 +149,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     });
 
     // filter
-    
+
     $("#filter li").click(function(){
       $("#btn-shw").show();
       var filtertype = $(this).data('filter-type');
@@ -161,6 +164,51 @@ $container = get_theme_mod( 'understrap_container_type' );
             $("#news-main").html(data);
         });
     });
+
+    // FAQ page
+    
+      $(window).scroll(function(){ 
+          if ($(this).scrollTop() > 100) { 
+              $('#scroll').fadeIn(); 
+          } else { 
+              $('#scroll').fadeOut(); 
+          } 
+      }); 
+      $('#scroll').click(function(){ 
+          $("html, body").animate({ scrollTop: 0 }, 600); 
+          return false; 
+      });
+
+      $("#job-offer").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-job").offset().top
+          }, 2000);
+      });
+
+      $("#theory").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-theory").offset().top
+          }, 2000);
+      });
+
+      $("#learn").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-learn").offset().top
+          }, 2000);
+      });
+
+      $("#onboard").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-onboard").offset().top
+          }, 2000);
+      });
+
+      $("#isdn").click(function() {
+          $('html, body').animate({
+              scrollTop: $("#nav-isdn").offset().top
+          }, 2000);
+      });
+
 
    });
 

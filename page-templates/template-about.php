@@ -48,6 +48,9 @@ get_header();
     <section id="msg-ceo" class="float-left w-100 grey-bg">
         <div class="container">
             <div id="ceo-border" class="col-12 float-left">
+            	<div class="col-12 float-left mb-5">
+            		<h2 class="head-clr font-weight-bold">Message from CEO</h2>
+            	</div>
                 <div class="col-xl-6 float-left">
                     <div class="ceo-image w-100">
                         <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/img/ceo.png">

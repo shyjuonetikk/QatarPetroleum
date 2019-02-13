@@ -642,7 +642,7 @@ section#abt-vision>div>div>p {
     width: 100%;
     height: 100%;
     display: inline-block;
-    background-image: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101800, #00000000);
+    background-image: linear-gradient(to top, #003C71bb, #003c7100, #003c7100, #1d101800, #00000000);
 }
 
 .ceo-image img {

@@ -28,14 +28,14 @@ get_header();
                     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                         <nav id="myScrollspy">
                             <div id="MyNavPills">
-                            <ul class="nav nav-pills nav-stacked li-width" id="v-pills-tab" data-spy="affix" data-offset-top="205">
-                                <li class="active"><a class="nav-link1" href="#nav-job"><span class="font-weight-bold side-head">JOB OFFFER PROCESS OVERVIEW</span></a></li>
-                                <li><a class="nav-link1" href="#nav-theory"><span class="font-weight-bold side-head">THEORY OF CONSTRAINTS</span></a></li>
-                                <li><a class="nav-link1" href="#nav-learn"><span class="font-weight-bold side-head">LEARNING & DEVELOPMENT</span></a></li>
-                                <li><a class="nav-link1" href="#nav-onboard"><span class="font-weight-bold side-head">ONBOARDING </span></a></li>
-                                <li><a class="nav-link1" href="#nav-isdn"><span class="font-weight-bold side-head">ISND & QP FUTURE</span></a></li>
-                            </ul>
-                        </div>
+	                            <ul class="nav nav-pills nav-stacked li-width" id="v-pills-tab" data-spy="affix" data-offset-top="205">
+	                                <li class="active" id="job-offer"><a class="nav-link1"><span class="font-weight-bold side-head">JOB OFFFER PROCESS OVERVIEW</span></a></li>
+	                                <li id="theory"><a class="nav-link1"><span class="font-weight-bold side-head">THEORY OF CONSTRAINTS</span></a></li>
+	                                <li id="learn"><a class="nav-link1"><span class="font-weight-bold side-head">LEARNING & DEVELOPMENT</span></a></li>
+	                                <li id="onboard"><a class="nav-link1"><span class="font-weight-bold side-head">ONBOARDING </span></a></li>
+	                                <li id="isdn"><a class="nav-link1"><span class="font-weight-bold side-head">ISND & QP FUTURE</span></a></li>
+	                            </ul>
+                        	</div>
                     </nav>
                     </div>
                     <img style="width: 30%;" class="pt-4" src="<?php echo get_template_directory_uri();?>/img/setting.png">
@@ -99,9 +99,7 @@ get_header();
                         <?php the_field('isnd_and_qp_future_description'); ?>
                     </div>
                 </div>
-                <div id="stop" class="i-up scrollTop">
-                    <a class="i-up-color" href="#top"><i class="fa fa-chevron-up float-right p-lg-2 p-1" aria-hidden="true"></i></a>
-                </div>
+                <a href="#" id="scroll" style="display: none;"><span></span></a>
             </div>
         </div>
     </section>

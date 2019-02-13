@@ -410,7 +410,7 @@ footer .list-inline-item a:hover{
     font-weight: bold;
     color: #fff !important;
     text-decoration: none;
-    padding: 5px 8px !important;;
+    padding: 5px 8px !important;
 }
 
 /************Home Page*******************/
@@ -554,3 +554,163 @@ footer .list-inline-item a:hover{
   outline: none;
 }
 /************FAQ************************/
+/*---------- About Page ---------------*/
+section#about-cover {
+    background-size: cover !important;
+    border-bottom: 10px solid #5FC99C;
+    margin-bottom: 15px;
+}
+
+#cover-hgt {
+    min-height: 369px;
+}
+
+h1#about-heading {
+    margin: 30px 0;
+}
+
+li.abt-nav-item {
+    list-style: none;
+    float: left;
+    padding: 10px 0;
+}
+
+ul.about-sect-links>li>a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+ul.about-sect-links>li>a.abt-nav-link.active {
+    color: #6cca98;
+    border-bottom: 3px solid #6cca98 !important;
+    padding-bottom: 5px;
+}
+
+#border-line {
+    height: 10px;
+    width: 30% !important;
+    margin: 25px 0;
+}
+
+div#ceo-border {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #6d6d6d;
+}
+
+div#strategy-desc>p {
+    color: #003C71;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+.value-item-one>h6 {
+    font-weight: 300;
+    color: #657786;
+}
+
+ul#strat-list>li {
+    list-style: none;
+}
+
+ul#strat-list>li:before {
+    content: "\2022";
+    color: #71CC98;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+section#abt-vision>div>div>p {
+    color: #003C71;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    font-weight: 400;
+}
+.ceo-image {
+    position: relative;
+    display: inline-block;
+}
+
+.ceo-image:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-image: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101800, #00000000);
+}
+
+.ceo-image img {
+    display: block;
+}
+
+.ceo-content {
+    position: absolute;
+    bottom: 8px;
+    z-index: 1;
+    padding: 4% 6%;
+}
+.ceo-image {
+    position: relative;
+    text-align: center;
+    color: white;
+    border-bottom: 7px solid #71CC98;
+}
+/*------ Common color classes ---------*/
+.prm-clr {
+    color: #003C71;
+}
+
+.sec-clr {
+    color: #71CC98;
+}
+
+.head-clr {
+    color: #657786;
+}
+
+.prm-bg {
+    background-color: #003C71;
+}
+
+.sec-bg {
+    background-color: #71CC98;
+}
+
+.grey-bg {
+    background-color: #f3f3f3;
+}
+
+/*------ About Page ends here ---------*/
+
+/*-------- Image Gallery Page -----------*/
+/* div hgt gal items */
+div#qp-vid-head {
+    border-bottom: 1px solid #cccccc;
+}
+div#qp-gal-img > div > p {
+    margin: 10px 0 12px;
+}
+/* img gal show more btn */
+button#qp-img-more {
+    border-radius: 0;
+}
+button#qp-img-more:hover {
+    background: #71CC98;
+    color: #003C71;
+}
+button#qp-img-more:focus {
+    box-shadow: none;
+}
+/* vid numbers */
+.qp-vid-item:hover {
+    cursor: pointer;
+    color: #003C71;
+    border-bottom: 3px solid #71CC98;
+}
+/*---- Image Gallery Page ends here ----*/

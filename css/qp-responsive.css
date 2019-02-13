@@ -78,6 +78,85 @@
     }
 }
 
+/********** Faq Page ***********/
+
+@media screen and (max-width:992px){
+    .faq-how{
+        font-size: 3.0rem;
+    }
+    .inputWithIcon>input[type="text"] {
+        font-size: 2.7rem;
+    }
+    .inputWithIcon>i.fa.fa-search.fa-lg.fa-fw{
+        font-size: 2.7rem;
+    }
+    .i-up{
+        /*padding: 2%;*/
+        margin-top: 0;
+        margin-left: 2%;
+    }
+    .nav-panes{
+        border-top: 125px solid transparent;
+    }
+    .sec-bg-login {
+        padding: 0px 0 120px;
+    }
+    .sec-register{
+        padding: 0px 0 50px;
+    }
+}
+@media screen and (max-width:750px){
+    .border-a{
+        width: 50% !important;
+    }
+    .login-h3{
+        line-height: 1.2;
+    }
+}
+@media screen and (max-width:576px){
+    .faq-how{
+        font-size: 2.3rem;
+    }
+    .inputWithIcon>input[type="text"] {
+        font-size: 2.0rem;
+    }
+    .inputWithIcon>i.fa.fa-search.fa-lg.fa-fw{
+        font-size: 2.0rem;
+    }
+    .nav-panes>h2{
+        font-size: 1.8rem;
+    }
+    .i-up{
+        margin-left: 4%;
+    }
+    .border-a{
+        width: 70% !important;
+    }
+    .search-border{
+        margin: 0 1.5rem!important;
+    }
+    p{
+        text-align: justify;
+    }
+}
+@media screen and (max-width:350px){
+    
+    .nav-panes {
+        border-top: 160px solid transparent;
+        margin-top: -155px;
+    }
+    .border-a{
+        width: 82% !important;
+    }
+    #v-pills-tab>li.active>a>.side-head{
+        padding-bottom: 0;
+    }
+    .login-h3{
+        font-size: 27px;
+    }
+}
+
+/********** Faq page ***********/
 /* XS */
 @media screen and (max-width: 575px) {
     div#qp-gal-img>div {

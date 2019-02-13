@@ -415,6 +415,145 @@ footer .list-inline-item a:hover{
 
 /************Home Page*******************/
 
+/************FAQ************************/
+.faq-hd{
+  background-image: url(../img/faq-head.png);
+  background-size: cover;
+  padding: 7% 0;
+  font-family: "Myriad Pro";
+}
+.faq-how{
+  font-weight: normal; 
+  font-size: 3.2rem;
+}
+.filter-by{
+  color:#657786; 
+  font-size:13px;
+  margin-bottom: -10px;
+}
+.head-search{
+  font-weight:100; 
+  font-size: 3.2rem;
+}
+.i-up {
+    background-color: #71cc98;
+    /*padding: 1%;*/
+    font-size: 25px;
+    margin-top: -41px;
+    border-radius: 5px;
+}
+.i-up-color{
+   color: #0d3c71 !important;
+}
+.nav-pills .nav-link1.active, .nav-pills .show>.nav-link1{
+  background-color: transparent;
+}
+.nav-pills .nav-link1.active{
+  color: #424242 !important;
+  border-radius: 0;
+} 
+.li-width > li > .nav-link1{
+  padding: 1.5rem 0 0.15rem;
+}
+.side-head{
+  font-size: 1.25rem;
+}
+#v-pills-tab > li > .side-head {
+    width: 48%;
+}
+.hr-border{
+  border-top: 1px solid #657786;
+  margin: 7% 0 8%;
+}
+.faq-textp{
+  color: #657786 !important; 
+  margin-bottom: 0;
+  font-weight: 600;
+}
+.nav-panes > p{
+  color: #424242; 
+  line-height: 1.7;
+}
+.nav-panes > div > a{
+  color: #003c71;
+}
+.nav-panes > div > a:hover{
+  color: #71cc98;
+  text-decoration: none;
+}
+.border-a{
+  padding-bottom: 8px;
+  width: 40%;
+  border-bottom: 1px solid #657786;
+}
+.border-a:hover {
+    padding-bottom: 6px;
+    border-bottom: 3px solid #6bca98;
+}
+.li-width > li{
+  width: 100%;
+}
+.affix {
+    
+    position: relative;
+    z-index: 9999 !important;
+  }
+.nav-panes > h2{
+  color: #657786;
+  font-weight: 700;
+}
+#v-pills-tab > li > a{
+  color: #ccd6dd;
+  text-decoration: none;
+}
+#v-pills-tab > li > a:hover {
+  color: #424242;
+}
+#v-pills-tab > li.active>a{
+  color: #424242;
+}
+#v-pills-tab > li > h5{
+  padding: 5%;
+}
+#v-pills-tab > li.active>a>.side-head{
+  border-bottom: 3px solid #42d597;
+  padding-bottom: 5px;
+}
+.nav-pills .nav-link1 {
+    border-radius: .25rem;
+}
+.nav-link1 {
+    display: block;
+    padding: .5rem 1rem;
+}
+.nav-panes{
+  border-top: 110px solid transparent;
+    margin-top: -125px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+.inputWithIcon > i.fa.fa-search.fa-lg.fa-fw {
+    margin-left: -60px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ccd6dd;
+}
+.inputWithIcon > input[type="text"] {
+    width: 98%;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 3.2rem;
+}
+.inputWithIcon input::placeholder{
+   color: #ccd6dd;
+   font-weight: 100;
+}
+.inputWithIcon>input[type="text"]:focus{
+  outline: none;
+}
+/************FAQ************************/
 /*---------- About Page ---------------*/
 section#about-cover {
     background-size: cover !important;

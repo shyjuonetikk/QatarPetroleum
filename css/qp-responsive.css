@@ -1,42 +1,86 @@
-
 @media screen and (min-width: 1600px) {
-body{
-	font-size: 18px;
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1500px;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .list-inline-item:not(:last-child) {
+        margin-right: 2.5rem;
+    }
+
+    footer {
+        padding: 20px 0;
+    }
+
+    .Copyright,
+    footer .list-inline-item a {
+        font-size: 16px;
+    }
+
+    .qp-h-latestnews-content .post-content h5 {
+        font-size: 29px;
+    }
+
+    .qp-h-recentnews-content a {
+        font-size: 18px;
+    }
+
+    .qp-h-recentnews-content {
+        margin: 30px 0;
+    }
 }
-.container {
-    max-width: 1500px;
-}
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1rem;
-    padding-left: 1rem;
-}
-.list-inline-item:not(:last-child) {
-    margin-right: 2.5rem;
-}
-footer {
-    padding: 20px 0;
-}
-.Copyright,
-footer .list-inline-item a {
-   font-size: 16px;
-}
-.qp-h-latestnews-content .post-content h5{
-	font-size: 29px;
-	}
-.qp-h-recentnews-content a{
-	font-size: 18px;
-}
-.qp-h-recentnews-content {
-    margin: 30px 0;
-}
-}
+
 @media screen and (max-width: 768px) {
- .news-popup-image-content h1 {
-    font-size: 1rem;
+    .news-popup-image-content h1 {
+        font-size: 1rem;
+    }
 }
-}
+
 @media screen and (max-width: 1400px) {
- .news-slider-image-content h1 {
-    font-size: 1rem;
+    .news-slider-image-content h1 {
+        font-size: 1rem;
+    }
 }
+
+/* XL */
+@media screen and (max-width: 1599px) and (min-width: 1200px) {
+    div#qp-gal-img>div {
+        height: 330px;
+    }
+}
+
+/* LG */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    div#qp-gal-img>div {
+        height: 393px;
+    }
+}
+
+/* MD */
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    div#qp-gal-img>div {
+        height: 320px;
+    }
+}
+
+/* SM */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+    div#qp-gal-img>div {
+        height: 390px;
+    }
+}
+
+/* XS */
+@media screen and (max-width: 575px) {
+    div#qp-gal-img>div {
+        height: 365px;
+    }
 }

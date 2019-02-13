@@ -44,6 +44,9 @@ get_header();
     <section id="msg-ceo" class="float-left w-100 grey-bg">
         <div class="container">
             <div id="ceo-border" class="col-12 float-left">
+            	<div class="col-12 float-left mb-5">
+            		<h2 class="head-clr font-weight-bold">Message from CEO</h2>
+            	</div>
                 <div class="col-xl-6 float-left">
                     <?php
 

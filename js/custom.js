@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 // Image Gallery Plugin
 $(function(){
-    var $gallery = $('.gallery a').simpleLightbox();
+    var $gallery = $('.gallery > div > a').simpleLightbox();
 
     $gallery.on('show.simplelightbox', function(){
         console.log('Requested for showing');

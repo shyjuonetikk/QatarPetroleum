@@ -50,7 +50,7 @@ get_header();
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 mx-auto p-5">
           <h1 class="head-clr">Help us serve you better by<br>answering this survey</h1>
-          <?php echo do_shortcode('[contact-form-7 id="144" title="Contact form 1"]'); ?>
+          <?php echo do_shortcode('[contact-form-7 id="194" title="Contact form 1"]'); ?>
         </div>
         
       </div>

@@ -791,3 +791,199 @@ button#qp-img-more:focus {
     border-bottom: 3px solid #71CC98;
 }
 /*---- Image Gallery Page ends here ----*/
+
+/************Upcoming Events*******************/
+
+body.upcoming-events {
+    background-color: #F3F3F3;
+}
+
+.up-txt {
+  float: left;
+  
+}
+.up-tail {
+  display: inline-block;
+  float: right;
+  font-size: 12px;
+}
+.up-loc {
+  display: inline-block;
+}
+.up-date {
+  float: right;
+}
+.up-event-list {
+  position: relative;
+  border-bottom: 1px solid;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.up-event-list:hover {
+  border-bottom: 3px solid #71CC98;
+  color: #71CC98;
+  padding-bottom: 18px;
+}
+
+.up-event-list a:hover {
+  text-decoration: none;
+  color: #71CC98;
+}
+.up-past {
+  border-bottom: 1px solid;
+}
+
+.up-past-date {
+  float: left;
+}
+
+.up-past-loc {
+  float: right;
+}
+
+.up-past-text {
+  display: inline-block;
+  width: 100%;
+}
+.up-past-block {
+  padding:25px 25px 15px 25px;
+  display: inline-block;
+  width: 100%;
+}
+.up-past-date,.up-past-loc p {
+  font-size: 12px;
+}
+.up-past-block:hover {
+  background: #71CC98;
+}
+.up-past-text a {
+  text-decoration: none;
+  color:#003C71;
+}
+.up-past-text a:hover {
+    text-decoration: none;
+    color: #003C71;
+}
+.up-past-block {
+  margin-bottom: 20px;
+  background: #fff;
+  position: relative;
+  color:#003C71;
+}
+.up-event-list a {
+  color: #212121;
+}
+.up-event-list:hover a{
+  color: #71CC98;
+}
+
+.up-past-block .readmore-arrow {
+    float: right;
+    bottom: 0;
+    position: absolute;
+    right: 0px;
+    display: none;
+}
+
+.up-past-block:hover .readmore-arrow {
+    display: block;
+    background: #003C71;
+    padding: 3px 12px;
+    color: #ffffff;
+}
+.up-loc, .up-date {
+  color: #657786;
+}
+.up-event-list:hover .up-date{
+  color:#71CC98;
+}
+.up-event-list:hover .up-loc{
+  color:#71CC98;
+}
+.up-head {
+    color: #657786;
+}
+.past-head {
+    color: #657786;
+    border-bottom: 1px solid #cccccc;
+}
+.up-loc {
+    margin-right: 10px;
+}
+/*.upcoming-nav.qp-h-latestnews-top {
+    border-bottom: 1px solid #707070;
+    float: right;
+    width: 80%;
+}*/
+.up-event-mnth {
+  color: #657786;
+  font-size: 14px;
+}
+.up-past-date, .up-past-loc {
+  margin-bottom: 10px;
+}
+
+
+/************Upcoming Event-pop-up*******************/
+
+.upop-nav a {
+  font-size: 20px !important;
+}
+.up-pop .news-popup-image-content {
+   
+   
+}
+.up-bottom {
+ margin:30px;
+}
+.upop-date {
+  padding-bottom: 10px;
+}
+.upop.card {
+  background-color: unset !important;
+  border: none;
+  
+}
+.upop .card-header {
+  padding:0px;
+  padding-bottom: 10px !important;
+  background-color: unset !important;
+  border: none !important;
+}
+.upop .card-body {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #707070 !important;
+}
+
+.upop p.card-header {
+color: #657786;
+}
+
+.upop .card-body:hover {
+  padding-bottom: 18px;
+  border-bottom: 3px solid #707070 !important;
+}
+
+.up-popup-image-content {
+    position: absolute;
+    bottom: 8px;
+    
+    z-index: 1;
+    padding: 4% 6%;
+}
+
+.up-popup-image-content h1:after {
+    border-bottom: 8px solid #71CC98;
+    content: '';
+    display: block;
+    width: 45%;
+    padding-top: 4%;
+}
+.upop .card-text a{
+  color: #14171a;
+}
+.qp-h-latestnews .nav .nav-item a:hover {
+    color: #003C71 !important;
+    border-bottom: 3px solid #71CC98;
+}
+/************Upcoming Event-pop-up ends *******************/

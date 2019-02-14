@@ -106,7 +106,7 @@ get_header();
 		</div> <!-- news-container -->
 		<hr>
 			<?php if ($maxpages > 1) {?>
-					<a id="btn-shw" data-post-type="qp_news" data-posts-per-page="1" data-max-pages="<?php echo $maxpages; ?>" class="hvr-icon-wobble-horizontal">Show more <i class="fa fa-arrow-right hvr-icon"></i></a>
+					<a id="btn-shw" data-post-type="qp_news" data-posts-per-page="1" data-max-pages="<?php echo $maxpages; ?>" class="hvr-icon-wobble-horizontal">Show more <i class="pl-2 fas fa-long-arrow-alt-down hvr-icon"></i></a>
 				<?php }?>
 			<?php } else { echo "<div class='row w-100 pt-4'><h4 class='purple-color m-auto'> No News found.. </h4></div>";} ?>
         </div> <!-- news main -->

@@ -65,14 +65,13 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
   $(window).load(function(){
@@ -166,17 +165,17 @@ wp_nav_menu(
     });
 
     // FAQ page
-    
-      $(window).scroll(function(){ 
-          if ($(this).scrollTop() > 100) { 
-              $('#scroll').fadeIn(); 
-          } else { 
-              $('#scroll').fadeOut(); 
-          } 
-      }); 
-      $('#scroll').click(function(){ 
-          $("html, body").animate({ scrollTop: 0 }, 600); 
-          return false; 
+
+      $(window).scroll(function(){
+          if ($(this).scrollTop() > 100) {
+              $('#scroll').fadeIn();
+          } else {
+              $('#scroll').fadeOut();
+          }
+      });
+      $('#scroll').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
       });
 
       $("#job-offer").click(function() {

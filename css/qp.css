@@ -432,6 +432,82 @@ footer .list-inline-item a:hover{
   animation-iteration-count: 1;
 }
 
+/* Icon Hang */
+@-webkit-keyframes hvr-icon-hang {
+  0% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+  50% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+@keyframes hvr-icon-hang {
+  0% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+  50% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+@-webkit-keyframes hvr-icon-hang-sink {
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+@keyframes hvr-icon-hang-sink {
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+.hvr-icon-hang {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  background: #71cc98;
+  color: #003C71 !important;
+  padding: 15px 30px;
+}
+.hvr-icon-hang .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-hang:hover .hvr-icon, .hvr-icon-hang:focus .hvr-icon, .hvr-icon-hang:active .hvr-icon {
+  -webkit-animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+  animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
+}
+a.hvr-icon-hang:hover {
+    text-decoration: none;
+}
 .footer-menu li{
   display: inline-block;
 }
@@ -606,7 +682,8 @@ footer .list-inline-item a:hover{
     position: relative;
     z-index: 9999 !important;
   }
-.nav-panes > h2{
+.nav-panes > h2,
+.nav-panes > h4{
   color: #657786;
   font-weight: 700;
 }
@@ -661,7 +738,51 @@ footer .list-inline-item a:hover{
 .inputWithIcon>input[type="text"]:focus{
   outline: none;
 }
+/*-----FAQ Accordion--------*/
+.faq-acc .card a:after{
+    content: "+";
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: x-large;
+    color: #657786;
+}
+.faq-acc .card a[aria-expanded="true"]:after {
+    content: "-";
+    background: #0d3b70;
+    right: 0px;
+    top: 0px;
+    color: #fff;
+    padding: 1.6% 3%;
+}
+.faq-acc .card a {
+    text-decoration: none;
+}
+.faq-acc .card a>.card-header {
+    color: #657797;
+}
+.faq-acc .card .card-header>span {
+    margin-right: 3rem!important;
+}
+.fa-size{
+    font-size: x-large;
+    color: #425563;
+}
+.faq-acc .card .card-padding{
+    padding: 0 1.25rem 1.75rem 1.25rem;
+}
+.faq-acc .card{
+    background-color: #f8f8f8;
+}
+.faq-acc .card .card-header{
+    border-bottom: 0px;   
+    padding: 1.25rem;
+}
+/*---------------------------*/
 /************FAQ************************/
+
+
 /*---------- About Page ---------------*/
 section#about-cover {
     background-size: cover !important;

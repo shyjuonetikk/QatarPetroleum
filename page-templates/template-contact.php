@@ -10,7 +10,7 @@ get_header();
 <section class="p-0">
     <div class="row m-0 p-0">
       <div class="col-12 m-0 p-0 contact-map">
-        <a href="<?php the_field('contact_map_link'); ?>"><img class="img-fluid" src="<?php the_field('contact_map'); ?>" /></a>
+        <a href="<?php the_field('contact_map_link'); ?>" target="_blank"><img class="img-fluid" src="<?php the_field('contact_map'); ?>" /></a>
       </div>
     </div>
     <div class="contact-bg">

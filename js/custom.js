@@ -81,8 +81,3 @@ $(function(){
     });
 });
 
-// Upcoming events Page JS
-$(".event-filterlist > li").click(function(){
-    $(this).addClass('active');
-    $(".event-filterlist > li").not(this).removeClass('active');
-});

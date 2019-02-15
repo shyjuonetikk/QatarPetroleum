@@ -298,3 +298,109 @@ function news_filter(){
 
 add_action('wp_ajax_nopriv_news_filter', 'news_filter');
 add_action('wp_ajax_news_filter', 'news_filter');
+
+// Events filter 
+
+function events_filter(){
+	$eventFilter = $_POST['eventfilter'];
+	switch ($eventFilter) {
+	    case "all":
+	        $query = new WP_Query(array(
+                'post_type' => 'events',
+                'post_status' => 'publish',
+                'posts_per_page' => 6,
+                'meta_key' => 'event_date',
+                'orderby' => 'meta_value',
+                'order' => 'DESC',
+            ));
+	        break;
+	    case "monthly":
+	        $month = date('m');
+		    $query = new WP_Query(array(
+		        'post_type' => 'events',
+		        'post_status' => 'publish',
+		        'posts_per_page' => 6,
+		        'meta_key' => 'event_date',
+		        'meta_query' => array(
+		            array(
+		                'key' => 'event_date',
+		                'value' => $month,
+		                'compare' => 'LIKE',
+		                'type' => 'DATE'
+		            )
+		        ),
+		        'order' => 'DESC',
+		    ));
+	        break;
+
+	    case "week":
+	    	$day = date('w');
+            $week_start = date('Ymd', strtotime('-'.$day.' days'));
+            $week_end = date('Ymd', strtotime('+'.(6-$day).' days'));
+            $query = new WP_Query( array(
+                        'post_type' => 'events',
+                        'order' => 'DESC',
+                        'posts_per_page' => 8,
+                        'meta_query' => array(
+                                            array(
+                                                'key'       => 'event_date',
+                                                'compare'   => '>=',
+                                                'value'     => $week_start,
+                                            ),
+                                             array(
+                                                'key'       => 'event_end_date',
+                                                'compare'   => '<=',
+                                                'value'     => $week_end,
+                                            )
+                                        ),
+                            ));
+	    break;
+
+	    case "day":
+	    	$today = date('Ymd');
+            $query = new WP_Query( array(
+                'post_type' => 'events',
+                'order' => 'DESC',
+                'posts_per_page' => 5,
+                'meta_key' => 'event_date',
+                'meta_query' => array(
+                    array(
+                        'key' => 'event_date',
+                        'value' => $today,
+                        'compare' => '='
+                    )
+                ),
+            ) );
+	    break;
+	} // Switch Ends
+	
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $post_id = get_the_ID();
+            $post_title = get_the_title();
+            $post_content = get_the_excerpt();
+            $post_url = get_the_permalink();
+            $location = get_post_meta( $post_id, 'event_place', true );
+            $date = get_post_meta( $post_id, 'event_date', true );
+            if (has_post_thumbnail()) {
+                $featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+            } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+                    ?>
+                    <div class="up-event-list col-xl-12 float-left">
+                        <div class="up-txt col-xl-9">
+                            <h5>
+                                <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </h5>
+                        </div>
+                        <div class="up-tail col-xl-3">
+                            <div class="up-date">
+                                <span class="up-loc"><i class="mr-2 fa fa-map-marker" aria-hidden="true"></i><?php echo $location; ?></span> <?php echo date("M j, Y", strtotime($date)); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php   } wp_reset_query(); } 
+	exit;
+}
+add_action('wp_ajax_nopriv_events_filter', 'events_filter');
+add_action('wp_ajax_events_filter', 'events_filter');

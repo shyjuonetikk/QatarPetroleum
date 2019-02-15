@@ -71,6 +71,43 @@ get_header();
                     </ul>
                 </div>
             </div>
+            <div id="" class="col-xl-12 float-left mt-3">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="center w-100">
+                    <?php
+$query = new WP_Query(array(
+	'post_type' => array('qp_news'),
+	'post_status' => 'publish',
+	'posts_per_page' => 6,
+	'tag' => 'slider-news',
+	'orderby' => 'date',
+	'order' => 'DESC',
+));
+if ($query->have_posts()) {
+	while ($query->have_posts()) {
+		$query->the_post();
+		$post_id = get_the_ID();
+		$post_title = get_the_title();
+		$post_content = get_the_excerpt();
+		$post_url = get_the_permalink();
+		if (has_post_thumbnail()) {
+			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		?>
+                                              <div>
+                                                <div class="news-slider-image w-100">
+                                                    <img class="w-100" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>">
+                                                     <div class="news-slider-image-content">
+                                                        <div class="post-date text-left pb-2 font-weight-light"> <span><?php echo get_the_date('M j, Y'); ?></span></div>
+                                                        <h1 class="text-left"><?php echo $post_title; ?></h1>
+                                                     </div>
+                                                </div>
+                                              </div>
+                                            <?php }
+	wp_reset_query();}?>
+                                            </div>
+                                        </div>
+            </div>
         </div>
     </section>
 

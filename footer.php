@@ -65,8 +65,13 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
+<<<<<<< HEAD
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
+=======
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script> -->
+>>>>>>> 247673007519a02d65807975e43bad89f890d32d
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -74,13 +79,14 @@ wp_nav_menu(
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
-  $(window).load(function(){
+  $jq(window).load(function(){
    // PAGE IS FULLY LOADED
    // FADE OUT YOUR OVERLAYING DIV
-   $('#overlay').fadeOut();
+  $jq('#overlay').fadeOut();
 });
   var $jq = jQuery.noConflict();
-   $(document).ready(function(){
+   $jq(document).ready(function(){
+
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
       var page = 1;
 
@@ -115,12 +121,12 @@ wp_nav_menu(
       ]
     });
 
-    $("#btn-shw").click(function(){
+    $jq("#btn-shw").click(function(){
 
-      var post_type = $(this).data('post-type');
-      var post_per_page = $(this).data('posts-per-page');
-      var max_pages = $(this).data('max-pages');
-      var filtertype = $("#filter .active").data('filter-type');
+      var post_type = $jq(this).data('post-type');
+      var post_per_page = $jq(this).data('posts-per-page');
+      var max_pages = $jq(this).data('max-pages');
+      var filtertype = $jq("#filter .active").data('filter-type');
 
       $.post(ajaxUrl,{action:"more_news_ajax",
         offset: (page * post_per_page) + 1,
@@ -130,17 +136,17 @@ wp_nav_menu(
       },
          function(data){
           if(data == ''){
-            $("#loading-indicator").toggle();
-            $("#btn-shw").hide();
+            $jq("#loading-indicator").toggle();
+            $jq("#btn-shw").hide();
           }
           else{
              page++;
-             $(".news-container").append(data);
-             $("#loading-indicator").toggle();
+             $jq(".news-container").append(data);
+             $jq("#loading-indicator").toggle();
              if(max_pages == page){
-              $("#btn-shw").hide();
+              $jq("#btn-shw").hide();
              }else{
-              $("#btn-shw").show();
+              $jq("#btn-shw").show();
              }
           }
         });
@@ -149,18 +155,18 @@ wp_nav_menu(
 
     // filter
 
-    $("#filter li").click(function(){
-      $("#btn-shw").show();
-      var filtertype = $(this).data('filter-type');
-      var post_type = $(this).data('post-type');
-      $(this).addClass('active').siblings().removeClass('active');
+    $jq("#filter li").click(function(){
+      $jq("#btn-shw").show();
+      var filtertype =$jq(this).data('filter-type');
+      var post_type =$jq(this).data('post-type');
+      $jq(this).addClass('active').siblings().removeClass('active');
       $.post(ajaxUrl,{action:"news_filter",
         posttype: post_type,
         filtertype: filtertype,
       },
          function(data){
-            $("#loading-indicator").toggle();
-            $("#news-main").html(data);
+            $jq("#loading-indicator").toggle();
+            $jq("#news-main").html(data);
         });
     });
 
@@ -173,38 +179,50 @@ wp_nav_menu(
               $('#scroll').fadeOut();
           }
       });
+
       $('#scroll').click(function(){
           $("html, body").animate({ scrollTop: 0 }, 600);
           return false;
+
+      // $jq(window).scroll(function(){
+      //     if ($jq(this).scrollTop() > 100) {
+      //         $jq('#scroll').fadeIn();
+      //     } else {
+      //         $jq('#scroll').fadeOut();
+      //     }
+      // });
+      // $jq('#scroll').click(function(){
+      //     $jq("html, body").animate({ scrollTop: 0 }, 600);
+      //     return false;
       });
 
-      $("#job-offer").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-job").offset().top
+      $jq("#job-offer").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-job").offset().top
           }, 2000);
       });
 
-      $("#theory").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-theory").offset().top
+      $jq("#theory").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-theory").offset().top
           }, 2000);
       });
 
-      $("#learn").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-learn").offset().top
+      $jq("#learn").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-learn").offset().top
           }, 2000);
       });
 
-      $("#onboard").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-onboard").offset().top
+      $jq("#onboard").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-onboard").offset().top
           }, 2000);
       });
 
-      $("#isdn").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-isdn").offset().top
+      $jq("#isdn").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-isdn").offset().top
           }, 2000);
       });
 

@@ -1,19 +1,50 @@
-
-
 @font-face {
-  font-family: Myriad Pro;
-  src: url(fonts/MyriadPro-Regular.otf);
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+
 }
 
+@font-face {
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Light.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/fontawesome-webfont.woff2') format('woff2'),
+         url('../fonts/fontawesome-webfont.woff') format('woff'),
+         url('../fonts/fontawesome-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body{
   background: #fff;
-  font-family: "Myriad Pro";
+  font-family: "MyriadPro",sans-serif;
+  font-weight: normal;
 }
 img {
   max-width: 100%;
 }
 section {
     padding: 70px 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
 }
 footer {
     background: #003c72;
@@ -381,7 +412,7 @@ footer .list-inline-item a:hover{
   transition-duration: 0.3s;
   background: #71cc98;
   color: #003C71 !important;
-  padding: 7px 15px;
+  padding: 15px 30px;
 }
 .hvr-icon-wobble-horizontal:hover{
   cursor: pointer !important;
@@ -428,25 +459,49 @@ section#qp-news-popup {
 
 .phone-icon {
     display: inline-block;
-    font-size: 80px;
+    font-size: 50px;
     padding-right: 30px;
     color: #71CC98;
+    float: left;
 }
 .phone-num {
     display: inline-block;
+    float: left;
+    padding-top: 4px;
 }
 .phone-num p {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 300;
     margin-bottom: 0;
 }
 .phone-num span {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 900;
 }
 .contact-bg {
     background: #003C71;
     color: #fff;
+}
+.contact-form-textarea{
+  resize: none;
+  outline: none !important;
+  height: 140px !important;
+}
+
+.contact-submit{
+  background-color: #71cc98 !important;
+  border: none !important;
+  border-radius: 0px !important;
+  color: #fff !important;
+  width: 140px !important;
+}
+.contact-form-textarea:focus, .contact-submit:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
+.contact-submit:hover{
+  background-color: #003c71 !important;
+  transition:all 0.3s ease;
 }
 /************Contact us*******************/
 /************FAQ************************/
@@ -478,7 +533,7 @@ section#qp-news-popup {
     cursor:pointer;
     width:50px;
     height:50px;
-    bottom: 20px;
+    bottom: 80px;
     font-size: 25px;
     margin-top: -41px;
     background-color:#71cc98;

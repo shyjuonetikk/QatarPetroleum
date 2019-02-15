@@ -451,111 +451,6 @@ footer .list-inline-item a:hover {
     }
 }
 
-<<<<<<< HEAD
-/* Icon Wobble Horizontal */
-@-webkit-keyframes hvr-icon-wobble-horizontal {
-    16.65% {
-        -webkit-transform: translateX(6px);
-        transform: translateX(6px);
-    }
-
-    33.3% {
-        -webkit-transform: translateX(-5px);
-        transform: translateX(-5px);
-    }
-
-    49.95% {
-        -webkit-transform: translateX(4px);
-        transform: translateX(4px);
-    }
-
-    66.6% {
-        -webkit-transform: translateX(-2px);
-        transform: translateX(-2px);
-    }
-
-    83.25% {
-        -webkit-transform: translateX(1px);
-        transform: translateX(1px);
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-}
-
-@keyframes hvr-icon-wobble-horizontal {
-    16.65% {
-        -webkit-transform: translateX(6px);
-        transform: translateX(6px);
-    }
-
-    33.3% {
-        -webkit-transform: translateX(-5px);
-        transform: translateX(-5px);
-    }
-
-    49.95% {
-        -webkit-transform: translateX(4px);
-        transform: translateX(4px);
-    }
-
-    66.6% {
-        -webkit-transform: translateX(-2px);
-        transform: translateX(-2px);
-    }
-
-    83.25% {
-        -webkit-transform: translateX(1px);
-        transform: translateX(1px);
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-}
-
-.hvr-icon-wobble-horizontal {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    background: #71cc98;
-    color: #003C71 !important;
-    padding: 15px 30px;
-}
-
-.hvr-icon-wobble-horizontal:hover {
-    cursor: pointer !important;
-}
-
-.hvr-icon-wobble-horizontal .hvr-icon {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-}
-
-.hvr-icon-wobble-horizontal:hover .hvr-icon,
-.hvr-icon-wobble-horizontal:focus .hvr-icon,
-.hvr-icon-wobble-horizontal:active .hvr-icon {
-    -webkit-animation-name: hvr-icon-wobble-horizontal;
-    animation-name: hvr-icon-wobble-horizontal;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
-}
-
-.footer-menu li {
-    display: inline-block;
-=======
-
 /* Icon Hang */
 @-webkit-keyframes hvr-icon-hang {
   0% {
@@ -635,7 +530,6 @@ a.hvr-icon-hang:hover {
 }
 .footer-menu li{
   display: inline-block;
->>>>>>> 49f52e56b8d43f34f6f8f374908261744b78c8b5
 }
 
 .footer-menu li a {
@@ -849,14 +743,11 @@ section#qp-news-popup {
 
     position: relative;
     z-index: 9999 !important;
-<<<<<<< HEAD
-=======
   }
 .nav-panes > h2,
 .nav-panes > h4{
   color: #657786;
   font-weight: 700;
->>>>>>> 49f52e56b8d43f34f6f8f374908261744b78c8b5
 }
 
 .nav-panes>h2 {

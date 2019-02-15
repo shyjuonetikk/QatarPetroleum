@@ -65,13 +65,10 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<<<<<<< HEAD
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
-=======
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script> -->
->>>>>>> 247673007519a02d65807975e43bad89f890d32d
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

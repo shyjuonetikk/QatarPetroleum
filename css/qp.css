@@ -231,7 +231,7 @@ footer .list-inline-item a:hover{
     color: #657786;
 }
 .bg-news-popup {
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.65);
 }
 .arrow-nav {
     padding: 4% 0 5%;
@@ -254,8 +254,10 @@ footer .list-inline-item a:hover{
 .news-popup-image:after {
   content:'';
   position: absolute;
-  left: 1.5%; top:0;
-  width:97%; height:100%;
+  left: 0;
+  top:0;
+  width:100%;
+  height:100%;
   display:inline-block;
   background-image: -webkit-linear-gradient(bottom, #003C71, #003c71a3, #003c715e, #1d101800, #00000000);
   background-image: -o-linear-gradient(bottom, #003C71, #003c71a3, #003c715e, #1d101800, #00000000);
@@ -830,6 +832,12 @@ button#qp-img-more:focus {
     color: #003C71;
     border-bottom: 3px solid #71CC98;
 }
+/* Gallery page - popup */
+.sl-overlay {
+    background: #000000;
+    opacity: 0.65;
+}
+/* Gallery page - popup ends here */
 /*---- Image Gallery Page ends here ----*/
 
 /************Upcoming Events*******************/

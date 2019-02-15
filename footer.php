@@ -42,13 +42,14 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
+
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+
 <script type="text/javascript">
   $jq(window).load(function(){
   $jq('#overlay').fadeOut();
@@ -97,7 +98,7 @@ wp_nav_menu(
       var max_pages = $jq(this).data('max-pages');
       var filtertype = $jq("#filter .active").data('filter-type');
 
-      $.post(ajaxUrl,{action:"more_news_ajax",
+      $jq.post(ajaxUrl,{action:"more_news_ajax",
         offset: (page * post_per_page) + 1,
         ppp: post_per_page,
         posttype: post_type,
@@ -129,7 +130,7 @@ wp_nav_menu(
       var filtertype =$jq(this).data('filter-type');
       var post_type =$jq(this).data('post-type');
       $jq(this).addClass('active').siblings().removeClass('active');
-      $.post(ajaxUrl,{action:"news_filter",
+      $jq.post(ajaxUrl,{action:"news_filter",
         posttype: post_type,
         filtertype: filtertype,
       },
@@ -141,28 +142,28 @@ wp_nav_menu(
 
     // FAQ page
 
-      $(window).scroll(function(){
-          if ($(this).scrollTop() > 100) {
-              $('#scroll').fadeIn();
-          } else {
-              $('#scroll').fadeOut();
-          }
-      });
-
-      $('#scroll').click(function(){
-          $("html, body").animate({ scrollTop: 0 }, 600);
-          return false;
-
-      // $jq(window).scroll(function(){
-      //     if ($jq(this).scrollTop() > 100) {
-      //         $jq('#scroll').fadeIn();
+      // $(window).scroll(function(){
+      //     if ($(this).scrollTop() > 100) {
+      //         $('#scroll').fadeIn();
       //     } else {
-      //         $jq('#scroll').fadeOut();
+      //         $('#scroll').fadeOut();
       //     }
       // });
-      // $jq('#scroll').click(function(){
-      //     $jq("html, body").animate({ scrollTop: 0 }, 600);
+
+      // $('#scroll').click(function(){
+      //     $("html, body").animate({ scrollTop: 0 }, 600);
       //     return false;
+
+      $jq(window).scroll(function(){
+          if ($jq(this).scrollTop() > 100) {
+              $jq('#scroll').fadeIn();
+          } else {
+              $jq('#scroll').fadeOut();
+          }
+      });
+      $jq('#scroll').click(function(){
+          $jq("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
       });
 
       $jq("#job-offer").click(function() {
@@ -196,11 +197,11 @@ wp_nav_menu(
       });
 
       // Events Page
-      $(".event-filterlist > li").click(function(){
-          $(this).addClass('active');
+      $jq(".event-filterlist > li").click(function(){
+          $jq(this).addClass('active');
           var eventFilter = $(this).data('event-filter');
-          $(".event-filterlist > li").not(this).removeClass('active');
-          $.post(ajaxUrl,{action:"events_filter",
+          $jq(".event-filterlist > li").not(this).removeClass('active');
+          $jq.post(ajaxUrl,{action:"events_filter",
             eventfilter: eventFilter,
           },
              function(data){
@@ -212,11 +213,11 @@ wp_nav_menu(
       
       $jq("#qp-img-more").click(function(){
         var id =$jq(this).data('id');
-        $.post(ajaxUrl,{action:"more_gallery",
+        $jq.post(ajaxUrl,{action:"more_gallery",
           id: id,
         },
            function(data){
-              $('#qp-gal-img').append(data);
+              $jq('#qp-gal-img').append(data);
           });
       });
       

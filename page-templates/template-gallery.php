@@ -24,18 +24,19 @@ if (have_rows('image_gallery')):
 	// loop through the rows of data
 	while (have_rows('image_gallery')): the_row();?>
 
-				                <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
-				                    <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png">
-				                        <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image');?>" alt="<?php the_sub_field('title');?>" title="<?php the_sub_field('title');?>" />
-				                    </a>
-				                    <div class="img-hover-icon container d-flex w-100 p-0">
-				                        <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
-				                            <i class="fa fa-search" aria-hidden="true"></i>
-				                        </div>
-				                    </div>
-				                    <p class="font-weight-bold"><?php the_sub_field('title');?></p>
-				                </div>
-				                <?php endwhile;endif;?>
+																                <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+																                    <!-- <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png"> -->
+												                                    <a href="<?php the_sub_field('gallery_image');?>">
+																                        <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image');?>" alt="<?php the_sub_field('title');?>" title="<?php the_sub_field('title');?>" />
+																                    </a>
+																                    <div class="img-hover-icon container d-flex w-100 p-0">
+																                        <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
+																                            <i class="fa fa-search" aria-hidden="true"></i>
+																                        </div>
+																                    </div>
+																                    <p class="font-weight-bold"><?php the_sub_field('title');?></p>
+																                </div>
+																                <?php endwhile;endif;?>
             </div>
             <!-- <div class="col-12 text-center float-left my-4">
                 <button id="qp-img-more" class="btn btn-success prm-clr sec-bg px-3 py-1 border-0" data-id="<?php echo get_the_id(); ?>">Show More</button>

@@ -23,29 +23,6 @@ $container = get_theme_mod('understrap_container_type');
           <p class="text-white small mb-lg-0 Copyright">Copyrightⓒ 2019 All right reserved. Qatar Petrol</p>
         </div>
         <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto list-inline">
-          <!-- <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a href="#">JOB PORTAL</a>
-            </li>
-            <li class="list-inline-item">
-            <a href="#">NEWS</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">FAQ</a>
-            </li>
-            <li class="list-inline-item">
-            <a href="#">ABOUT QP</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">UPCOMING EVENTS</a>
-            </li>
-            <li class="list-inline-item">
-            <a href="#">MULTIMEDIA</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">MULTIMEDIA</a>
-            </li>
-          </ul> -->
           <?php
 wp_nav_menu(
 	array(
@@ -65,10 +42,7 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script> -->
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -77,8 +51,6 @@ wp_nav_menu(
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
   $jq(window).load(function(){
-   // PAGE IS FULLY LOADED
-   // FADE OUT YOUR OVERLAYING DIV
   $jq('#overlay').fadeOut();
 });
   var $jq = jQuery.noConflict();
@@ -223,7 +195,18 @@ wp_nav_menu(
           }, 2000);
       });
 
-
+      // Events Page
+      $(".event-filterlist > li").click(function(){
+          $(this).addClass('active');
+          var eventFilter = $(this).data('event-filter');
+          $(".event-filterlist > li").not(this).removeClass('active');
+          $.post(ajaxUrl,{action:"events_filter",
+            eventfilter: eventFilter,
+          },
+             function(data){
+                $('#event-list-inner').html(data);
+            });
+      });
    });
 
 </script>

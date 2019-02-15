@@ -39,11 +39,10 @@ $jq(document).ready(function() {
 });
 
 // Image Gallery Plugin
-<<<<<<< HEAD
 jQuery(function(){
     var $gallery = jQuery('.gallery > div > a').simpleLightbox();
     //var $gallery = $('.gallery > div > a').simpleLightbox();
-    
+
 });
 
 // Upcoming events Page JS

@@ -1,19 +1,50 @@
-
-
 @font-face {
-  font-family: Myriad Pro;
-  src: url(fonts/MyriadPro-Regular.otf);
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+
 }
 
+@font-face {
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Light.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MyriadPro';
+    src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/fontawesome-webfont.woff2') format('woff2'),
+         url('../fonts/fontawesome-webfont.woff') format('woff'),
+         url('../fonts/fontawesome-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body{
   background: #fff;
-  font-family: "Myriad Pro";
+  font-family: "MyriadPro",sans-serif;
+  font-weight: normal;
 }
 img {
   max-width: 100%;
 }
 section {
     padding: 70px 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
 }
 footer {
     background: #003c72;
@@ -381,7 +412,7 @@ footer .list-inline-item a:hover{
   transition-duration: 0.3s;
   background: #71cc98;
   color: #003C71 !important;
-  padding: 7px 15px;
+  padding: 15px 30px;
 }
 .hvr-icon-wobble-horizontal:hover{
   cursor: pointer !important;
@@ -413,7 +444,16 @@ footer .list-inline-item a:hover{
     padding: 5px 8px !important;
 }
 
-/************Home Page*******************/
+/*********** Home Page Popup *************/
+section#qp-news-popup {
+    position: absolute;
+    top: 0;
+    z-index: 9999 !important;
+    display: none;
+}
+/********* Home Page Popup ends *********/
+
+/********* Home Page ends here **********/
 
 /************Contact us*******************/
 
@@ -493,7 +533,7 @@ footer .list-inline-item a:hover{
     cursor:pointer;
     width:50px;
     height:50px;
-    bottom: 20px;
+    bottom: 80px;
     font-size: 25px;
     margin-top: -41px;
     background-color:#71cc98;
@@ -963,7 +1003,6 @@ color: #657786;
   padding-bottom: 18px;
   border-bottom: 3px solid #707070 !important;
 }
-
 .up-popup-image-content {
     position: absolute;
     bottom: 8px;
@@ -971,7 +1010,6 @@ color: #657786;
     z-index: 1;
     padding: 4% 6%;
 }
-
 .up-popup-image-content h1:after {
     border-bottom: 8px solid #71CC98;
     content: '';

@@ -42,21 +42,20 @@ $container = get_theme_mod('understrap_container_type');
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript">
-  $(window).load(function(){
-     $('#overlay').fadeOut();
-  });
+  $jq(window).load(function(){
+  $jq('#overlay').fadeOut();
+});
   var $jq = jQuery.noConflict();
-   $(document).ready(function(){
+   $jq(document).ready(function(){
+
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
       var page = 1;
 
@@ -91,12 +90,12 @@ $container = get_theme_mod('understrap_container_type');
       ]
     });
 
-    $("#btn-shw").click(function(){
+    $jq("#btn-shw").click(function(){
 
-      var post_type = $(this).data('post-type');
-      var post_per_page = $(this).data('posts-per-page');
-      var max_pages = $(this).data('max-pages');
-      var filtertype = $("#filter .active").data('filter-type');
+      var post_type = $jq(this).data('post-type');
+      var post_per_page = $jq(this).data('posts-per-page');
+      var max_pages = $jq(this).data('max-pages');
+      var filtertype = $jq("#filter .active").data('filter-type');
 
       $.post(ajaxUrl,{action:"more_news_ajax",
         offset: (page * post_per_page) + 1,
@@ -106,17 +105,17 @@ $container = get_theme_mod('understrap_container_type');
       },
          function(data){
           if(data == ''){
-            $("#loading-indicator").toggle();
-            $("#btn-shw").hide();
+            $jq("#loading-indicator").toggle();
+            $jq("#btn-shw").hide();
           }
           else{
              page++;
-             $(".news-container").append(data);
-             $("#loading-indicator").toggle();
+             $jq(".news-container").append(data);
+             $jq("#loading-indicator").toggle();
              if(max_pages == page){
-              $("#btn-shw").hide();
+              $jq("#btn-shw").hide();
              }else{
-              $("#btn-shw").show();
+              $jq("#btn-shw").show();
              }
           }
         });
@@ -125,62 +124,74 @@ $container = get_theme_mod('understrap_container_type');
 
     // filter
 
-    $("#filter li").click(function(){
-      $("#btn-shw").show();
-      var filtertype = $(this).data('filter-type');
-      var post_type = $(this).data('post-type');
-      $(this).addClass('active').siblings().removeClass('active');
+    $jq("#filter li").click(function(){
+      $jq("#btn-shw").show();
+      var filtertype =$jq(this).data('filter-type');
+      var post_type =$jq(this).data('post-type');
+      $jq(this).addClass('active').siblings().removeClass('active');
       $.post(ajaxUrl,{action:"news_filter",
         posttype: post_type,
         filtertype: filtertype,
       },
          function(data){
-            $("#loading-indicator").toggle();
-            $("#news-main").html(data);
+            $jq("#loading-indicator").toggle();
+            $jq("#news-main").html(data);
         });
     });
 
     // FAQ page
-    
-      $(window).scroll(function(){ 
-          if ($(this).scrollTop() > 100) { 
-              $('#scroll').fadeIn(); 
-          } else { 
-              $('#scroll').fadeOut(); 
-          } 
-      }); 
-      $('#scroll').click(function(){ 
-          $("html, body").animate({ scrollTop: 0 }, 600); 
-          return false; 
+
+      $(window).scroll(function(){
+          if ($(this).scrollTop() > 100) {
+              $('#scroll').fadeIn();
+          } else {
+              $('#scroll').fadeOut();
+          }
       });
 
-      $("#job-offer").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-job").offset().top
+      $('#scroll').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
+
+      // $jq(window).scroll(function(){
+      //     if ($jq(this).scrollTop() > 100) {
+      //         $jq('#scroll').fadeIn();
+      //     } else {
+      //         $jq('#scroll').fadeOut();
+      //     }
+      // });
+      // $jq('#scroll').click(function(){
+      //     $jq("html, body").animate({ scrollTop: 0 }, 600);
+      //     return false;
+      });
+
+      $jq("#job-offer").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-job").offset().top
           }, 2000);
       });
 
-      $("#theory").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-theory").offset().top
+      $jq("#theory").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-theory").offset().top
           }, 2000);
       });
 
-      $("#learn").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-learn").offset().top
+      $jq("#learn").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-learn").offset().top
           }, 2000);
       });
 
-      $("#onboard").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-onboard").offset().top
+      $jq("#onboard").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-onboard").offset().top
           }, 2000);
       });
 
-      $("#isdn").click(function() {
-          $('html, body').animate({
-              scrollTop: $("#nav-isdn").offset().top
+      $jq("#isdn").click(function() {
+          $jq('html, body').animate({
+              scrollTop: $jq("#nav-isdn").offset().top
           }, 2000);
       });
 

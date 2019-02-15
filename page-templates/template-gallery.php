@@ -15,6 +15,7 @@ get_header();
                 <hr>
             </div>
             <div id="qp-gal-img" class="gallery col-xl-12 float-left">
+<<<<<<< HEAD
                 <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                     <a class="pop-up-hover" href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png">
                         <img class="img-fluid qp-gal-img" src="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png" alt="" title="" />
@@ -85,7 +86,30 @@ get_header();
             </div>
             <div class="col-12 text-center float-left my-4">
                 <button id="qp-img-more" class="btn btn-success prm-clr sec-bg px-3 py-1 border-0">Show More</button>
+=======
+                <?php
+
+                // check if the repeater field has rows of data
+                if( have_rows('image_gallery') ):
+
+                    // loop through the rows of data
+                    while ( have_rows('image_gallery') ) : the_row(); ?>
+                    
+                    <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+                        <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png">
+                            <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image'); ?>" alt="<?php the_sub_field('title'); ?>" title="<?php the_sub_field('title'); ?>" />
+                        </a>
+                        <p class="font-weight-bold"><?php the_sub_field('title'); ?></p>
+                    </div>
+                    <?php
+                        endwhile;
+                endif;
+                ?>
+>>>>>>> 49f52e56b8d43f34f6f8f374908261744b78c8b5
             </div>
+            <!-- <div class="col-12 text-center float-left my-4">
+                <button id="qp-img-more" class="btn btn-success prm-clr sec-bg px-3 py-1 border-0" data-id="<?php echo get_the_id(); ?>">Show More</button>
+            </div> -->
         </div>
     </section>
     <section id="qp-vid-gallery" class="float-left w-100 grey-bg">
@@ -143,5 +167,4 @@ if ($query->have_posts()) {
     </section>
 
 <?php get_footer();?>
-
 

@@ -39,10 +39,9 @@ $jq(document).ready(function() {
 });
 
 // Image Gallery Plugin
-jQuery(function(){
-    var $gallery = jQuery('.gallery > div > a').simpleLightbox();
-    // var $gallery = $('.gallery > div > a').simpleLightbox();
-
+$jq(function(){
+    var $gallery = $jq('.gallery > div > a').simpleLightbox();
+    //var $gallery = $('.gallery > div > a').simpleLightbox();
 });
 
 // Upcoming events Page JS

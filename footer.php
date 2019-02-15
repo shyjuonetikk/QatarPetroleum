@@ -207,6 +207,19 @@ wp_nav_menu(
                 $('#event-list-inner').html(data);
             });
       });
+
+      // Multimedia page Ajax
+      
+      $jq("#qp-img-more").click(function(){
+        var id =$jq(this).data('id');
+        $.post(ajaxUrl,{action:"more_gallery",
+          id: id,
+        },
+           function(data){
+              $('#qp-gal-img').append(data);
+          });
+      });
+      
    });
 
 </script>

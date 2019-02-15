@@ -404,3 +404,30 @@ function events_filter(){
 }
 add_action('wp_ajax_nopriv_events_filter', 'events_filter');
 add_action('wp_ajax_events_filter', 'events_filter');
+
+// Multimedia gallery
+
+function more_gallery(	) {
+
+	$post_id = $_POST['id'];
+
+    // check if the repeater field has rows of data
+    if( have_rows('image_gallery', $post_id) ):
+
+        // loop through the rows of data
+        while ( have_rows('image_gallery', $post_id) ) : the_row(); ?>
+        
+        <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+            <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png">
+                <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image'); ?>" alt="<?php the_sub_field('title'); ?>" title="<?php the_sub_field('title'); ?>" />
+            </a>
+            <p class="font-weight-bold"><?php the_sub_field('title'); ?></p>
+        </div>
+        <?php
+            endwhile;
+    endif;
+	exit;
+}
+
+add_action('wp_ajax_nopriv_more_gallery', 'more_gallery');
+add_action('wp_ajax_more_gallery', 'more_gallery');

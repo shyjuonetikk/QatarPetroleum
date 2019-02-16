@@ -407,26 +407,49 @@ add_action('wp_ajax_events_filter', 'events_filter');
 
 // Multimedia gallery
 
-function more_gallery(	) {
+function more_gallery() {
 
-	$post_id = $_POST['id'];
-
-    // check if the repeater field has rows of data
-    if( have_rows('image_gallery', $post_id) ):
-
-        // loop through the rows of data
-        while ( have_rows('image_gallery', $post_id) ) : the_row(); ?>
-        
-        <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
-            <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png">
-                <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image'); ?>" alt="<?php the_sub_field('title'); ?>" title="<?php the_sub_field('title'); ?>" />
+	$offset = $_POST["offset"];
+	$ppp = 3;
+	$query = new WP_Query(array(
+				'post_type' => 'gallery',
+				'post_status' => 'publish',
+				'category_name' => 'image-gallery',
+				'posts_per_page' => $ppp,
+				'paged' => $offset,
+				'orderby' => 'date',
+                'order' => 'ASC',
+			));
+    if ($query->have_posts()) {
+    while ($query->have_posts()) {
+        $query->the_post();
+        $post_id = get_the_ID();
+        $post_title = get_the_title();
+        if (has_post_thumbnail()) {
+            $featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+        } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";} ?>
+    	<div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+            <a href="<?php echo $featured_img_url; ?>">
+                <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
             </a>
-            <p class="font-weight-bold"><?php the_sub_field('title'); ?></p>
+                <p class="font-weight-bold"><?php echo $post_title; ?></p>
         </div>
-        <?php
-            endwhile;
-    endif;
-	exit;
+        <?php   } wp_reset_query(); } ?>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+	var $jq = jQuery.noConflict();
+   	$jq(document).ready(function(){
+   		$jq(function(){
+		    var $gallery = $jq('.gallery > div > a').simpleLightbox();
+
+		});
+   	});
+</script>
+
+<?php
+    exit;  	
 }
 
 add_action('wp_ajax_nopriv_more_gallery', 'more_gallery');

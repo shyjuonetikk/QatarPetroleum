@@ -24,16 +24,16 @@ $container = get_theme_mod('understrap_container_type');
         </div>
         <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto list-inline">
           <?php
-wp_nav_menu(
-	array(
-		'theme_location' => 'footermenu',
-		'fallback_cb' => '',
-		'menu' => 'footermenu',
-		'menu_class' => 'footer-menu list-inline mb-0',
-		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
-	)
-);
-?>
+            wp_nav_menu(
+            	array(
+            		'theme_location' => 'footermenu',
+            		'fallback_cb' => '',
+            		'menu' => 'footermenu',
+            		'menu_class' => 'footer-menu list-inline mb-0',
+            		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
+            	)
+            );
+          ?>
         </div>
       </div>
     </div>
@@ -91,6 +91,51 @@ wp_nav_menu(
       ]
     });
 
+    //slick video
+    
+    $jq('.slider').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      customPaging : function(slider, i) {
+      var thumb = $jq(slider.$slides[i]).data();
+      return '<a>0'+(i+1)+'</a>';
+    },
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+
+    $jq('.slick-dots > li > a').click(function(){
+      $jq(this).addClass('active');
+      $jq(".slick-dots > li > a").not(this).removeClass('active');
+    });
+
+
     $jq("#btn-shw").click(function(){
 
       var post_type = $jq(this).data('post-type');
@@ -142,18 +187,6 @@ wp_nav_menu(
 
     // FAQ page
 
-      // $(window).scroll(function(){
-      //     if ($(this).scrollTop() > 100) {
-      //         $('#scroll').fadeIn();
-      //     } else {
-      //         $('#scroll').fadeOut();
-      //     }
-      // });
-
-      // $('#scroll').click(function(){
-      //     $("html, body").animate({ scrollTop: 0 }, 600);
-      //     return false;
-
       $jq(window).scroll(function(){
           if ($jq(this).scrollTop() > 100) {
               $jq('#scroll').fadeIn();
@@ -199,13 +232,13 @@ wp_nav_menu(
       // Events Page
       $jq(".event-filterlist > li").click(function(){
           $jq(this).addClass('active');
-          var eventFilter = $(this).data('event-filter');
+          var eventFilter = $jq(this).data('event-filter');
           $jq(".event-filterlist > li").not(this).removeClass('active');
           $jq.post(ajaxUrl,{action:"events_filter",
             eventfilter: eventFilter,
           },
              function(data){
-                $('#event-list-inner').html(data);
+                $jq('#event-list-inner').html(data);
             });
       });
 
@@ -213,11 +246,28 @@ wp_nav_menu(
       
       $jq("#qp-img-more").click(function(){
         var id =$jq(this).data('id');
+        var max_pages = $jq(this).data('max-pages');
+        var post_per_page = $jq(this).data('posts-per-page');
         $jq.post(ajaxUrl,{action:"more_gallery",
+          offset: (page * post_per_page) + 1,
+          ppp: post_per_page,
           id: id,
         },
            function(data){
-              $jq('#qp-gal-img').append(data);
+              if(data == ''){
+                $jq("#loading-indicator").toggle();
+                $jq("#qp-img-more").hide();
+              }
+              else{
+                 page++;
+                 $jq("#qp-gal-img").append(data);
+                 $jq("#loading-indicator").toggle();
+                 if(max_pages == page){
+                  $jq("#qp-img-more").hide();
+                 }else{
+                  $jq("#qp-img-more").show();
+                 }
+              }
           });
       });
       

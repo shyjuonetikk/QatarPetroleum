@@ -113,6 +113,44 @@
     background: #71cc98 url(../img/left-arrow.png) center no-repeat;
 }
 
+.slider .slick-prev
+{
+    left: -1%;
+    background: #71cc98 url(../img/left-arrow.png) center no-repeat;
+}
+[dir='rtl'] .slider .slick-prev
+{
+    right: 0%;
+    left: auto;
+}
+.slider .slick-prev:before
+{
+    background: #71cc98 url(../img/left-arrow.png) center no-repeat;
+}
+[dir='rtl'] .slider .slick-prev:before
+{
+    background: #71cc98 url(../img/right-arrow.png) center no-repeat;
+}
+
+.slider .slick-next
+{
+    right: -1%;
+    background: #71cc98 url(../img/right-arrow.png) center no-repeat;
+}
+[dir='rtl'] .slider .slick-next
+{
+    right: auto;
+    left: -5px;
+}
+.slider .slick-next:before
+{
+    background: #71cc98 url(../img/right-arrow.png) center no-repeat;
+}
+[dir='rtl'] .slider .slick-next:before
+{
+    background: #71cc98 url(../img/left-arrow.png) center no-repeat;
+}
+
 /* Dots */
 .slick-dotted.slick-slider
 {
@@ -201,4 +239,28 @@
 {
     opacity: .75;
     color: black;
+}
+
+.slider .slick-dots{
+    top: -59px;
+    width: auto;
+    right: 0;
+    font-weight: 600;
+    text-align: center;
+}
+.slider .slick-dots li{
+    color: #657786 !important;
+    margin: 0 10px;
+}
+.slider .slick-dots a{
+    color: #657786 !important;
+    padding: 0 10px;
+}
+.slider .slick-dots a:hover{
+    cursor: pointer;
+    color: #003C71;
+    border-bottom: 3px solid #71CC98;
+}
+.slider .slick-dots .active{
+    border-bottom: 3px solid #71CC98 !important;
 }

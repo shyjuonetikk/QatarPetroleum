@@ -54,13 +54,13 @@ get_header();
                                     $featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
                                 } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
                     ?>
-                    <div class="up-event-list col-xl-12 float-left">
-                        <div class="up-txt col-xl-9">
+                    <div class="up-event-list col-xl-12 float-left pl-0 pr-0">
+                        <div class="up-txt col-xl-9 pl-0">
                             <h5>
                                 <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fa fa-arrow-right" aria-hidden="true"></i></a>
                             </h5>
                         </div>
-                        <div class="up-tail col-xl-3">
+                        <div class="up-tail col-xl-3 pr-0">
                             <div class="up-date">
                                 <span class="up-loc"><i class="mr-2 fa fa-map-marker" aria-hidden="true"></i><?php echo $location; ?></span> <?php echo date("M j, Y", strtotime($date)); ?>
                             </div>

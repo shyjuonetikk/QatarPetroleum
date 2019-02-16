@@ -15,24 +15,9 @@ get_header();
                 <hr>
             </div>
             <div id="qp-gal-img" class="gallery col-xl-12 float-left">
+
                 <?php
-
-                // check if the repeater field has rows of data
-                //if( have_rows('image_gallery') ):
-
-                    // loop through the rows of data
-                    //while ( have_rows('image_gallery') ) : the_row(); ?>
-                    
-                    <!-- <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
-                        <a href="<?php //echo get_template_directory_uri(); ?>/img/img-gal-1.png">
-                            <img class="img-fluid qp-gal-img" src="<?php //the_sub_field('gallery_image'); ?>" alt="<?php //the_sub_field('title'); ?>" title="<?php //the_sub_field('title'); ?>" />
-                        </a>
-                        <p class="font-weight-bold"><?php //the_sub_field('title'); ?></p>
-                    </div> -->
-                    <?php
-                //         endwhile;
-                // endif;
-                // 
+                
                 // Fetching image gallery 
                 
                     $query = new WP_Query(array(

@@ -2,7 +2,6 @@
     body {
         font-size: 18px;
     }
-
     .container {
         max-width: 1500px;
     }
@@ -52,11 +51,14 @@
     .slick-prev {
     left: 32%;
     background: #71cc98 url(../img/left-arrow.png) center no-repeat;
-}
-.slick-next {
-    right: 32%;
-    background: #71cc98 url(../img/right-arrow.png) center no-repeat;
-}
+    }
+    .slick-next {
+        right: 32%;
+        background: #71cc98 url(../img/right-arrow.png) center no-repeat;
+    }
+    div#qp-gal-img > div {
+        height: 390px;
+    }
 }
 
 @media screen and (max-width: 768px) {

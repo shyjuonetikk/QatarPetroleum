@@ -9,8 +9,8 @@ get_header();
 ?>
     <section id="upcoming-events" class="col-xl-12 float-left grey-bg">
         <div class="container">
-            <div id="upcoming-head" class="col-xl-12 float-left mb-4">
-                <div class="col-lg-5 float-left">
+            <div id="upcoming-head" class="col-xl-12 float-left mb-4 p-0">
+                <div class="col-lg-5 float-left pl-0">
                     <h1 class="up-head float-left font-weight-bold">Upcoming Events</h1>
                 </div>
                 <div class="col-lg-7 float-left">
@@ -30,8 +30,8 @@ get_header();
                     </div>
                 </div>
             </div>
-            <div id="upcoming-month" class="col-xl-12 float-left">
-                <div class="col-xl-12 float-left" id="event-list-inner">
+            <div id="upcoming-month" class="col-xl-12 float-left p-0">
+                <div class="col-xl-12 float-left p-0" id="event-list-inner">
                     <?php
                         $query = new WP_Query(array(
                             'post_type' => 'events',
@@ -57,7 +57,7 @@ get_header();
                     <div class="up-event-list col-xl-12 float-left pl-0 pr-0">
                         <div class="up-txt col-xl-9 pl-0">
                             <h5>
-                                <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fas fa-arrow-right d-none faa-horizontal animated" aria-hidden="true"></i></a>
                             </h5>
                         </div>
                         <div class="up-tail col-xl-3 pr-0">
@@ -109,7 +109,7 @@ get_header();
                     ?>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-flex px-2">
                         <div class="up-past-block">
-                            <div class="col-12 float-left px-0">
+                            <div class="col-12 float-left px-0 pb-3">
                                 <div class="up-past-date col-6 float-left px-0">
                                     <p class="mb-0"><?php echo date("M j, Y", strtotime($date)); ?></p>
                                 </div>

@@ -91,6 +91,51 @@ $container = get_theme_mod('understrap_container_type');
       ]
     });
 
+    //slick video
+    
+    $jq('.slider').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      customPaging : function(slider, i) {
+      var thumb = $jq(slider.$slides[i]).data();
+      return '<a>0'+(i+1)+'</a>';
+    },
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+
+    $jq('.slick-dots > li > a').click(function(){
+      $jq(this).addClass('active');
+      $jq(".slick-dots > li > a").not(this).removeClass('active');
+    });
+
+
     $jq("#btn-shw").click(function(){
 
       var post_type = $jq(this).data('post-type');
@@ -141,18 +186,6 @@ $container = get_theme_mod('understrap_container_type');
     });
 
     // FAQ page
-
-      // $(window).scroll(function(){
-      //     if ($(this).scrollTop() > 100) {
-      //         $('#scroll').fadeIn();
-      //     } else {
-      //         $('#scroll').fadeOut();
-      //     }
-      // });
-
-      // $('#scroll').click(function(){
-      //     $("html, body").animate({ scrollTop: 0 }, 600);
-      //     return false;
 
       $jq(window).scroll(function(){
           if ($jq(this).scrollTop() > 100) {

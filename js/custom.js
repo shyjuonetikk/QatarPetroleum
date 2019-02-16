@@ -73,4 +73,3 @@ $jq("section#qp-news-popup").click(function(e) {
         $jq("body").removeClass("modal-open");
     }
 });
-

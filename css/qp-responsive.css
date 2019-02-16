@@ -59,6 +59,16 @@
     div#qp-gal-img > div {
         height: 390px;
     }
+    .up-past-text h5,
+    .up-txt h5{
+        font-size: 24px;
+    }
+    .up-tail {
+    font-size: 16px;
+    }
+    .up-past-date, .up-past-loc p {
+    font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 768px) {

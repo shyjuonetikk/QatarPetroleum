@@ -1084,7 +1084,7 @@ body.upcoming-events {
 
 .up-event-list {
     position: relative;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #707070;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -1150,7 +1150,7 @@ body.upcoming-events {
 }
 
 .up-event-list a {
-    color: #212121;
+    color: #14171A;
 }
 
 .up-event-list:hover a {
@@ -1191,7 +1191,7 @@ body.upcoming-events {
 
 .past-head {
     color: #657786;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #707070;
 }
 
 .up-loc {
@@ -1212,8 +1212,37 @@ body.upcoming-events {
 .up-past-loc {
     margin-bottom: 10px;
 }
-
-
+#past-content .d-flex.px-2:nth-child(4n+1) {
+    padding-left: 0 !important;
+}
+.up-event-list:hover a i {
+    display: inline-block !important;
+}
+/* HORIZONTAL */
+@keyframes horizontal {
+    0%{transform:translate(0,0)}
+    6%{transform:translate(5px,0)}
+    12%{transform:translate(0,0)}
+    18%{transform:translate(5px,0)}
+    24%{transform:translate(0,0)}
+    30%{transform:translate(5px,0)}
+    36%,100%{transform:translate(0,0)}
+}
+.faa-horizontal.animated,
+.faa-horizontal.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal {
+    animation: horizontal 2s ease infinite;
+}
+.faa-horizontal.animated.faa-fast,
+.faa-horizontal.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-fast {
+    animation: horizontal 1s ease infinite;
+}
+.faa-horizontal.animated.faa-slow,
+.faa-horizontal.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-slow {
+    animation: horizontal 3s ease infinite;
+}
 /************Upcoming Event-pop-up*******************/
 
 .upop-nav a {

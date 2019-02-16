@@ -18,29 +18,45 @@ get_header();
 
                 <?php
 
-// check if the repeater field has rows of data
-if (have_rows('image_gallery')):
+// Fetching image gallery
 
-	// loop through the rows of data
-	while (have_rows('image_gallery')): the_row();?>
-
-				<div class="col-xl-4 col-md-6 float-left px-2 mb-2">
-				    <!-- <a href="<?php echo get_template_directory_uri(); ?>/img/img-gal-1.png"> -->
-				    <a class="pop-up-hover" href="<?php the_sub_field('gallery_image');?>">
-				        <img class="img-fluid qp-gal-img" src="<?php the_sub_field('gallery_image');?>" alt="<?php the_sub_field('title');?>" title="<?php the_sub_field('title');?>" />
-				    </a>
-				    <div class="img-hover-icon container d-flex w-100 p-0">
-				        <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
-				            <i class="fa fa-search" aria-hidden="true"></i>
-				        </div>
-				    </div>
-				    <p class="font-weight-bold"><?php the_sub_field('title');?></p>
-				</div>
-		        <?php endwhile;endif;?>
-        </div>
-            <!-- <div class="col-12 text-center float-left my-4">
-                <button id="qp-img-more" class="btn btn-success prm-clr sec-bg px-3 py-1 border-0" data-id="<?php echo get_the_id(); ?>">Show More</button>
-            </div> -->
+$query = new WP_Query(array(
+	'post_type' => 'gallery',
+	'post_status' => 'publish',
+	'posts_per_page' => 3,
+	'category_name' => 'image-gallery',
+	'orderby' => 'date',
+	'order' => 'ASC',
+));
+$maxpages = $query->max_num_pages;
+if ($query->have_posts()) {
+	while ($query->have_posts()) {
+		$query->the_post();
+		$post_id = get_the_ID();
+		$post_title = get_the_title();
+		if (false) {
+			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		?>
+                    <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+                        <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
+                            <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
+                            <div class="img-hover-icon container d-flex w-100 p-0 d-none">
+                                <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <p class="font-weight-bold"><?php echo $post_title; ?></p>
+                    </div>
+                <?php }
+	wp_reset_query();?>
+            </div>
+            <?php if ($maxpages > 1) {?>
+            <div class="col-12 text-center float-left my-4">
+                <button id="qp-img-more" class="btn btn-success prm-clr sec-bg px-3 py-1 border-0" data-id="<?php echo $post_id; ?>" data-max-pages="<?php echo $maxpages; ?>" data-posts-per-page="1">Show More</button>
+            </div>
+        <?php }} else {echo "<div class='row w-100 pt-4'><h4 class='purple-color m-auto'> No medias found.. </h4></div>";}?>
         </div>
     </section>
     <section id="qp-vid-gallery" class="float-left w-100 grey-bg">

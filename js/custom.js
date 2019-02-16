@@ -41,7 +41,6 @@ $jq(document).ready(function() {
 // Image Gallery Plugin
 $jq(function(){
     var $gallery = $jq('.gallery > div > a').simpleLightbox();
-    //var $gallery = $('.gallery > div > a').simpleLightbox();
 });
 
 // Upcoming events Page JS
@@ -49,3 +48,29 @@ $jq(".event-filterlist > li").click(function(){
    $jq(this).addClass('active');
     $jq(".event-filterlist > li").not(this).removeClass('active');
 });
+
+// Multimedia page - image hover js
+// $jq(".pop-up-hover").mouseenter(function(){
+//     $jq(".img-hover-icon > div").removeClass("d-none");
+//     $jq(".img-hover-icon").css({"height" : "100%"});
+// });
+// $jq(".pop-up-hover").mouseleave(function(){
+//     $jq(".img-hover-icon > div").removeClass("d-none");
+//     $jq(".img-hover-icon").css({"height" : "100%"});
+// });
+
+// News Page popup
+$jq(".qp-h-latestnews-content").click(function() {
+    // $jq(this).css({"overflow":"scroll"});
+    $jq("#qp-news-popup").fadeIn();
+    $jq("body").addClass("modal-open");
+});
+// To Close new page popup
+$jq("section#qp-news-popup").click(function(e) {
+    var container = $jq("section#qp-news-popup > .container");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $jq("#qp-news-popup").fadeOut();
+        $jq("body").removeClass("modal-open");
+    }
+});
+

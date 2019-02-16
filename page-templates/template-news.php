@@ -65,16 +65,16 @@ if ($query->have_posts()) {
             <div class="clearfix"></div>
         <div id="news-main">
         	<?php
-$query = new WP_Query(array(
-	'post_type' => array('qp_news'),
-	'post_status' => 'publish',
-	'posts_per_page' => 4,
-	'tag' => 'latest-news',
-	'orderby' => 'date',
-	'order' => 'DESC',
-));
-$maxpages = $query->max_num_pages;
-?>
+				$query = new WP_Query(array(
+					'post_type' => array('qp_news'),
+					'post_status' => 'publish',
+					'posts_per_page' => 4,
+					'tag' => 'latest-news',
+					'orderby' => 'date',
+					'order' => 'DESC',
+				));
+				$maxpages = $query->max_num_pages;
+			?>
 			<div class="news-container">
             <?php
 if ($query->have_posts()) {

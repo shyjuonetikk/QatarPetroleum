@@ -41,7 +41,6 @@ $jq(document).ready(function() {
 // Image Gallery Plugin
 $jq(function(){
     var $gallery = $jq('.gallery > div > a').simpleLightbox();
-    //var $gallery = $('.gallery > div > a').simpleLightbox();
 
 });
 

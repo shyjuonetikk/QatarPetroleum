@@ -500,6 +500,10 @@ section#qp-news-popup {
   background-color: #003c71 !important;
   transition:all 0.3s ease;
 }
+.wpcf7 {
+    max-width: 100%;
+    margin: 0 auto!important;
+}
 /************Contact us*******************/
 /************FAQ************************/
 .faq-hd{

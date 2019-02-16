@@ -48,3 +48,4 @@ $jq(".event-filterlist > li").click(function(){
    $jq(this).addClass('active');
     $jq(".event-filterlist > li").not(this).removeClass('active');
 });
+

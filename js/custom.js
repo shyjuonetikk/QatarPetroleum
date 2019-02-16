@@ -42,7 +42,6 @@ $jq(document).ready(function() {
 $jq(function(){
     var $gallery = $jq('.gallery > div > a').simpleLightbox();
     //var $gallery = $('.gallery > div > a').simpleLightbox();
-
 });
 
 // Upcoming events Page JS

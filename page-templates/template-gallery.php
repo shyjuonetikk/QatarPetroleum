@@ -34,7 +34,7 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
-		if (false) {
+		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
 		?>
@@ -65,11 +65,17 @@ if ($query->have_posts()) {
                 <div class="col-md-10 float-left">
                     <h2 class="head-clr">Video gallery</h2>
                 </div>
-                
+                <div class="col-md-2 float-left">
+                    <ul id="qp-vid-list" class="list-inline">
+                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">01</li>
+                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">02</li>
+                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">03</li>
+                    </ul>
+                </div>
             </div>
             <div id="" class="col-xl-12 float-left mt-3">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="slider w-100">
+                    <div class="center w-100">
                     <?php
 $query = new WP_Query(array(
 	'post_type' => array('qp_news'),

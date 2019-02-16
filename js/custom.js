@@ -1,5 +1,5 @@
 //  About Page JS
- var $jq = jQuery.noConflict();
+var $jq = jQuery.noConflict();
 $jq(document).ready(function() {
 	// Home page tag active on click
     $jq("section").mouseenter(function() {

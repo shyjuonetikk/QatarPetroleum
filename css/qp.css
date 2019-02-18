@@ -301,7 +301,11 @@ footer .list-inline-item a:hover {
 }
 
 .bg-news-popup {
+    display: none;
     background: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    top: 0;
+    z-index: 1040;
 }
 
 .arrow-nav {
@@ -557,8 +561,12 @@ section#qp-news-popup {
     top: 0;
     z-index: 9999 !important;
     display: none;
+    overflow-y: scroll;
+    height: 100%;
 }
-
+body.modal-open {
+    overflow: hidden;
+}
 /********* Home Page Popup ends *********/
 
 /********* Home Page ends here **********/
@@ -1050,10 +1058,11 @@ a.pop-up-hover {
 }
 
 .img-hover-icon {
+    display: none;
     position: absolute;
     color: #fff;
     font-size: 6rem;
-    height: 0%;
+    height: 100%;
     top: 0;
     background: #003c71;
     background: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101833, #00000000);

@@ -290,7 +290,11 @@ footer .list-inline-item a:hover {
 }
 
 .bg-news-popup {
+    display: none;
     background: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    top: 0;
+    z-index: 999;
 }
 
 .arrow-nav {

@@ -99,16 +99,16 @@ if ($query->have_posts()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
 		?>
-                                              <div>
-                                                <div class="news-slider-image w-100">
-                                                    <img class="w-100" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>">
-                                                     <div class="news-slider-image-content">
-                                                        <div class="post-date text-left pb-2 font-weight-light"> <span><?php echo get_the_date('M j, Y'); ?></span></div>
-                                                        <h1 class="text-left"><?php echo $post_title; ?></h1>
-                                                     </div>
-                                                </div>
-                                              </div>
-                                            <?php }
+      <div>
+        <div class="news-slider-image w-100">
+            <img class="w-100" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>">
+             <div class="news-slider-image-content">
+                <div class="post-date text-left pb-2 font-weight-light"> <span><?php echo get_the_date('M j, Y'); ?></span></div>
+                <h1 class="text-left"><?php echo $post_title; ?></h1>
+             </div>
+        </div>
+      </div>
+    <?php }
 	wp_reset_query();}?>
                                             </div>
                                         </div>

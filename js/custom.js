@@ -50,14 +50,14 @@ $jq(".event-filterlist > li").click(function(){
 });
 
 // Multimedia page - image hover js
-// $jq(".pop-up-hover").mouseenter(function(){
-//     $jq(".img-hover-icon > div").removeClass("d-none");
-//     $jq(".img-hover-icon").css({"height" : "100%"});
-// });
-// $jq(".pop-up-hover").mouseleave(function(){
-//     $jq(".img-hover-icon > div").removeClass("d-none");
-//     $jq(".img-hover-icon").css({"height" : "100%"});
-// });
+$jq(".pop-up-hover").mouseenter(function(){
+    $jq(".img-hover-icon > div, .img-hover-icon", this).removeClass("d-none");
+    $jq(".img-hover-icon", this).css({"height" : "100%"});
+});
+$jq(".pop-up-hover").mouseleave(function(){
+    $jq(".img-hover-icon > div, .img-hover-icon", this).addClass("d-none");
+    $jq(".img-hover-icon").css({"height" : "0"});
+});
 
 // News Page popup
 $jq(".qp-h-latestnews-content").click(function() {

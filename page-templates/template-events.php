@@ -121,7 +121,7 @@ if ($query->have_posts()) {
                             <div class="up-past-text col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 px-0">
                                 <h5 class="font-weight-bold"><a><?php echo $post_title; ?></a></h5>
                             </div>
-                            <a class="readmore-arrow"><i class="fas fa-arrow-right"></i></a>
+                            <a id="past-event-pop" class="readmore-arrow"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <?php }

@@ -294,7 +294,7 @@ footer .list-inline-item a:hover {
     background: rgba(0, 0, 0, 0.65);
     position: absolute;
     top: 0;
-    z-index: 999;
+    z-index: 1040;
 }
 
 .arrow-nav {

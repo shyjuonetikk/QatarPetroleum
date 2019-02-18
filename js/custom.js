@@ -62,13 +62,15 @@ $jq(".pop-up-hover").mouseleave(function(){
 
 // News Page popup
 $jq(".qp-h-latestnews-content").click(function() {
-    $jq(".qp-h-latestnews-content").css({"overflow":"scroll"});
+    $jq("html, body").animate({ scrollTop: "0" },500);
+    $jq(".qp-h-latestnews-content").css({"overflow-y":"scroll"});
     $jq("#qp-news-popup").fadeIn();
     $jq("body").addClass("modal-open");
 });
 // To Close new page popup
 $jq("section#qp-news-popup").click(function(e) {
     var container = $jq("section#qp-news-popup > .container");
+    $jq(".qp-h-latestnews-content").css({"overflow-y":"visible"});
     if (!container.is(e.target) && container.has(e.target).length === 0) {
         $jq("#qp-news-popup").fadeOut();
         $jq("body").removeClass("modal-open");
@@ -77,7 +79,8 @@ $jq("section#qp-news-popup").click(function(e) {
 
 
 // Events Page popup
-$jq(".up-event-list, .up-past-block").click(function() {
+$jq(".up-event-list, #past-event-pop").click(function() {
+    $jq("html, body").animate({ scrollTop: "0" },500);
     $jq("#event-news-popup").css({"overflow-y":"scroll"});
     $jq("#event-news-popup").fadeIn();
     $jq("body").addClass("modal-open");
@@ -85,6 +88,7 @@ $jq(".up-event-list, .up-past-block").click(function() {
 // To Close Events page popup
 $jq("#event-news-popup").click(function(e) {
     var container = $jq("#event-news-popup > .container");
+    $jq("#event-news-popup").css({"overflow-y":"visible"});
     if (!container.is(e.target) && container.has(e.target).length === 0) {
         $jq("#event-news-popup").fadeOut();
         $jq("body").removeClass("modal-open");

@@ -99,7 +99,7 @@ if ($query->have_posts()) {
                   <div class="post-date text-left"> <span><?php echo get_the_date('M j, Y'); ?></span>
                   </div>
                   <h5 class="text-left"><a href="#"><?php echo $post_title; ?></a></h5>
-                  <a class="readmore-arrow" href=""><i class="fas fa-arrow-right"></i></a>
+                  <a class="readmore-arrow"><i class="fas fa-arrow-right"></i></a>
                 </div>
               </div>
             </div>

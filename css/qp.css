@@ -179,7 +179,18 @@ footer .list-inline-item a:hover {
     font-weight: bold;
     color: #003C71 !important;
 }
-
+#main-menu .active a,
+#main-menu li:hover a{
+    border-bottom: 5px solid #71CC98;
+}
+#main-menu li a{
+      padding-right: 0rem;
+    padding-left: 0rem;
+}
+#main-menu li {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
 .qp-h-latestnews-content {
     -webkit-animation: fadein 1s;
     /* Safari, Chrome and Opera > 12.1 */
@@ -1205,6 +1216,9 @@ body.upcoming-events {
 
 .up-loc {
     margin-right: 10px;
+}
+.up-txt i {
+    display: none;
 }
 
 /*.upcoming-nav.qp-h-latestnews-top {

@@ -56,9 +56,6 @@
         right: 32%;
         background: #71cc98 url(../img/right-arrow.png) center no-repeat;
     }
-    div#qp-gal-img > div {
-        height: 390px;
-    }
     .up-past-text h5,
     .up-txt h5{
         font-size: 24px;
@@ -74,6 +71,9 @@
 @media screen and (max-width: 768px) {
     .news-popup-image-content h1 {
         font-size: 1rem;
+    }
+    .Copyright {
+    text-align: center;
     }
 }
 

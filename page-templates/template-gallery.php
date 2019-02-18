@@ -34,10 +34,10 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
-		if (false) {
+		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-			// } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
-		} else { $featured_img_url = "http://dev.onetikk.info/qatarpetroleum/wp-content/uploads/2019/02/img-gal-1.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+
 		?>
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                         <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">

@@ -684,7 +684,7 @@ body.modal-open {
     -ms-filter: "alpha(opacity=100)";
 }
 
-#MyNavPills ul li:hover {
+#MyNavPills ul li:hover, .readmore-arrow:hover {
     cursor: pointer;
 }
 

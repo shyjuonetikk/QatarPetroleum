@@ -42,9 +42,11 @@ if ($query->have_posts()) {
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                         <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                             <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
-                            <div class="img-hover-icon container d-flex w-100 p-0 d-none">
-                                <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
-                                    <i class="fa fa-search d-none" aria-hidden="true"></i>
+                            <div class="img-hover-icon w-100 p-0">
+                                <div class="d-flex container h-100 w-100 p-0">
+                                    <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </a>

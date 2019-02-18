@@ -51,12 +51,12 @@ $jq(".event-filterlist > li").click(function(){
 
 // Multimedia page - image hover js
 $jq(".pop-up-hover").mouseenter(function(){
-    $jq(".img-hover-icon > div, .img-hover-icon, .img-hover-icon > div > i", this).removeClass("d-none");
-    $jq(".img-hover-icon", this).animate({"height" : "100%"}, 300);
+    $jq(".img-hover-icon > div, .img-hover-icon, .img-hover-icon > div > i", this).fadeIn();
+    // $jq(".img-hover-icon", this).css({"height" : "100%"});
 });
 $jq(".pop-up-hover").mouseleave(function(){
-    $jq(".img-hover-icon", this).animate({"height" : "0"},300);
-    $jq(".img-hover-icon > div, .img-hover-icon, .img-hover-icon > div > i", this).addClass("d-none");
+    // $jq(".img-hover-icon", this).css({"height" : "0"});
+    $jq(".img-hover-icon > div, .img-hover-icon, .img-hover-icon > div > i", this).fadeOut();
 });
 
 // News Page popup

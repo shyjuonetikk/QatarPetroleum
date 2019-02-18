@@ -1043,10 +1043,11 @@ a.pop-up-hover {
 }
 
 .img-hover-icon {
+    display: none;
     position: absolute;
     color: #fff;
     font-size: 6rem;
-    height: 0;
+    height: 100%;
     top: 0;
     background: #003c71;
     background: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101833, #00000000);

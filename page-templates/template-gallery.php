@@ -34,16 +34,17 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
-		if (has_post_thumbnail()) {
+		if (false) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+			// } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = "http://dev.onetikk.info/qatarpetroleum/wp-content/uploads/2019/02/img-gal-1.png";}
 		?>
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                         <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                             <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
                             <div class="img-hover-icon container d-flex w-100 p-0 d-none">
                                 <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <i class="fa fa-search d-none" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </a>
@@ -64,18 +65,18 @@ if ($query->have_posts()) {
             <div id="qp-vid-head" class="col-xl-12 float-left">
                 <div class="col-md-10 float-left">
                     <h2 class="head-clr">Video gallery</h2>
-                </div><!-- 
+                </div>
                 <div class="col-md-2 float-left">
                     <ul id="qp-vid-list" class="list-inline">
                         <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">01</li>
                         <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">02</li>
                         <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">03</li>
                     </ul>
-                </div> -->
+                </div>
             </div>
             <div id="" class="col-xl-12 float-left mt-3">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="slider w-100">
+                    <div class="center w-100">
                     <?php
 $query = new WP_Query(array(
 	'post_type' => array('qp_news'),

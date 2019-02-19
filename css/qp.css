@@ -736,7 +736,7 @@ body.modal-open {
 }
 
 .hr-border {
-    border-top: 1px solid #657786;
+    border-top: 1px solid #707070;
     margin: 7% 0 8%;
 }
 
@@ -956,7 +956,7 @@ ul.about-sect-links>li>a.abt-nav-link.active {
 
 div#ceo-border {
     padding-bottom: 40px;
-    border-bottom: 1px solid #6d6d6d;
+    border-bottom: 1px solid #707070;
 }
 
 div#strategy-desc>p {
@@ -1098,7 +1098,7 @@ a.pop-up-hover {
     background: #003c71;
     background: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101833, #00000000);
 }
-.slick-initialized .slick-slide {
+#qp-vid-gallery .slick-initialized .slick-slide {
     display: block;
     margin: 10px;
 }

@@ -66,6 +66,10 @@
     .up-past-date, .up-past-loc p {
     font-size: 16px;
     }
+    #main-menu li a {
+    font-size: 1rem !important;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -74,6 +78,27 @@
     }
     .Copyright {
     text-align: center;
+    }
+    .slick-slide {
+    width: 335px;
+    margin: 0 !important;
+    }
+    .news-slider-image:after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 94%;
+    height: 100%;
+    }
+    .qp-h-recentnews-top {
+    margin-top: 50px;
+    }
+    .qp-h-recentnews-top h3 {
+    margin-bottom: 1.2rem;
+    }
+    .lds-ripple {
+    left: 23%;
     }
 }
 
@@ -172,11 +197,5 @@
 }
 
 /********** Faq page ***********/
-/* XS */
-@media screen and (max-width: 575px) {
-    div#qp-gal-img>div {
-        height: 365px;
-    }
-}
 
 

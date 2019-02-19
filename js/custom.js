@@ -95,3 +95,4 @@ $jq("#event-news-popup").click(function(e) {
         $jq("body").removeClass("modal-open");
     }
 });
+

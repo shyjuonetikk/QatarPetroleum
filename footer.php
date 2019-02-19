@@ -76,7 +76,7 @@ wp_nav_menu(
             arrows: false,
             centerMode: true,
             centerPadding: '40px',
-            slidesToShow: 3
+            slidesToShow: 2
           }
         },
         {

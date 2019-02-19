@@ -567,6 +567,9 @@ section#qp-news-popup {
 body.modal-open {
     overflow: hidden;
 }
+.sl-prev, .sl-next, .sl-close{
+    color: #ffffff;
+}
 /********* Home Page Popup ends *********/
 
 /********* Home Page ends here **********/

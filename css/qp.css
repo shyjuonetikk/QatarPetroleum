@@ -1172,6 +1172,7 @@ body.upcoming-events {
     padding: 25px 25px 15px 25px;
     display: inline-block;
     width: 100%;
+    cursor: pointer;
 }
 
 .up-past-date,
@@ -1372,5 +1373,9 @@ body.upcoming-events {
 
 ul.event-filterlist, ul#filter {
     margin-bottom: -1px;
+}
+a.pop-up-hover > img {
+    width: 354px;
+    height: 242px;
 }
 /************Upcoming Event-pop-up ends *******************/

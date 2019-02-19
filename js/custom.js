@@ -4,12 +4,13 @@ $jq(document).ready(function() {
     // Home page tag active on click
     $jq("section").mouseenter(function() {
         var id = $jq(this).attr('id');
-        if( id != "about-cover"){
-            $jq('.abt-nav-item > a').removeClass('active');
-        }
-        else {
-            $jq('#msg-ceo-sel').addClass('active'); 
-        }
+        // if( id != "about-cover"){
+        //     $jq('.abt-nav-item > a').removeClass('active');
+        // }
+        // else {
+        //     $jq('#msg-ceo-sel').addClass('active'); 
+        // }
+        $jq('.abt-nav-item > a').removeClass('active');
         $jq("#" + id + "-sel").addClass('active');
     });
     // add border on hover for cover section links

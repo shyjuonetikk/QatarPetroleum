@@ -129,6 +129,11 @@ function more_news_ajax() {
 			$query->the_post();
 			$post_id = get_the_ID();
 			$post_title = get_the_title();
+			$post_title_len = strlen($post_title);
+			$title_length = strlen($post_title);
+			if ($title_length > "98") {
+				$post_title = substr($post_title, 0, 98) . "...";
+			}
 			$post_content = get_the_excerpt();
 			$post_url = get_the_permalink();
 			$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
@@ -225,8 +230,8 @@ function news_filter() {
 			$post_title = get_the_title();
 			$post_title_len = strlen($post_title);
 			$title_length = strlen($post_title);
-			if ($title_length > "80") {
-				$post_title = substr($post_title, 0, 80) . "...";
+			if ($title_length > "98") {
+				$post_title = substr($post_title, 0, 98) . "...";
 			}
 			$post_content = get_the_excerpt();
 			$post_url = get_the_permalink();

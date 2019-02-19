@@ -367,6 +367,15 @@ footer .list-inline-item a:hover {
     padding: 3% 6%;
 }
 
+.news-video-image-content {
+    bottom: 0;
+    right: 16px;
+}
+
+.news-video-image-content span, #totalTime{
+    font-size: 13px;
+}
+
 .news-popup-image-content {
     position: absolute;
     bottom: 8px;

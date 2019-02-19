@@ -130,6 +130,12 @@ $container = get_theme_mod('understrap_container_type');
       ]
     });
 
+    //  Video Duration
+      
+
+
+
+
     $jq('.slick-dots > li > a').click(function(){
       $jq(this).addClass('active');
       $jq(".slick-dots > li > a").not(this).removeClass('active');

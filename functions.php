@@ -34,14 +34,14 @@ foreach ($understrap_includes as $file) {
 	require_once $filepath;
 }
 
-// Hide admin bar for non admins
+// Hide admin bar for non admin 
 
 add_action('after_setup_theme', 'remove_admin_bar');
  
 function remove_admin_bar() {
-if (!current_user_can('administrator') && !is_admin()) {
-  show_admin_bar(false);
-}
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
 }
 
 // redirect url

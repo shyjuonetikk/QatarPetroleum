@@ -69,7 +69,7 @@ function qpid_gettext($translation, $original) {
 
 add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
 function add_loginout_link( $items, $args ) {
-	$redirect = get_site_url() . "/login-page";
+	$redirect = get_site_url() . "/login";
     if (is_user_logged_in() && $args->theme_location == 'primary') {
         $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
         				

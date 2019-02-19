@@ -15,7 +15,7 @@ get_header();
                 <hr>
             </div>
             <div class="gallery col-xl-12 float-left">
-              <div class="row" id="qp-gal-img">  
+              <div class="row" id="qp-gal-img">
                 <?php
 
 // Fetching image gallery
@@ -36,7 +36,7 @@ if ($query->have_posts()) {
 		$post_title = get_the_title();
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}
 		?>
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                         <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
@@ -78,22 +78,23 @@ if ($query->have_posts()) {
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="slider w-100">
                     <?php
-                        $query = new WP_Query(array(
-                        	'post_type' => 'gallery',
-                        	'post_status' => 'publish',
-                        	'posts_per_page' => 6,
-                        	'category_name' => 'video-gallery',
-                        	'orderby' => 'date',
-                        	'order' => 'DESC',
-                        ));
-                        if ($query->have_posts()) {
-                        	while ($query->have_posts()) {
-                        		$query->the_post();
-                        		$post_id = get_the_ID();
-                        		$post_title = get_the_title();
-                        		$post_url = get_the_permalink();
-                                $video = get_field('video_file');
-                    ?>
+
+$query = new WP_Query(array(
+	'post_type' => 'gallery',
+	'post_status' => 'publish',
+	'posts_per_page' => 6,
+	'category_name' => 'video-gallery',
+	'orderby' => 'date',
+	'order' => 'DESC',
+));
+if ($query->have_posts()) {
+	while ($query->have_posts()) {
+		$query->the_post();
+		$post_id = get_the_ID();
+		$post_title = get_the_title();
+		$post_url = get_the_permalink();
+		$video = get_field('video_file');
+		?>
                       <div>
                         <div class="w-100">
                             <video id="video-active-<?php echo $post_id; ?>" class="w-100" controls autoplay>
@@ -101,7 +102,7 @@ if ($query->have_posts()) {
                             </video>
                              <div class="news-video-image-content">
                                 <h6 class="text-left mt-3 pb-0 mb-0"><?php echo $post_title; ?></h6>
-                                <div class="post-date text-left pb-2 font-weight-light head-clr"> 
+                                <div class="post-date text-left pb-2 font-weight-light head-clr">
                                     <span> Published On: <?php echo get_the_date('M j, Y'); ?></span>
                                     <div><span id="totalTime-<?php echo $post_id; ?>"></span></div>
                                 </div>

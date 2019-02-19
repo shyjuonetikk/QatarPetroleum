@@ -15,7 +15,15 @@ get_header();
                 <p></p>
             </div>
             <div class="col-lg-6" style="border-bottom:3px solid">
-                <h1 class="head-search">Search <i class="fa fa-search float-right" aria-hidden="true"></i></h1>
+                <!-- <h1 class="head-search">Search <i class="fa fa-search float-right" aria-hidden="true"></i></h1> -->
+                <h1 class="head-search">
+                    <form class="col-12 float-left">
+                        <input id="faq-search" class="col-10 float-left" type="text" placeholder="Search" name="faq-search" />
+                        <button id="faq-submit" type="submit" class="col-2 float-left">
+                            <i class="fa fa-search float-right" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </h1>
             </div>
         </div>
     </div>
@@ -38,25 +46,25 @@ get_header();
                         	</div>
                     </nav>
                     </div>
-                    <img style="width: 30%;" class="pt-4" src="<?php echo get_template_directory_uri();?>/img/setting.png">
+                    <img style="width: 30%;" class="pt-4" src="<?php echo get_template_directory_uri(); ?>/img/setting.png">
 
                 </div>
                 <div class="col-lg-8">
                     <div class="nav-panes" id="nav-job">
                         <h2>Job Offer Process Review</h2>
-                        <?php 
-                        	the_field('job_offer_process_overview_intro');
-                        	if( have_rows('job_offer_stages') ):
-							    while ( have_rows('job_offer_stages') ) : the_row();
-							        echo '<p class="faq-textp">'.get_sub_field('stage_head').'</p>';
-							        the_sub_field('stage_description');
-							    endwhile;
-							else :
-							endif; 
-                        ?>
+                        <?php
+the_field('job_offer_process_overview_intro');
+if (have_rows('job_offer_stages')):
+	while (have_rows('job_offer_stages')): the_row();
+		echo '<p class="faq-textp">' . get_sub_field('stage_head') . '</p>';
+		the_sub_field('stage_description');
+	endwhile;
+else:
+endif;
+?>
 
                         <h4>Related Questions</h4>
-                        
+
                         <!-- Accordion -->
                         <div id="accordion" class="faq-acc">
                           <div class="card my-3">
@@ -92,7 +100,7 @@ get_header();
                     </div>
                     <div class="nav-panes" id="nav-theory">
                         <h2>Theory of constraints</h2>
-                        <?php the_field('theory_of_constraints'); ?>
+                        <?php the_field('theory_of_constraints');?>
                          <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion2" class="faq-acc">
@@ -129,14 +137,14 @@ get_header();
                     </div>
                     <div class="nav-panes" id="nav-learn">
                         <h2>Learning development</h2>
-                       <?php the_field('leading_development_intro'); ?>
+                       <?php the_field('leading_development_intro');?>
                         <div class="w-100">
-                            <a href="<?php the_field('learning_pdf'); ?>" target="_blank">
+                            <a href="<?php the_field('learning_pdf');?>" target="_blank">
                                 <div class="border-a">
                                     LEARNING PDF (20MB)
                                 </div>
                             </a><br>
-                            <a href="<?php the_field('study_development_pdf'); ?>" target="_blank">
+                            <a href="<?php the_field('study_development_pdf');?>" target="_blank">
                                 <div class="border-a mb-5">
                                     STUDY DEVELOPMENT PDF (12MB)
                                 </div>
@@ -179,18 +187,18 @@ get_header();
                     </div>
                     <div class="nav-panes" id="nav-onboard">
                         <h2>Onboarding</h2>
-                        <?php 
-                        	the_field('onboarding_description_first');  
-                        	echo '<ol class="faq-textp pb-3 pl-3">';
-                        	if( have_rows('onboarding_lists') ):
-							    while ( have_rows('onboarding_lists') ) : the_row();
-							        echo '<li>'.get_sub_field('onboarding_list_name').'</li>';
-							        the_sub_field('stage_description');
-							    endwhile;
-							endif;
-							echo '</ol>';
-							the_field('onboarding_description_second');
-                        ?>
+                        <?php
+the_field('onboarding_description_first');
+echo '<ol class="faq-textp pb-3 pl-3">';
+if (have_rows('onboarding_lists')):
+	while (have_rows('onboarding_lists')): the_row();
+		echo '<li>' . get_sub_field('onboarding_list_name') . '</li>';
+		the_sub_field('stage_description');
+	endwhile;
+endif;
+echo '</ol>';
+the_field('onboarding_description_second');
+?>
                         <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion4" class="faq-acc">
@@ -227,7 +235,7 @@ get_header();
                     </div>
                     <div class="nav-panes" id="nav-isdn">
                         <h2>ISND & QP Future</h2>
-                        <?php the_field('isnd_and_qp_future_description'); ?>
+                        <?php the_field('isnd_and_qp_future_description');?>
                          <h4>Related Questions</h4>
 
                         <!-- Accordion -->
@@ -268,4 +276,4 @@ get_header();
         </div>
     </section>
 
-<?php get_footer(); ?>
+<?php get_footer();?>

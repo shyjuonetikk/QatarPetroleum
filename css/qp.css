@@ -172,6 +172,9 @@ footer .list-inline-item a:hover {
     transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
 
+#main-menu li.active > a {
+    color: #71CC98 !important;
+}
 /************Home Page*******************/
 #mainNav {
     background: #fff;
@@ -867,7 +870,8 @@ button#faq-submit {
     border: none;
 }
 input#faq-search::placeholder {
-    color: #fff;
+    color: #CCD6DD;
+    font-weight: 300;
     
 }
 /*-----FAQ Accordion--------*/
@@ -949,7 +953,7 @@ ul.about-sect-links>li>a.abt-nav-link.active {
 }
 
 #border-line {
-    height: 10px;
+    height: 7px;
     width: 30% !important;
     margin: 25px 0;
 }
@@ -1177,6 +1181,7 @@ body.upcoming-events {
     padding: 25px 25px 15px 25px;
     display: inline-block;
     width: 100%;
+    cursor: pointer;
 }
 
 .up-past-date,
@@ -1429,5 +1434,14 @@ body.upcoming-events {
 
 ul.event-filterlist, ul#filter {
     margin-bottom: -1px;
+}
+a.pop-up-hover > img {
+    width: 354px;
+    height: 242px;
+}
+.qp-sticky {
+    position: fixed;
+    width: 100%;
+    background: #ffffff !important;
 }
 /************Upcoming Event-pop-up ends *******************/

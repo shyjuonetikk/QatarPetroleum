@@ -113,7 +113,8 @@ if ($query->have_posts()) {
                              </div>
                         </div>
                       </div>
-                    <?php } wp_reset_query(); } ?>
+                    <?php }
+	wp_reset_query();}?>
                     </div>
                 </div>
             </div>

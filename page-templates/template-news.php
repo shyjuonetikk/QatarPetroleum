@@ -25,6 +25,11 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
+		$post_title_len = strlen($post_title);
+		$title_length = strlen($post_title);
+		if ($title_length > "98") {
+			$post_title = substr($post_title, 0, 98) . "...";
+		}
 		$post_content = get_the_excerpt();
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
@@ -65,16 +70,16 @@ if ($query->have_posts()) {
             <div class="clearfix"></div>
         <div id="news-main">
         	<?php
-				$query = new WP_Query(array(
-					'post_type' => array('qp_news'),
-					'post_status' => 'publish',
-					'posts_per_page' => 4,
-					'tag' => 'latest-news',
-					'orderby' => 'date',
-					'order' => 'DESC',
-				));
-				$maxpages = $query->max_num_pages;
-			?>
+$query = new WP_Query(array(
+	'post_type' => array('qp_news'),
+	'post_status' => 'publish',
+	'posts_per_page' => 4,
+	'tag' => 'latest-news',
+	'orderby' => 'date',
+	'order' => 'DESC',
+));
+$maxpages = $query->max_num_pages;
+?>
 			<div class="news-container">
             <?php
 if ($query->have_posts()) {
@@ -82,6 +87,11 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
+		$post_title_len = strlen($post_title);
+		$title_length = strlen($post_title);
+		if ($title_length > "98") {
+			$post_title = substr($post_title, 0, 98) . "...";
+		}
 		$post_content = get_the_excerpt();
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
@@ -99,7 +109,7 @@ if ($query->have_posts()) {
                   <div class="post-date text-left"> <span><?php echo get_the_date('M j, Y'); ?></span>
                   </div>
                   <h5 class="text-left"><a href="#"><?php echo $post_title; ?></a></h5>
-                  <a class="readmore-arrow" href=""><i class="fas fa-arrow-right"></i></a>
+                  <a class="readmore-arrow"><i class="fas fa-arrow-right"></i></a>
                 </div>
               </div>
             </div>
@@ -140,6 +150,11 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
+		$post_title_len = strlen($post_title);
+		$title_length = strlen($post_title);
+		if ($title_length > "80") {
+			$post_title = substr($post_title, 0, 80) . "...";
+		}
 		$post_content = get_the_excerpt();
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {

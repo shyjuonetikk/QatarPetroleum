@@ -35,7 +35,10 @@ get_header();
     <section id="abt-sec">
         <div class="container">
             <div class="col-md-9 mx-auto">
-                <h1 id="abt-desc-title" class="prm-clr"><span class="font-weight-light"><?php the_field('content_heading');?></span></h1>
+                <h1 id="abt-desc-title" class="prm-clr">
+                    <span class="font-weight-light"><?php the_field('content_heading');?></span>
+                    <span class="font-weight-bold"><?php the_field('content_heading_bold');?></span>
+                </h1>
                 <p id="border-line" class="w-25 sec-bg"></p>
                 <?php the_field('content');?>
             </div>

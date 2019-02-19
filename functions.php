@@ -237,7 +237,9 @@ function news_filter() {
 			$post_url = get_the_permalink();
 			if (has_post_thumbnail()) {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-			} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+			} else {
+				$featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";
+			}
 			?>
 			<div class="qp-h-latestnews-content">
               <div class="row">
@@ -398,7 +400,7 @@ function events_filter() {
 			$date = get_post_meta($post_id, 'event_date', true);
 			if (has_post_thumbnail()) {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-			} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+			} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 			?>
                     <div class="up-event-list col-xl-12 float-left">
                         <div class="up-txt col-xl-9">
@@ -445,7 +447,7 @@ function more_gallery() {
 			}
 			if (has_post_thumbnail()) {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-			} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}?>
+			} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}?>
     	  	<div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                 <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                     <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />

@@ -42,7 +42,6 @@ $container = get_theme_mod('understrap_container_type');
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-
 <script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -51,10 +50,11 @@ $container = get_theme_mod('understrap_container_type');
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 
 <script type="text/javascript">
+  var $jq = jQuery.noConflict();
   $jq(window).load(function(){
   $jq('#overlay').fadeOut();
 });
-  var $jq = jQuery.noConflict();
+  
    $jq(document).ready(function(){
 
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
@@ -129,6 +129,12 @@ $container = get_theme_mod('understrap_container_type');
         }
       ]
     });
+
+    //  Video Duration
+      
+
+
+
 
     $jq('.slick-dots > li > a').click(function(){
       $jq(this).addClass('active');

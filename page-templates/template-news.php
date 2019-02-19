@@ -34,7 +34,7 @@ if ($query->have_posts()) {
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 		?>
 	  <div>
 	  	<div class="news-slider-image w-100">
@@ -96,7 +96,7 @@ if ($query->have_posts()) {
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 		?>
 			<div class="qp-h-latestnews-content">
               <div class="row">
@@ -159,7 +159,7 @@ if ($query->have_posts()) {
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 		?>
 
             <div class="qp-h-recentnews-content">

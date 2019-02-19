@@ -65,14 +65,7 @@ if ($query->have_posts()) {
             <div id="qp-vid-head" class="col-xl-12 float-left">
                 <div class="col-md-10 float-left">
                     <h2 class="head-clr">Video gallery</h2>
-                </div><!-- 
-                <div class="col-md-2 float-left">
-                    <ul id="qp-vid-list" class="list-inline">
-                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">01</li>
-                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">02</li>
-                        <li class="qp-vid-item list-inline-item col-4 m-0 float-left text-center my-1 font-weight-bold head-clr">03</li>
-                    </ul>
-                </div> -->
+                </div>
             </div>
             <div id="" class="col-xl-12 float-left mt-3">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -108,8 +101,8 @@ if ($query->have_posts()) {
                              </div>
                         </div>
                       </div>
-                      <div style="display: none;">
-                          <script type="text/javascript">
+                      <!-- <div style="display: none;">
+                        <script type="text/javascript">
                           var $jq = jQuery.noConflict();
                             $jq(document).ready(function(){
                             var vv = <?php echo $post_id; ?>;
@@ -117,7 +110,6 @@ if ($query->have_posts()) {
                             var minutes =  Math.floor(dd);
                             var totaltime = minutes * 1000;
                             $jq('#totalTime-<?php echo $post_id; ?>').html(millisToMinutesAndSeconds(totaltime));
-                              
                           });
 
                           function millisToMinutesAndSeconds(millis) {
@@ -126,8 +118,7 @@ if ($query->have_posts()) {
                             return "Run time : " + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
                           }
                         </script> 
-                      </div>
-                       
+                      </div> -->
                     <?php } wp_reset_query(); } ?>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ if ($query->have_posts()) {
 		}
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}
 
 		?>
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
@@ -102,7 +102,7 @@ if ($query->have_posts()) {
 		$post_url = get_the_permalink();
 		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}
 		?>
       <div>
         <div class="news-slider-image w-100">

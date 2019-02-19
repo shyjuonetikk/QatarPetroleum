@@ -79,9 +79,9 @@ $jq("section#qp-news-popup").click(function(e) {
 
 
 // Events Page popup
-$jq(".up-event-list, #past-event-pop").click(function() {
+$jq(".up-event-list").click(function() {
     // $jq("html, body").animate({ scrollTop: "0" },500);
-    // $jq("#event-news-popup").css({"overflow-y":"scroll"});
+    $jq("#event-news-popup").css({"overflow-y":"scroll"});
     $jq("#event-news-popup").fadeIn();
     $jq("body").addClass("modal-open");
 });

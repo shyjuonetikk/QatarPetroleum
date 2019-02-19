@@ -842,6 +842,23 @@ body.modal-open {
 .inputWithIcon>input[type="text"]:focus {
     outline: none;
 }
+input#faq-search {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+}
+input#faq-search:focus, button#faq-submit:focus {
+    outline-color: transparent;
+}
+button#faq-submit {
+    color: #fff;
+    background: transparent;
+    border: none;
+}
+input#faq-search::placeholder {
+    color: #fff;
+    
+}
 /*-----FAQ Accordion--------*/
 .faq-acc .card a:after{
     content: "+";

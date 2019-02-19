@@ -1435,10 +1435,10 @@ body.upcoming-events {
 ul.event-filterlist, ul#filter {
     margin-bottom: -1px;
 }
-a.pop-up-hover > img {
+/*a.pop-up-hover > img {
     width: 354px;
     height: 242px;
-}
+}*/
 .qp-sticky {
     position: fixed;
     width: 100%;

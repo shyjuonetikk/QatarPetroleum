@@ -62,7 +62,9 @@ h5,
 h6 {
     font-weight: bold;
 }
-
+:focus {
+    outline: none;
+}
 footer {
     background: #003c72;
     padding: 15px 0;
@@ -1095,6 +1097,10 @@ a.pop-up-hover {
     top: 0;
     background: #003c71;
     background: linear-gradient(to top, #003C71, #003c71a3, #003c715e, #1d101833, #00000000);
+}
+.slick-initialized .slick-slide {
+    display: block;
+    margin: 10px;
 }
 
 /* Gallery page - popup */

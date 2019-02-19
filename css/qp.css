@@ -1136,6 +1136,7 @@ body.upcoming-events {
     border-bottom: 1px solid #707070;
     padding-top: 20px;
     padding-bottom: 20px;
+    cursor: pointer;
 }
 
 .up-event-list:hover {
@@ -1416,3 +1417,11 @@ body.upcoming-events {
 }
 
 /*********** Login page ends *********/
+.up-date {
+    text-transform: uppercase;
+}
+
+ul.event-filterlist, ul#filter {
+    margin-bottom: -1px;
+}
+/************Upcoming Event-pop-up ends *******************/

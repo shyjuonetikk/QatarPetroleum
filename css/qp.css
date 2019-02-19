@@ -865,7 +865,8 @@ button#faq-submit {
     border: none;
 }
 input#faq-search::placeholder {
-    color: #fff;
+    color: #CCD6DD;
+    font-weight: 300;
     
 }
 /*-----FAQ Accordion--------*/

@@ -41,9 +41,16 @@ if ($query->have_posts()) {
                     <div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                         <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                             <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
-                            <div class="img-hover-icon container d-flex w-100 p-0 d-none">
+                            <!-- <div class="img-hover-icon container w-100 p-0 d-none">
                                 <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
                                     <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+                            </div> -->
+                            <div class="img-hover-icon w-100 p-0">
+                                <div class="d-flex container h-100 w-100 p-0">
+                                    <div class="col-12 p-0 w-100 justify-content-center align-self-center text-center">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -101,24 +108,6 @@ if ($query->have_posts()) {
                              </div>
                         </div>
                       </div>
-                      <!-- <div style="display: none;">
-                        <script type="text/javascript">
-                          var $jq = jQuery.noConflict();
-                            $jq(document).ready(function(){
-                            var vv = <?php echo $post_id; ?>;
-                            var dd = $jq('#video-active-'+ vv).get(0).duration;
-                            var minutes =  Math.floor(dd);
-                            var totaltime = minutes * 1000;
-                            $jq('#totalTime-<?php echo $post_id; ?>').html(millisToMinutesAndSeconds(totaltime));
-                          });
-
-                          function millisToMinutesAndSeconds(millis) {
-                            var minutes = Math.floor(millis / 60000);
-                            var seconds = ((millis % 60000) / 1000).toFixed(0);
-                            return "Run time : " + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-                          }
-                        </script> 
-                      </div> -->
                     <?php } wp_reset_query(); } ?>
                     </div>
                 </div>

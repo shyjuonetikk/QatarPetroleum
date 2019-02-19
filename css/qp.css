@@ -172,6 +172,9 @@ footer .list-inline-item a:hover {
     transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
 
+#main-menu li.active > a {
+    color: #71CC98 !important;
+}
 /************Home Page*******************/
 #mainNav {
     background: #fff;
@@ -1435,5 +1438,10 @@ ul.event-filterlist, ul#filter {
 a.pop-up-hover > img {
     width: 354px;
     height: 242px;
+}
+.qp-sticky {
+    position: fixed;
+    width: 100%;
+    background: #ffffff !important;
 }
 /************Upcoming Event-pop-up ends *******************/

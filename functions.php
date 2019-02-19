@@ -411,22 +411,27 @@ function more_gallery() {
 	$offset = $_POST["offset"];
 	$ppp = 3;
 	$query = new WP_Query(array(
-				'post_type' => 'gallery',
-				'post_status' => 'publish',
-				'category_name' => 'image-gallery',
-				'posts_per_page' => $ppp,
-				'paged' => $offset,
-				'orderby' => 'date',
-                'order' => 'ASC',
-			));
-    if ($query->have_posts()) {
-    while ($query->have_posts()) {
-        $query->the_post();
-        $post_id = get_the_ID();
-        $post_title = get_the_title();
-        if (has_post_thumbnail()) {
-            $featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-        } else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";} ?>
+		'post_type' => 'gallery',
+		'post_status' => 'publish',
+		'category_name' => 'image-gallery',
+		'posts_per_page' => $ppp,
+		'paged' => $offset,
+		'orderby' => 'date',
+		'order' => 'ASC',
+	));
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			$post_id = get_the_ID();
+			$post_title = get_the_title();
+			$post_title_len = strlen($post_title);
+			$title_length = strlen($post_title);
+			if ($title_length > "80") {
+				$post_title = substr($post_title, 0, 80) . "...";
+			}
+			if (has_post_thumbnail()) {
+				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+			} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}?>
     	  	<div class="col-xl-4 col-md-6 float-left px-2 mb-2">
                 <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                     <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />

@@ -51,7 +51,7 @@ add_action( 'template_redirect', 'redirect_to_specific_page' );
 function redirect_to_specific_page() {
 
 if ( is_page('news') && ! is_user_logged_in() ) {
-	$location = get_site_url() . "/login-page";
+	$location = get_site_url() . "/login";
 	wp_redirect($location, 301); 
   exit;
     }

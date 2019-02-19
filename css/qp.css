@@ -1142,6 +1142,7 @@ body.upcoming-events {
     border-bottom: 1px solid #707070;
     padding-top: 20px;
     padding-bottom: 20px;
+    cursor: pointer;
 }
 
 .up-event-list:hover {
@@ -1370,4 +1371,63 @@ body.upcoming-events {
     cursor: pointer;
 }
 
+/************Upcoming Event-pop-up ends *******************/
+
+/************ Login Form *************/
+#main-menu li a {
+    font-size: 0.75rem !important;
+}
+#qp-loginform .input{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    width: 95% !important;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    background: transparent !important;
+}
+#qp-loginform #wp-submit{
+    width: 120px;
+    padding: 7px 10px;
+    border: none;
+    background: #71cc98;
+    color: #003C71;
+    font-size: 13px;
+}
+
+#qp-loginform #wp-submit:hover{
+    cursor: pointer;
+   background: #003C71;
+   color: #fff;
+   transition: .5s;
+}
+.sec-bg-login{
+    background: #f3f3f3;
+    height: 100vh;
+}
+#main-menu li:last-child a{
+    text-align: center;
+}
+
+#main-menu li:last-child:hover a{
+    border-bottom: none !important;
+    cursor: pointer;
+    background: none !important;
+}
+#qp-loginform .dropdown-menu .show{
+    text-align: center;
+}
+
+#qp-loginform .dropdown-item .active,#qp-loginform .dropdown-item:active{
+    background: none !important;
+}
+
+/*********** Login page ends *********/
+.up-date {
+    text-transform: uppercase;
+}
+
+ul.event-filterlist, ul#filter {
+    margin-bottom: -1px;
+}
 /************Upcoming Event-pop-up ends *******************/

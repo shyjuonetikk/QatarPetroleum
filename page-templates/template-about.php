@@ -11,12 +11,12 @@ get_header();
         <div id="cover-hgt" class="col-md-9 mx-auto d-flex h-100">
             <div class="row justify-content-left align-self-center">
                 <div id="abt-main-head" class="col-12 justify-content-left align-center">
-                    <h1 id="about-heading" class="text-white"><?php the_field('banner_heading'); ?></h1>
+                    <h1 id="about-heading" class="text-white"><?php the_field('banner_heading');?></h1>
                 </div>
                 <div class="col-12 justify-content-left align-self-top">
                     <ul class="about-sect-links float-left w-100 p-0 col-lg-10 col-md-12">
                         <li class="abt-nav-item col-lg-3">
-                            <a id="msg-ceo-sel" class="abt-nav-link active" href="#msg-ceo">MESSAGE FROM THE CEO</a>
+                            <a id="msg-ceo-sel" class="abt-nav-link" href="#msg-ceo">MESSAGE FROM THE CEO</a>
                         </li>
                         <li class="abt-nav-item col-lg-3 col-md-12">
                             <a id="strat-sec-sel" class="abt-nav-link" href="#strat-sec">VISION STATEMENT</a>
@@ -35,9 +35,9 @@ get_header();
     <section id="abt-sec">
         <div class="container">
             <div class="col-md-9 mx-auto">
-                <h1 id="abt-desc-title" class="prm-clr"><span class="font-weight-light"><?php the_field('content_heading'); ?></span></h1>
+                <h1 id="abt-desc-title" class="prm-clr"><span class="font-weight-light"><?php the_field('content_heading');?></span></h1>
                 <p id="border-line" class="w-25 sec-bg"></p>
-                <?php the_field('content'); ?>
+                <?php the_field('content');?>
             </div>
         </div>
     </section>
@@ -50,14 +50,14 @@ get_header();
                 <div class="col-xl-6 float-left">
                     <?php
 
-                        $msgceo = get_field('message_from_ceo');
-                        $ceo_image = $msgceo['ceo_image'];
-                        $ceo_name = $msgceo['ceo_name'];
-                        $position = $msgceo['ministry_position'];
-                        $designation = $msgceo['designation'];
-                        $message = $msgceo['message'];
+$msgceo = get_field('message_from_ceo');
+$ceo_image = $msgceo['ceo_image'];
+$ceo_name = $msgceo['ceo_name'];
+$position = $msgceo['ministry_position'];
+$designation = $msgceo['designation'];
+$message = $msgceo['message'];
 
-                    ?>
+?>
                     <div class="ceo-image w-100">
                         <img class="w-100" src="<?php echo $ceo_image; ?>">
                          <div class="ceo-content">
@@ -79,7 +79,7 @@ get_header();
         <div class="container">
             <div id="strategy-desc" class="col-12">
                 <h2 class="head-clr font-weight-bold">Strategy and Values</h2>
-                <?php the_field('strategy_and_values_intro'); ?>
+                <?php the_field('strategy_and_values_intro');?>
             </div>
     </section>
     <section id="values-sec" class="float-left w-100 grey-bg pt-0">
@@ -87,33 +87,33 @@ get_header();
             <div class="col-xl-6 float-left">
                 <div class="col-12 value-item-one p-0">
                     <h5 class="values-title prm-clr font-weight-bold">OUR VALUES</h5>
-                    <?php 
+                    <?php
 
-                        the_field('our_values_intro');
-                        if( have_rows('our_values_list') ):
-                            while ( have_rows('our_values_list') ) : the_row();
-                                echo '<h6>'.get_sub_field('value_name').'</h6>';
-                                the_sub_field('value_description');
-                            endwhile;
-                        else :
-                        endif;
-                    ?>
+the_field('our_values_intro');
+if (have_rows('our_values_list')):
+	while (have_rows('our_values_list')): the_row();
+		echo '<h6>' . get_sub_field('value_name') . '</h6>';
+		the_sub_field('value_description');
+	endwhile;
+else:
+endif;
+?>
                 </div>
             </div>
             <div class="col-xl-6 float-left">
                 <div class="col-12 value-item-two p-0">
                     <h5 class="values-title prm-clr font-weight-bold">OUR STRATEGY</h5>
-                    <?php 
-                        the_field('our_strategy_intro');
-                        if( have_rows('our_strategy_list') ):
-                            echo '<ul id="strat-list">';
-                            while ( have_rows('our_strategy_list') ) : the_row();
-                                echo '<li>'.get_sub_field('strategy_list_name').'</li>';
-                            endwhile;
-                        else :
-                            echo '</ul>';
-                        endif;
-                    ?>
+                    <?php
+the_field('our_strategy_intro');
+if (have_rows('our_strategy_list')):
+	echo '<ul id="strat-list">';
+	while (have_rows('our_strategy_list')): the_row();
+		echo '<li>' . get_sub_field('strategy_list_name') . '</li>';
+	endwhile;
+else:
+	echo '</ul>';
+endif;
+?>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ get_header();
         <div class="container">
             <div class="col-12 float-left">
                 <h2 class="head-clr font-weight-bold">Vision Statement</h2>
-                <?php the_field('vision_statement'); ?>
+                <?php the_field('vision_statement');?>
             </div>
         </div>
     </section>

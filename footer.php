@@ -24,16 +24,16 @@ $container = get_theme_mod('understrap_container_type');
         </div>
         <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 h-100 text-center text-lg-right my-auto list-inline">
           <?php
-            wp_nav_menu(
-            	array(
-            		'theme_location' => 'footermenu',
-            		'fallback_cb' => '',
-            		'menu' => 'footermenu',
-            		'menu_class' => 'footer-menu list-inline mb-0',
-            		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
-            	)
-            );
-          ?>
+wp_nav_menu(
+	array(
+		'theme_location' => 'footermenu',
+		'fallback_cb' => '',
+		'menu' => 'footermenu',
+		'menu_class' => 'footer-menu list-inline mb-0',
+		'walker' => new Understrap_WP_Bootstrap_Navwalker(),
+	)
+);
+?>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@ $container = get_theme_mod('understrap_container_type');
     });
 
     //slick video
-    
+
     $jq('.slider').slick({
       dots: true,
       infinite: false,
@@ -129,12 +129,6 @@ $container = get_theme_mod('understrap_container_type');
         }
       ]
     });
-
-    //  Video Duration
-      
-
-
-
 
     $jq('.slick-dots > li > a').click(function(){
       $jq(this).addClass('active');
@@ -249,7 +243,7 @@ $container = get_theme_mod('understrap_container_type');
       });
 
       // Multimedia page Ajax
-      
+
       $jq("#qp-img-more").click(function(){
         var id =$jq(this).data('id');
         var max_pages = $jq(this).data('max-pages');
@@ -276,7 +270,7 @@ $container = get_theme_mod('understrap_container_type');
               }
           });
       });
-      
+
    });
 
 </script>

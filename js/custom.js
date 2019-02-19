@@ -4,12 +4,13 @@ $jq(document).ready(function() {
     // Home page tag active on click
     $jq("section").mouseenter(function() {
         var id = $jq(this).attr('id');
-        if( id != "about-cover"){
-            $jq('.abt-nav-item > a').removeClass('active');
-        }
-        else {
-            $jq('#msg-ceo-sel').addClass('active'); 
-        }
+        // if( id != "about-cover"){
+        //     $jq('.abt-nav-item > a').removeClass('active');
+        // }
+        // else {
+        //     $jq('#msg-ceo-sel').addClass('active'); 
+        // }
+        $jq('.abt-nav-item > a').removeClass('active');
         $jq("#" + id + "-sel").addClass('active');
     });
     // add border on hover for cover section links
@@ -52,7 +53,7 @@ $jq(".event-filterlist > li").click(function(){
 // Multimedia page - image hover js
 $jq(".pop-up-hover").mouseenter(function(){
     $jq(".img-hover-icon > div, .img-hover-icon, .img-hover-icon > div > i", this).fadeIn();
-    $jq(".img-hover-icon", this).css({"height" : "100%"});
+    // $jq(".img-hover-icon", this).css({"height" : "100%"});
 });
 $jq(".pop-up-hover").mouseleave(function(){
     // $jq(".img-hover-icon", this).css({"height" : "0"});

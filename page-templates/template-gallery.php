@@ -34,7 +34,7 @@ if ($query->have_posts()) {
 		$query->the_post();
 		$post_id = get_the_ID();
 		$post_title = get_the_title();
-		if (false) {
+		if (has_post_thumbnail()) {
 			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 		} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}
 		?>

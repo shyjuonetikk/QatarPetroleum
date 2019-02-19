@@ -34,6 +34,29 @@ foreach ($understrap_includes as $file) {
 	require_once $filepath;
 }
 
+// Hide admin bar for non admin 
+
+add_action('after_setup_theme', 'remove_admin_bar');
+ 
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
+}
+
+// redirect url
+
+add_action( 'template_redirect', 'redirect_to_specific_page' );
+
+function redirect_to_specific_page() {
+
+if ( is_page('news') && ! is_user_logged_in() ) {
+	$location = get_site_url() . "/login";
+	wp_redirect($location, 301); 
+  exit;
+    }
+}
+
 // Function for changing the username label from admin side //
 
 add_filter('gettext', 'qpid_gettext', 10, 2);
@@ -42,6 +65,25 @@ function qpid_gettext($translation, $original) {
 		return 'Qatar ID';
 	}
 	return $translation;
+}
+
+add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
+function add_loginout_link( $items, $args ) {
+	$redirect = get_site_url() . "/login";
+    if (is_user_logged_in() && $args->theme_location == 'primary') {
+        $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
+        				
+        				<div class="dropdown">
+						  <a class="wel-user dropdown-toggle nav-link" data-toggle="dropdown">
+						    WELCOME USER 
+						  </a>
+						  <div class="dropdown-menu">
+						    <a class="dropdown-item" href="'. wp_logout_url( $redirect ) .'">LOG OUT</a>
+						  </div>
+						</div>
+        			</li>';
+    }
+    return $items;
 }
 
 // Function to change sender name
@@ -402,13 +444,13 @@ function events_filter() {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 			} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 			?>
-                    <div class="up-event-list col-xl-12 float-left">
-                        <div class="up-txt col-xl-9">
+                    <div class="up-event-list col-xl-12 float-left pl-0 pr-0">
+                        <div class="up-txt col-xl-9 pl-0">
                             <h5>
                                 <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fas fa-arrow-right d-none faa-horizontal animated" aria-hidden="true"></i></a>
                             </h5>
                         </div>
-                        <div class="up-tail col-xl-3">
+                        <div class="up-tail col-xl-3 pr-0">
                             <div class="up-date">
                                 <span class="up-loc"><i class="mr-2 fa fa-map-marker" aria-hidden="true"></i><?php echo $location; ?></span> <?php echo date("M j, Y", strtotime($date)); ?>
                             </div>
@@ -448,7 +490,7 @@ function more_gallery() {
 			if (has_post_thumbnail()) {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 			} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}?>
-    	  	<div class="col-xl-4 col-md-6 float-left px-2 mb-2">
+    	  	<div class="col-xl-4 col-md-6 float-left px-2 mb-2 pt-4">
                 <a class="pop-up-hover" href="<?php echo $featured_img_url; ?>">
                     <img class="img-fluid qp-gal-img" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>" title="<?php echo $post_title; ?>" />
                     <div class="img-hover-icon w-100 p-0">

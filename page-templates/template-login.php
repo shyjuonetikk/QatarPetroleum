@@ -25,6 +25,9 @@ get_header('login');
 					);
 		  	wp_login_form( $args ); 
 		  ?> 
+		  <div>
+		  	<p>Don't have an account yet ? <a href="#" class="font-weight-bold">Sign up</a></p>
+		  </div>
         </div>
         </div>
       </div>

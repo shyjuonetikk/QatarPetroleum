@@ -525,3 +525,18 @@ exit;
 
 add_action('wp_ajax_nopriv_more_gallery', 'more_gallery');
 add_action('wp_ajax_more_gallery', 'more_gallery');
+
+
+// Option to add Qatar Ids
+
+add_action('admin_menu', 'qp_id_menu');
+
+function qp_id_menu() {
+  add_submenu_page('users.php', 'Qp_qatar_ids', 'Qatar Ids', 'manage_options', 'Qatar_IDs', 'qp_init');
+}
+ 
+function qp_init(){
+        echo 'Test page';
+}
+ 
+?>

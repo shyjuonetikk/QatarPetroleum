@@ -1542,7 +1542,7 @@ nav#qp-sticky {
     background: #ffffff;
     position: fixed;
 }
-div#carouselExampleControls {
+body {
     padding-top: 106px;
 }
 

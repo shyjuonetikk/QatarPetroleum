@@ -81,11 +81,9 @@ $jq(".pop-up-hover").mouseleave(function(){
 $jq(window).scroll(function() {    
     var scroll = $jq(window).scrollTop();
     if (scroll >= "50") {
-        $jq("#qp-sticky").addClass("qp-sticky");
         $jq("#qp-sticky").addClass("shadow-sm");
     }
     else{
-        $jq("#qp-sticky").removeClass("qp-sticky");
         $jq("#qp-sticky").removeClass("shadow-sm");
     }
 }); //missing );

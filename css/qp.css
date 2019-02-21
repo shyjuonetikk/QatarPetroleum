@@ -1485,8 +1485,6 @@ ul.event-filterlist, ul#filter {
 }*/
 .qp-sticky {
     position: fixed;
-    width: 100%;
-    background: #ffffff !important;
 }
 /************Upcoming Event-pop-up ends *******************/
 .sub-clr{
@@ -1536,4 +1534,14 @@ ul.event-filterlist, ul#filter {
 
 .text {
   padding: 16px 32px;
+}
+
+/* Sticky header */
+nav#qp-sticky {
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+}
+div#carouselExampleControls {
+    padding-top: 106px;
 }

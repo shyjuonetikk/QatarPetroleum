@@ -1,8 +1,7 @@
 <?php 
 
 /**
-
- * Template Name: QP - SignUp
+ * Template Name: QP - Reset Password
  * 
  */
 
@@ -13,15 +12,17 @@ get_header('login');
     <div class="container">
       <div class="row">
         <div class="col-lg-7 mx-auto text-left">
-          <h3 class="login-h3 font-weight-bold pt-4 prm-clr mb-3">With your Qatar ID you can have access to tons of information to guide you</h3>
+          <h3 class="login-h3 font-weight-bold pt-4 prm-clr">With your Qatar ID you can have access to tons of information to guide you</h3>
 		 
-		  <form class="needs-validation signup-form" novalidate id="signup-form" name="signup-form">
+		 <?php 
+		 	$username = $_GET['login'];
+		 	$users = get_user_by('login', $username);
+			$user_id = $users->ID;
+			if ( username_exists( $username ) ){ ?>
+
+			<form class="needs-validation reset-form mt-3" novalidate id="reset-form" name="reset-form">
 			  <div class="form-row">
-			    <div class="col-md-12 mb-3">
-			      <div class="input-group">
-			        <input type="text" class="form-control qp-fields" id="username" name="username" placeholder="QATAR ID" aria-describedby="inputGroupPrepend" required>
-			      </div>
-			    </div>
+			    <input type="hidden" id="username" name="username" value="<?php echo $username; ?>" >
 			    <div class="col-md-12 mb-3">
 			      <div class="input-group">
 			        <input id="password" type="password" class="form-control qp-fields" name="password" placeholder="PASSWORD">
@@ -35,12 +36,15 @@ get_header('login');
 			      </div>
 			    </div>
 			  </div>
-  				<div class="g-recaptcha" data-sitekey="6LeksJIUAAAAAJX5jvItQFJ0tFffYgIR0iW7BHyZ"></div>
-  				<div id="recaptcha-error"></div>
-  			<button class="btn btn-signup mt-3" id="btn-signup" type="submit">REGISTER</button>
+  			<button class="btn btn-signup mt-3" id="btn-reset" type="submit">Reset Password</button>
 		  </form>
 		  <div id="success" class="mt-3 text-center">
-		  </div>
+		  </div>	
+			<?php }
+		    else {
+		        echo "<div class='alert alert-danger'><strong>Error!</strong> Username doesn't exists.. </div>";
+		    }
+		 ?>
         </div>
         </div>
       </div>

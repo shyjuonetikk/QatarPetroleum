@@ -10,7 +10,7 @@ get_header();
 <section class="p-0">
     <div class="row m-0 p-0">
       <div class="col-12 m-0 p-0 contact-map">
-        <a href="<?php the_field('contact_map_link'); ?>" target="_blank"><img class="img-fluid" src="<?php the_field('contact_map'); ?>" /></a>
+        <a href="<?php the_field('contact_map_link');?>" target="_blank"><img class="img-fluid" src="<?php the_field('contact_map');?>" /></a>
       </div>
     </div>
     <div class="contact-bg">
@@ -22,7 +22,7 @@ get_header();
 	            </div>
 	             <div class="phone-num">
 	             	<p>HOTLINE</p>
-	             	<span><?php the_field('hotline'); ?></span>	
+	             	<span><?php the_field('hotline');?></span>
 	            </div>
           </div>
           <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 p-0 m-0 mx-auto pt-3 pb-1">
@@ -31,7 +31,7 @@ get_header();
 	            </div>
 	             <div class="phone-num">
 	             	<p>EMAIL</p>
-	             	<span><?php the_field('email'); ?></span>	
+	             	<span><?php the_field('email');?></span>
 	            </div>
           </div>
           <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 p-0 m-0 mx-auto pt-3 pb-1">
@@ -40,7 +40,7 @@ get_header();
 	            </div>
 	             <div class="phone-num">
 	             	<p>ADDRESS</p>
-	             	<span><?php the_field('address'); ?></span>	
+	             	<span><?php the_field('address');?></span>
 	            </div>
           </div>
         </div>
@@ -52,11 +52,11 @@ get_header();
           <h1 class="head-clr">Help us serve you better by<br>answering this survey</h1>
           <?php echo do_shortcode('[contact-form-7 id="194" title="Contact form 1"]'); ?>
         </div>
-        
+
       </div>
     </div>
 </section>
 
-  
 
-<?php get_footer(); ?>
+
+<?php get_footer();?>

@@ -14,6 +14,12 @@ get_header('login');
         <div class="col-lg-7 mx-auto text-left">
           <h3 class="login-h3 font-weight-bold pt-4 prm-clr">With your Qatar ID you can have access to tons of information to guide you</h3>
 		  <?php
+		  	if (isset($_GET["checkemail"])) {
+			    echo '<div class="alert alert-info">
+			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Mail Sent! </strong> Please check your email for password reset link.
+					  </div>';    
+			}
 		  	$homeurl = get_site_url();
 		  	$args = array(
 						'redirect'       => $homeurl,
@@ -25,8 +31,11 @@ get_header('login');
 					);
 		  	wp_login_form( $args ); 
 		  ?> 
-		  <div>
-		  	<p>Don't have an account yet ? <a href="#" class="font-weight-bold">Sign up</a></p>
+		  <div class="float-left">
+		  	Don't have an account ? Please <a href="<?php echo $homeurl; ?>/sign-up/">Sign up</a>
+		  </div>
+		  <div class="float-right">
+		  	<a href="<?php echo $homeurl; ?>/forgot-password/">Forgot Password ?</a>
 		  </div>
         </div>
         </div>

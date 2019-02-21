@@ -399,7 +399,8 @@ footer .list-inline-item a:hover {
 .news-popup-image-content {
     position: absolute;
     bottom: 8px;
-    right: 16px;
+    /*right: 16px;*/
+    left: 0;
     z-index: 1;
     padding: 4% 6%;
 }
@@ -1378,7 +1379,7 @@ body.upcoming-events {
 
 /************Upcoming Event-pop-up ends *******************/
 
-/************ Login Form *************/
+/************ Login and Sign Up *************/
 #main-menu li a {
     font-size: 0.75rem !important;
 }
@@ -1386,25 +1387,35 @@ body.upcoming-events {
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    width: 95% !important;
+    width: 100% !important;
     margin-top: 15px;
     padding-bottom: 10px;
     background: transparent !important;
 }
-#qp-loginform #wp-submit{
+#qp-loginform #wp-submit, .btn-signup{
     width: 120px;
     padding: 7px 10px;
     border: none;
     background: #71cc98;
     color: #003C71;
     font-size: 13px;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important; 
 }
 
-#qp-loginform #wp-submit:hover{
+#qp-loginform #wp-submit:hover, .btn-signup:hover{
     cursor: pointer;
    background: #003C71;
    color: #fff;
    transition: .5s;
+   box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+.btn-signup:focus{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
 }
 .sec-bg-login{
     background: #f3f3f3;
@@ -1427,6 +1438,39 @@ body.upcoming-events {
     background: none !important;
 }
 
+.qp-fields{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    background: none !important;
+    border-radius: 0px !important;
+}
+.field-icon {
+  float: right;
+  margin-left: -20px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 4;
+}
+
+.qp-fields:focus{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+.error{
+    color: red;
+    right: 25px;
+    bottom: 10px;
+    position: absolute;
+}
+.error-captcha{
+    color: red;
+    right: 25px;
+    bottom: 75px;
+    position: absolute;
+}
+
 /*********** Login page ends *********/
 .up-date {
     text-transform: uppercase;
@@ -1445,3 +1489,44 @@ ul.event-filterlist, ul#filter {
     background: #ffffff !important;
 }
 /************Upcoming Event-pop-up ends *******************/
+
+/*** Video Popup ****/
+
+.modal-content{
+    background-color: transparent !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+}
+.vid-img-cont{
+    position: relative;
+    width: 100%;
+}
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.vid-img-cont:hover .image {
+  opacity: 0.3;
+}
+
+.vid-img-cont:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  padding: 16px 32px;
+}

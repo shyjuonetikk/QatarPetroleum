@@ -525,3 +525,286 @@ exit;
 
 add_action('wp_ajax_nopriv_more_gallery', 'more_gallery');
 add_action('wp_ajax_more_gallery', 'more_gallery');
+
+
+// Sign up Form
+
+function signUp(){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	$users = get_user_by('login', $username);
+
+	$user_id = $users->ID;
+
+	if ( username_exists( $username ) ){
+		$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
+		 if ( is_wp_error( $user_data ) ) {
+		    // There was an error; possibly this user doesn't exist.
+		    echo 'Error.';
+		} else {
+		    // Success!
+		    echo 'Success';
+		}
+	}
+    else {
+        echo 'error';
+    }
+	exit;
+}
+
+add_action('wp_ajax_nopriv_signUp', 'signUp');
+add_action('wp_ajax_signUp', 'signUp');
+
+// Disable change password email
+
+//add_filter( 'send_password_change_email', '__return_false' );
+
+function override_reset_password_form_redirect() {
+    $action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
+    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
+
+    if($_GET['action']==='rp' && strpos($_SERVER['REQUEST_URI'],'wp-login.php')) {
+	    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
+	    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
+	    wp_redirect( site_url( '/reset-password/' ) . '?key=' . $key . '&login=' . $login );
+	    exit;
+	}
+}
+add_action( 'init', 'override_reset_password_form_redirect' );
+
+
+// Reset password
+
+function resetpassword(){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	$users = get_user_by('login', $username);
+
+	$user_id = $users->ID;
+
+	if ( username_exists( $username ) ){
+		$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
+		 if ( is_wp_error( $user_data ) ) {
+		    // There was an error; possibly this user doesn't exist.
+		    echo 'Error.';
+		} else {
+		    // Success!
+		    echo 'Success';
+		}
+	}
+    else {
+        echo 'error';
+    }
+	exit;
+}
+
+add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
+add_action('wp_ajax_resetpassword', 'resetpassword');
+
+
+// News pop up
+
+function newsPopup(){
+
+	$post_id = $_POST['post_id'];
+	$content_post = get_post($post_id);
+	$content = $content_post->post_content;
+	$content = apply_filters('the_content', $content);
+	$content = str_replace(']]>', ']]&gt;', $content);
+	$title = get_the_title($post_id);
+	$image = get_the_post_thumbnail_url($post_id, 'full');
+	$date = get_the_date('M j, Y',$post_id);
+
+	wp_reset_postdata();
+	?>
+	<div class="container">
+		<div class="row">
+			<div class="news-popup w-100 bg-white">
+				<div class="col-10 mx-auto mb-5">
+					<div class="arrow-nav">
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">go back</a>
+					</div>
+					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+				</div>
+
+				<div class="news-popup-image w-100">
+					<img class="w-100" src="<?php echo $image; ?>">
+					 <div class="news-popup-image-content">
+					 	<div class="post-date text-left pb-2 font-weight-light"> <span><?php echo $date; ?></span></div>
+					 	<h1 class="text-left"><?php echo $title; ?></h1>
+					 </div>
+				</div>
+				<div class="col-10 mx-auto news-popup-content">
+					<?php echo $content; ?>
+				</div>
+				<div class="news-popup-latestnews">
+					<div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto">
+						<div class="qp-h-recentnews-top w-100">
+							<h3 class="float-left mb-0">Latest News</h3>
+						</div>
+						<div class="clearfix"></div>
+						<div class="qp-h-recentnews-content">
+							<div class="row">
+								<?php 
+									$query = new WP_Query(array(
+										'post_type' => array('qp_news'),
+										'post_status' => 'publish',
+										'posts_per_page' => 2,
+										'tag' => 'latest-news',
+										'orderby' => 'date',
+										'order' => 'DESC',
+									));
+									if ($query->have_posts()) {
+										while ($query->have_posts()) {
+											$query->the_post();
+											$post_id = get_the_ID();
+											$post_title = get_the_title();
+											$post_title_len = strlen($post_title);
+											$title_length = strlen($post_title);
+											if ($title_length > "98") {
+												$post_title = substr($post_title, 0, 98) . "...";
+											}
+											$post_content = get_the_excerpt();
+											$post_url = get_the_permalink();
+											if (has_post_thumbnail()) {
+												$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+											} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
+								?>
+								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" id="inner-thumb" data-post-id="<?php echo $post_id; ?>">
+									<div class="row">
+										<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 post-image float-left pb-sm-3">
+											<a href="#">
+												<img src="<?php echo $featured_img_url; ?>" class="img-fluid w-100 border-0" alt="">
+											</a>
+										</div>
+										<div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 post-content pt-1 pl-lg-0 pl-md-0 pl-xl-0 pt-md-0 pt-lg-1 pt-xl-4">
+											<div class="post-date text-left pb-2"> <span><?php echo get_the_date('M j, Y'); ?></span>
+											</div>
+											<h6 class="text-left font-weight-bold"><a href="#"><?php echo $post_title; ?></a></h6>
+										</div>
+									</div>
+								</div>
+								<?php } wp_reset_query(); } ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- news-popup -->
+		</div>
+	</div>
+<?php
+
+	exit;
+
+}
+
+add_action('wp_ajax_nopriv_newsPopup', 'newsPopup');
+add_action('wp_ajax_newsPopup', 'newsPopup');
+
+
+// Events popup
+
+function eventsPopup(){
+
+	$post_id = $_POST['post_id'];
+	$content_post = get_post($post_id);
+	$content = $content_post->post_content;
+	$content = apply_filters('the_content', $content);
+	$content = str_replace(']]>', ']]&gt;', $content);
+	$title = get_the_title($post_id);
+	$image = get_the_post_thumbnail_url($post_id, 'full');
+	$date = get_the_date('M j, Y',$post_id);
+
+	wp_reset_postdata();
+?>
+<div class="container">
+    <div class="row">
+        <div class="news-popup w-100 bg-white">
+            <div class="col-10 mx-auto mb-5">
+					<div class="arrow-nav">
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">go back</a>
+					</div>
+					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+				</div>
+            <div class="news-popup-image w-100">
+                <img class="w-100" src="<?php echo $image; ?>">
+                <div class="up-pop up-popup-image-content">
+                    <div class="post-date text-left pb-2 font-weight-light"> <span><?php echo $date; ?></span></div>
+                    <h1 class="text-left"><?php echo $title; ?></h1>
+                </div>
+            </div>
+            <!-- <div class="container mb-2">
+                <div class="row">
+                    <div class="col-lg-12 mx-auto text-center pr-0">
+                        <div class="qp-h-latestnews">
+                            <div class="">
+                                <ul class="upop-nav float-right nav">
+                                    <li class="nav-item active"><a class="nav-link" href="#">01</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="#">02</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="#">03</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-10 mx-auto news-popup-content">
+                <?php echo $content; ?>
+            </div>
+            <div class="container news-popup-latestnews">
+                <div class="row col-lg-12 mx-auto">
+                <?php
+					$query = new WP_Query(array(
+						'post_type' => 'events',
+						'post_status' => 'publish',
+						'posts_per_page' => 3,
+						'meta_key' => 'event_date',
+						'orderby' => 'meta_value',
+						'order' => 'DESC',
+					));
+					if ($query->have_posts()) {
+						while ($query->have_posts()) {
+							$query->the_post();
+							$post_id = get_the_ID();
+							$post_title = get_the_title();
+							$post_content = get_the_excerpt();
+							$post_url = get_the_permalink();
+							$location = get_post_meta($post_id, 'event_place', true);
+							$date = get_post_meta($post_id, 'event_date', true);
+				?>
+                    <div class="col-sm-4 d-flex pl-4 pr-4">
+                        <div class="upop card">
+                            <div class="card-body pl-0 pr-0">
+                                <p class="card-header"><?php echo date("M j, Y", strtotime($date)); ?></p>
+                                <h6 class="card-text"><a href="#"><b><?php echo $post_title; ?></b></a></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } wp_reset_query(); } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php
+	exit;
+}
+
+add_action('wp_ajax_nopriv_eventsPopup', 'eventsPopup');
+add_action('wp_ajax_eventsPopup', 'eventsPopup');
+

@@ -42,11 +42,12 @@ wp_nav_menu(
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer();?>
-<script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/ekko-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/html5lightbox.js"></script>
 
@@ -60,6 +61,13 @@ wp_nav_menu(
 
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
       var page = 1;
+
+  // Video Lightbox
+
+  $jq(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $jq(this).ekkoLightbox();
+});
 
     // Slick
     $jq('.center').slick({
@@ -77,7 +85,7 @@ wp_nav_menu(
             arrows: false,
             centerMode: true,
             centerPadding: '40px',
-            slidesToShow: 3
+            slidesToShow: 2
           }
         },
         {
@@ -271,6 +279,66 @@ wp_nav_menu(
               }
           });
       });
+
+      // News Page popup
+      $jq(".qp-h-latestnews-content").click(function() {
+        var postid = $jq(this).data('post-id');
+        $jq.post(ajaxUrl,{action:"newsPopup",
+          post_id: postid,
+        },
+           function(data){
+              $jq("html, body").animate({ scrollTop: "0" },500);
+              $jq('#qp-news-popup').html(data);
+              $jq("#qp-news-popup").fadeIn();
+              $jq("body").addClass("modal-open");   
+          });
+      });
+      // To Close new page popup
+      $jq("section#qp-news-popup").click(function(e) {
+          var container = $jq("section#qp-news-popup > .container");
+          $jq(".qp-h-latestnews-content").css({"overflow-y":"visible"});
+          if (!container.is(e.target) && container.has(e.target).length === 0) {
+              $jq("#qp-news-popup").fadeOut();
+              $jq("body").removeClass("modal-open");
+          }
+      });
+
+      // news popup ends
+
+      // Events Page popup
+        $jq(".up-event-list, #past-event-pop, .up-past-block").click(function() {
+          var postid = $jq(this).data('post-id');
+            eventPopUp(postid);
+        });
+        // To Close Events page popup
+        $jq("#event-news-popup").click(function(e) {
+          var postid = $jq(this).data('post-id');
+            var container = $jq("#event-news-popup > .container");
+            $jq("#event-news-popup").css({"overflow-y":"visible"});
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $jq("#event-news-popup").fadeOut();
+                $jq("body").removeClass("modal-open");
+            }
+            // else{
+            //     eventPopUp();
+            // }
+        });
+
+        function eventPopUp(postid){
+
+          $jq.post(ajaxUrl,{action:"eventsPopup",
+            post_id: postid,
+          },
+             function(data){
+                $jq("html, body").animate({ scrollTop: "0" },500);
+                $jq("#event-news-popup").css({"overflow-y":"scroll"});
+                $jq('#event-news-popup').html(data);
+                $jq("#event-news-popup").fadeIn();
+                $jq("body").addClass("modal-open");   
+            });
+        }
+
+      // Events popup ends
 
    });
 

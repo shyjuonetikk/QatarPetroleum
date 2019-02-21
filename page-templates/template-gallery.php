@@ -78,7 +78,7 @@ if ($query->have_posts()) {
                     <h2 class="head-clr">Video gallery</h2>
                 </div>
             </div>
-            <div id="" class="col-xl-12 float-left mt-3 p-0">
+            <div class="col-xl-12 float-left mt-3 p-0">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="slider w-100">
                     <?php
@@ -98,12 +98,27 @@ if ($query->have_posts()) {
 		$post_title = get_the_title();
 		$post_url = get_the_permalink();
 		$video = get_field('video_file');
+		if (has_post_thumbnail()) {
+			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+		} else { $featured_img_url = get_template_directory_uri() . "/img/gal-no-img.jpg";}
 		?>
                       <div>
-                        <div class="w-100 qp-vid-popup">
-                            <video id="video-active-<?php echo $post_id; ?>" class="w-100" controls autoplay>
-                              <source src="<?php echo $video; ?>" type="video/mp4">
-                            </video>
+                        <div class="w-100">
+                            <!-- <!-- <video id="video-active-<?php // echo $post_id; ?>" class="w-100" controls autoplay> -->
+                            <!-- <video id="video-active-<?php echo $post_id; ?>" class="d-none">
+                                <source src="<?php echo $video; ?>#t=10" type="video/mp4">
+                            </video> -->
+                            <div class="vid-img-cont">
+                            <a href="<?php echo $video; ?>" data-toggle="lightbox">
+                                <img src="<?php echo $featured_img_url; ?>" class="img-fluid image">
+                                <div class="middle">
+                                    <div class="text">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/play-icon.png" />
+                                    </div>
+                                  </div>
+                            </a>
+
+                            </div>
                              <div class="news-video-image-content">
                                 <h6 class="text-left mt-3 pb-0 mb-0"><?php echo $post_title; ?></h6>
                                 <div class="post-date text-left pb-2 font-weight-light head-clr">
@@ -120,6 +135,7 @@ if ($query->have_posts()) {
             </div>
         </div>
     </section>
+
 
 <?php get_footer();?>
 

@@ -28,6 +28,7 @@ $container = get_theme_mod('understrap_container_type');
 	<?php wp_head();?>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/qp.css" >
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/qp-responsive.css" >
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/ekko-lightbox.css" >
 	<?php wp_head();?>
 </head>
 

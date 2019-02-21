@@ -1445,3 +1445,10 @@ a.pop-up-hover > img {
     background: #ffffff !important;
 }
 /************Upcoming Event-pop-up ends *******************/
+.sub-clr{
+    color: #ccd6dd;
+}
+
+.qp-theme-bg:hover {
+    box-shadow: none;
+}

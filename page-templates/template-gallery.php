@@ -100,7 +100,7 @@ if ($query->have_posts()) {
 		$video = get_field('video_file');
 		?>
                       <div>
-                        <div class="w-100">
+                        <div class="w-100 qp-vid-popup">
                             <video id="video-active-<?php echo $post_id; ?>" class="w-100" controls autoplay>
                               <source src="<?php echo $video; ?>" type="video/mp4">
                             </video>

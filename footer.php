@@ -48,13 +48,14 @@ wp_nav_menu(
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/html5lightbox.js"></script>
 
 <script type="text/javascript">
   var $jq = jQuery.noConflict();
   $jq(window).load(function(){
   $jq('#overlay').fadeOut();
 });
-  
+
    $jq(document).ready(function(){
 
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";

@@ -216,7 +216,7 @@ if ($query->have_posts()) {
 				<div class="news-popup-latestnews">
 					<div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto">
 						<div class="qp-h-recentnews-top w-100">
-							<h3 class="float-left mb-0">Latest News</h3>
+							<h4 class="float-left mb-0 prm-clr">Latest News</h4>
 						</div>
 						<div class="clearfix"></div>
 						<div class="qp-h-recentnews-content">

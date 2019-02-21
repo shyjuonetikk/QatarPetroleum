@@ -31,7 +31,7 @@ $jq(document).ready(function() {
         if( target.length ) {
             // event.preventDefault();
             $jq('html, body').stop().animate({
-                scrollTop: target.offset().top-100
+                scrollTop: target.offset().top-110
             }, 1000);
         }
     });

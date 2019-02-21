@@ -1545,3 +1545,8 @@ nav#qp-sticky {
 div#carouselExampleControls {
     padding-top: 106px;
 }
+
+/*-- Popup button --*/
+a.qp-theme-bg:focus {
+    box-shadow: none;
+}

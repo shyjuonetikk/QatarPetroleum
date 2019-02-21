@@ -19,13 +19,13 @@ get_header();
                             <a id="msg-ceo-sel" class="abt-nav-link" href="#msg-ceo">MESSAGE FROM THE CEO</a>
                         </li>
                         <li class="abt-nav-item col-lg-3 col-md-12">
-                            <a id="strat-sec-sel" class="abt-nav-link" href="#strat-sec">VISION STATEMENT</a>
+                            <a id="strat-sec-sel" class="abt-nav-link" href="#abt-vision">VISION STATEMENT</a>
                         </li>
                         <li class="abt-nav-item col-lg-3 col-md-12">
-                            <a id="values-sec-sel" class="abt-nav-link" href="#values-sec">STRATEGY AND VALUES</a>
+                            <a id="values-sec-sel" class="abt-nav-link" href="#strat-sec">STRATEGY AND VALUES</a>
                         </li>
                         <li class="abt-nav-item col-lg-3 col-md-12">
-                            <a id="abt-vision-sel" class="abt-nav-link" href="#abt-vision">OUR STRATEGY</a>
+                            <a id="abt-vision-sel" class="abt-nav-link" href="#values-sec">OUR STRATEGY</a>
                         </li>
                     </ul>
                 </div>

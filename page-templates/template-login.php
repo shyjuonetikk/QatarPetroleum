@@ -13,33 +13,6 @@ get_header('login');
       <div class="row">
         <div class="col-lg-7 mx-auto text-left">
           <h3 class="login-h3 font-weight-bold pt-4 prm-clr">With your Qatar ID you can have access to tons of information to guide you</h3>
-<<<<<<< HEAD
-		  <?php
-		  	if (isset($_GET["checkemail"])) {
-			    echo '<div class="alert alert-info">
-			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-						  <strong>Mail Sent! </strong> Please check your email for password reset link.
-					  </div>';    
-			}
-		  	$homeurl = get_site_url();
-		  	$args = array(
-						'redirect'       => $homeurl,
-						'form_id'        => 'qp-loginform',
-						'label_username' => __( '' ),
-						'label_password' => __( '' ),
-						'label_log_in'   => __( 'SIGN IN' ),
-						'remember' => false
-					);
-		  	wp_login_form( $args ); 
-		  ?> 
-		  <div class="float-left">
-		  	Don't have an account ?<a href="<?php echo $homeurl; ?>/sign-up/"> <b>Sign up</b></a>
-		  </div>
-		  <div class="float-right">
-		  	<a href="<?php echo $homeurl; ?>/forgot-password/">Forgot Password ?</a>
-		  </div>
-=======
-
 		  <form class="needs-validation signin-form" novalidate id="signin-form" name="signin-form">
 			  <div class="form-row">
 			    <div class="col-md-12 mb-3">
@@ -59,7 +32,6 @@ get_header('login');
 		  </form>
 			<div class="float-left w-100 mt-3" id="error-signin">
 			</div>
->>>>>>> 8ad52af7eed3a585275111aa0767e68566d6a353
         </div>
         </div>
       </div>

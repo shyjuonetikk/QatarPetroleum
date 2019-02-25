@@ -1540,10 +1540,6 @@ ul.event-filterlist, ul#filter {
 nav#qp-sticky {
     width: 100%;
     background: #ffffff;
-    position: fixed;
-}
-body {
-    padding-top: 85px;
 }
 
 /*-- Popup button --*/

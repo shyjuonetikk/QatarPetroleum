@@ -858,7 +858,7 @@ function forgotPassword(){
 			<title>Password Reset</title>
 			</head>
 			<body>
-			<p>Please click the below link to reset your password.<br> <a href='".get_site_url()."/reset-password/?".$username."'>Reset Password</a></p>
+			<p>Please click the below link to reset your password.<br> <a href='".get_site_url()."/reset-password/?login=".$username."'>Reset Password</a></p>
 			
 			</body>
 			</html>
@@ -869,7 +869,7 @@ function forgotPassword(){
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 			// More headers
-			$headers .= 'From: <shyju.k@dgfootprints.com>' . "\r\n";
+			$headers .= 'From: Qatar Petroleum' . "\r\n";
 			if(mail($to,$subject,$message,$headers)){
 				echo "Mail has been sent";
 			}

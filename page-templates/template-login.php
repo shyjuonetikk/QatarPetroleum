@@ -46,34 +46,4 @@ get_header('login');
         </div>
       </div>
   </section>
-  <?php
-  $to = "shyjuk007@gmail.com";
-$subject = "Password Reset";
-
-			$message = "
-			<html>
-			<head>
-			<title>Password Reset</title>
-			</head>
-			<body>
-			<p>Please click the below link to reset your password.<br> <a href='".get_site_url()."/reset-password/?".$username."'>Reset Password</a></p>
-			
-			</body>
-			</html>
-			";
-
-			// Always set content-type when sending HTML email
-			$headers = "MIME-Version: 1.0" . "\r\n";
-			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-			// More headers
-			$headers .= 'From: <shyju.k@dgfootprints.com>' . "\r\n";
-			if(mail($to,$subject,$message,$headers)){
-				echo "Mail has been sent";
-			}
-			else{
-				echo "mail can't sent";
-			}
-
-  ?>
 <?php get_footer('login');?>

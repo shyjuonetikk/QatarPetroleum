@@ -44,18 +44,7 @@ function remove_admin_bar() {
 	}
 }
 
-// redirect url
 
-add_action( 'template_redirect', 'redirect_to_specific_page' );
-
-function redirect_to_specific_page() {
-
-if ( is_page('news') && ! is_user_logged_in() ) {
-	$location = get_site_url() . "/login";
-	wp_redirect($location, 301); 
-  exit;
-    }
-}
 
 // Function for changing the username label from admin side //
 
@@ -65,25 +54,6 @@ function qpid_gettext($translation, $original) {
 		return 'Qatar ID';
 	}
 	return $translation;
-}
-
-add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
-function add_loginout_link( $items, $args ) {
-	$redirect = get_site_url() . "/login";
-    if (is_user_logged_in() && $args->theme_location == 'primary') {
-        $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
-        				
-        				<div class="dropdown">
-						  <a class="wel-user dropdown-toggle nav-link" data-toggle="dropdown">
-						    WELCOME USER 
-						  </a>
-						  <div class="dropdown-menu">
-						    <a class="dropdown-item" href="'. wp_logout_url( $redirect ) .'">LOG OUT</a>
-						  </div>
-						</div>
-        			</li>';
-    }
-    return $items;
 }
 
 // Function to change sender name
@@ -808,3 +778,125 @@ function eventsPopup(){
 
 add_action('wp_ajax_nopriv_eventsPopup', 'eventsPopup');
 add_action('wp_ajax_eventsPopup', 'eventsPopup');
+
+
+// login page
+
+function signIn(){
+	$username = esc_attr($_POST['username']);
+	$password = esc_attr($_POST['password']);
+
+	$creds = array();
+	$creds['user_login'] = $username;
+	$creds['user_password'] = $password;
+	$user = wp_signon( $creds, false );
+	if ( is_wp_error($user) ){
+		echo 'error';
+	}
+	else{
+		echo "success";
+		wp_set_current_user($user->ID,$username); 
+		wp_set_auth_cookie( $user->ID, true, false );
+		//return $user;
+	}
+
+	exit;
+		
+}
+
+add_action('wp_ajax_nopriv_signIn', 'signIn');
+add_action('wp_ajax_signIn', 'signIn');
+
+// redirect url
+
+add_action( 'template_redirect', 'redirect_to_specific_page' );
+
+function redirect_to_specific_page() {
+
+if ( is_page('news') && ! is_user_logged_in() ) {
+	$location = get_site_url() . "/login";
+	wp_redirect($location, 302);
+    }
+}
+
+// add welcome to nav
+
+add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
+function add_loginout_link( $items, $args ) {
+	$redirect = get_site_url() . "/login";
+    if (is_user_logged_in() && $args->theme_location == 'primary') {
+        $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
+        				
+        				<div class="dropdown">
+						  <a class="wel-user dropdown-toggle nav-link" data-toggle="dropdown">
+						    WELCOME USER 
+						  </a>
+						  <div class="dropdown-menu">
+						    <a class="dropdown-item" href="'. wp_logout_url( $redirect ) .'">LOG OUT</a>
+						  </div>
+						</div>
+        			</li>';
+    }
+    return $items;
+}
+
+//forgot password
+
+function forgotPassword(){
+
+	$username = $_POST['username'];
+	if(username_exists($username)){
+		$user = get_userdatabylogin($username);
+		if($user){
+		   $useremail = $user->user_email;
+		   $to = $useremail;
+			$subject = "Password Reset";
+
+			$message = "
+			<html>
+			<head>
+			<title>Password Reset</title>
+			</head>
+			<body>
+			<p>Please click the below link to reset your password.<br> <a href='".get_site_url()."/reset-password/?login=".$username."'>Reset Password</a></p>
+			
+			</body>
+			</html>
+			";
+
+			// Always set content-type when sending HTML email
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+			// More headers
+			$headers .= 'From: Qatar Petroleum <shyju.k@dgfootprints.com>' . "\r\n";
+			if(mail($to,$subject,$message,$headers)){
+				echo '<div class="alert alert-info">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Sent! </strong> Please check your email for password reset link.
+				    </div>';
+			}
+			else{
+				echo '<div class="alert alert-danger">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Not Sent! </strong> Something went wrong.
+				    </div>';
+			}
+
+		}
+	}
+	else{
+		echo '<div class="alert alert-danger">
+	    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong>Error !!</strong> Invalid Qatar ID
+			    </div>';
+	}
+
+	exit;
+
+}
+
+add_action('wp_ajax_nopriv_forgotPassword', 'forgotPassword');
+add_action('wp_ajax_forgotPassword', 'forgotPassword');
+
+

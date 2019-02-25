@@ -24,8 +24,13 @@ get_header('login');
 		    </div>
 		    <p class="submit">
 		    	<input type="submit" name="forgetpass" id="btn-forgetpass" class="btn btn-signup" value="Get New Password" tabindex="100">
+
+		    	<a href="./login" class="float-right mt-2">Back to login</a>
 		    </p>
 		</form>
+		<div id="forgt-msg">
+
+		</div>
         </div>
         </div>
       </div>

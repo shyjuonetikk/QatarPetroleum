@@ -13,15 +13,6 @@ get_header('login');
       <div class="row">
         <div class="col-lg-7 mx-auto text-left">
           <h3 class="login-h3 font-weight-bold pt-4 prm-clr">With your Qatar ID you can have access to tons of information to guide you</h3>
-		  <?php
-		  	if (isset($_GET["checkemail"])) {
-			    echo '<div class="alert alert-info">
-			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-						  <strong>Mail Sent! </strong> Please check your email for password reset link.
-					  </div>';    
-			}
-		  	
-		  ?> 
 
 		  <form class="needs-validation signin-form" novalidate id="signin-form" name="signin-form">
 			  <div class="form-row">

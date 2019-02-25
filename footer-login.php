@@ -236,6 +236,7 @@ $container = get_theme_mod('understrap_container_type');
 			         function(data){
 			         	var site_url = '<?php echo site_url(); ?>';
 			         	if(data == 'success'){
+			         		//alert(data);
 			         		window.location.replace(site_url);
 			         	}
 			         	else if(data == 'error'){
@@ -262,9 +263,7 @@ $container = get_theme_mod('understrap_container_type');
 			      	username: username,
 			      },
 			      function(data){
-			         	
-			         	alert(data);
-			         	
+			         $jq('#forgt-msg').append(data);
 			      });
 
 	    });

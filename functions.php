@@ -783,20 +783,21 @@ add_action('wp_ajax_eventsPopup', 'eventsPopup');
 // login page
 
 function signIn(){
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$username = esc_attr($_POST['username']);
+	$password = esc_attr($_POST['password']);
 
 	$creds = array();
 	$creds['user_login'] = $username;
 	$creds['user_password'] = $password;
-	$creds['remember'] = true;
 	$user = wp_signon( $creds, false );
 	if ( is_wp_error($user) ){
 		echo 'error';
 	}
 	else{
 		echo "success";
-		wp_set_current_user($user->ID); //Here is where we update the global user variables
+		wp_set_current_user($user->ID,$username); 
+		wp_set_auth_cookie( $user->ID, true, false );
+		//return $user;
 	}
 
 	exit;
@@ -814,8 +815,7 @@ function redirect_to_specific_page() {
 
 if ( is_page('news') && ! is_user_logged_in() ) {
 	$location = get_site_url() . "/login";
-	wp_redirect($location, 301); 
-  exit;
+	wp_redirect($location, 302);
     }
 }
 
@@ -871,16 +871,25 @@ function forgotPassword(){
 			// More headers
 			$headers .= 'From: Qatar Petroleum <shyju.k@dgfootprints.com>' . "\r\n";
 			if(mail($to,$subject,$message,$headers)){
-				echo "Mail has been sent";
+				echo '<div class="alert alert-info">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Sent! </strong> Please check your email for password reset link.
+				    </div>';
 			}
 			else{
-				echo "mail can't sent";
+				echo '<div class="alert alert-danger">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Not Sent! </strong> Something went wrong.
+				    </div>';
 			}
 
 		}
 	}
 	else{
-		echo "username invalid";
+		echo '<div class="alert alert-danger">
+	    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong>Error !!</strong> Invalid Qatar ID
+			    </div>';
 	}
 
 	exit;
@@ -889,3 +898,5 @@ function forgotPassword(){
 
 add_action('wp_ajax_nopriv_forgotPassword', 'forgotPassword');
 add_action('wp_ajax_forgotPassword', 'forgotPassword');
+
+

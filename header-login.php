@@ -37,6 +37,11 @@ $container = get_theme_mod('understrap_container_type');
 <div id="overlay">
     <div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-ripple"><div></div><div></div></div></div>
 </div>
+<?php
+
+
+
+?>
 	<!-- ******************* The Navbar Area ******************* -->
 	<nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNav">
     <div class="container">

@@ -900,3 +900,77 @@ add_action('wp_ajax_nopriv_forgotPassword', 'forgotPassword');
 add_action('wp_ajax_forgotPassword', 'forgotPassword');
 
 
+// add new options to user menu
+
+add_action('admin_menu', 'adddomain_submenu_page');
+ 
+function adddomain_submenu_page() {
+    add_submenu_page(
+        'users.php',
+        'Domains',
+        'Domains',
+        'manage_options',
+        'domains',
+        'adddomian_list' );
+}
+ 
+function adddomain_list() {
+    echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>'; ?>
+
+<div class="wrap">
+<h1 class="wp-heading-inline">Domain Names</h1>
+
+	<a href="#" class="page-title-action">Add New</a>
+
+<hr class="wp-header-end">
+<h2 class="screen-reader-text">Domain list</h2><table class="wp-list-table widefat fixed striped users">
+	<thead>
+		<tr>
+			<th>Domain Name</th>
+			<th>Action</th>
+		</tr>
+		<tr>
+			<td>qp.com</td>
+			<td><a href="#" id="edit" data-value="edit">edit/delete</a></td>
+		</tr>
+	</thead>
+</table>
+</div>
+<?php    
+    echo '</div>';
+    exit;
+}
+
+
+add_action('wp_ajax_nopriv_adddomain_list', 'adddomain_list');
+add_action('wp_ajax_adddomain_list', 'adddomain_list');
+
+
+function domainInner(){ ?>
+
+
+<script type="text/javascript">
+	var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+	var $jq = jQuery.noConflict();
+	$jq("#edit").click(function(){
+		var value = $jq(this).data('value');
+		$jq.post(ajaxUrl,{action:"adddomain_list",
+	      	value: value,
+	      },
+	      function(data){
+	         	alert(data);
+	      });
+	});
+	
+</script>
+
+<?php 
+
+}
+
+add_action('wp_ajax_nopriv_domainInner', 'domainInner');
+add_action('wp_ajax_domainInner', 'domainInner');
+
+
+
+

@@ -1565,6 +1565,7 @@ nav#qp-sticky {
     width: 100%;
     background: #ffffff;
     position: fixed;
+   /* top:0;*/
 }
 .main-content {
     padding-top: 85px;

@@ -206,6 +206,68 @@ $container = get_theme_mod('understrap_container_type');
 				},1000);
 
 	    });
+
+	    // Login page
+	    
+	    $jq("#btn-signin").click(function(e){
+      	e.preventDefault();
+	      var username = $jq("#username").val();
+	      var password = $jq("#password").val();
+
+	      $jq(".error").remove();
+
+		    if (username.length < 1 && password.length < 1 ) {
+		      $jq('#username').after('<span class="error">This field is required</span>');
+		      $jq('#password').after('<span class="error">This field is required</span>');
+		      return false;
+		    }
+		    if (username.length < 1) {
+		      $jq('#username').after('<span class="error">This field is required</span>');
+		      return false;
+		    }
+		    if (password.length < 1) {
+		      $jq('#password').after('<span class="error">This field is required</span>');
+		      return false;
+		    }
+		    $jq.post(ajaxUrl,{action:"signIn",
+			      	username: username,
+			      	password: password,
+			      },
+			         function(data){
+			         	var site_url = '<?php echo site_url(); ?>';
+			         	if(data == 'success'){
+			         		window.location.replace(site_url);
+			         	}
+			         	else if(data == 'error'){
+			         		$jq('#error-signin').append('<div class="alert alert-danger text-center"><strong>Error!!</strong> Invalid Login Credentials</div>').fadeOut(4000);
+			         	}
+			         	
+			      });
+
+	    });
+
+	    // Forgot password page
+	    
+	    $jq("#btn-forgetpass").click(function(e){
+      	e.preventDefault();
+	      var username = $jq("#username").val();
+
+	      $jq(".error").remove();
+
+		    if (username.length < 1) {
+		      $jq('#username').after('<span class="error">This field is required</span>');
+		      return false;
+		    }
+		    $jq.post(ajaxUrl,{action:"forgotPassword",
+			      	username: username,
+			      },
+			      function(data){
+			         	
+			         	alert(data);
+			         	
+			      });
+
+	    });
    });
 
 </script>

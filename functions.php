@@ -869,7 +869,7 @@ function forgotPassword(){
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 			// More headers
-			$headers .= 'From: Qatar Petroleum' . "\r\n";
+			$headers .= 'From: Qatar Petroleum <shyju.k@dgfootprints.com>' . "\r\n";
 			if(mail($to,$subject,$message,$headers)){
 				echo "Mail has been sent";
 			}

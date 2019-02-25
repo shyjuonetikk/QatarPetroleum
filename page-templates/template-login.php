@@ -32,7 +32,7 @@ get_header('login');
 		  	wp_login_form( $args ); 
 		  ?> 
 		  <div class="float-left">
-		  	Don't have an account ? Please <a href="<?php echo $homeurl; ?>/sign-up/">Sign up</a>
+		  	Don't have an account ?<a href="<?php echo $homeurl; ?>/sign-up/"> <b>Sign up</b></a>
 		  </div>
 		  <div class="float-right">
 		  	<a href="<?php echo $homeurl; ?>/forgot-password/">Forgot Password ?</a>

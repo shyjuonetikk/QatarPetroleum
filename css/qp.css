@@ -175,6 +175,9 @@ footer .list-inline-item a:hover {
 #main-menu li.active > a {
     color: #71CC98 !important;
 }
+body.logged-in nav{
+	    top: 30px;
+}
 /************Home Page*******************/
 #mainNav {
     background: #fff;
@@ -747,7 +750,6 @@ body.modal-open {
 .faq-textp {
     color: #657786 !important;
     margin-bottom: 0;
-    font-weight: 600;
 }
 
 .nav-panes>p {
@@ -952,7 +954,9 @@ ul.about-sect-links>li>a.abt-nav-link.active {
     border-bottom: 3px solid #6cca98 !important;
     padding-bottom: 5px;
 }
-
+.about-sect-links .abt-nav-item {
+    margin-right: 5%;
+}
 #border-line {
     height: 7px;
     width: 30% !important;
@@ -971,7 +975,7 @@ div#strategy-desc>p {
     font-weight: 400;
 }
 
-.value-item-one>h6 {
+.value-item-one h6 {
     font-weight: 300;
     color: #657786;
 }
@@ -1391,6 +1395,7 @@ body.upcoming-events {
     margin-top: 15px;
     padding-bottom: 10px;
     background: transparent !important;
+    border: 1px solid #657786;
 }
 #qp-loginform #wp-submit, .btn-signup{
     width: 120px;
@@ -1412,7 +1417,15 @@ body.upcoming-events {
    box-shadow: none !important;
     -webkit-box-shadow: none !important;
 }
-
+.sec-bg-login a,.sec-bg-login{
+	color: #003C71;
+}
+.sec-bg-login input::placeholder {
+  color: #CCD6DD;
+}
+.sec-bg-login input:focus::placeholder {
+  color: #14171A;
+}
 .btn-signup:focus{
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -1438,12 +1451,17 @@ body.upcoming-events {
     background: none !important;
 }
 
-.qp-fields{
-    border-top: none !important;
+.qp-fields,.qp-fields:focus{
+	border-top: none !important;
     border-left: none !important;
     border-right: none !important;
     background: none !important;
     border-radius: 0px !important;
+    padding: 0px;
+    font-size: 18px;
+    margin-top: 3px;
+    padding-bottom: 10px;
+    border: 1px solid #657786;
 }
 .field-icon {
   float: right;
@@ -1478,6 +1496,12 @@ body.upcoming-events {
 
 ul.event-filterlist, ul#filter {
     margin-bottom: -1px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
 }
 /*a.pop-up-hover > img {
     width: 354px;
@@ -1542,7 +1566,7 @@ nav#qp-sticky {
     background: #ffffff;
     position: fixed;
 }
-body {
+.main-content {
     padding-top: 85px;
 }
 

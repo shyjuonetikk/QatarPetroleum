@@ -100,6 +100,9 @@
     .lds-ripple {
     left: 23%;
     }
+    .about-sect-links .abt-nav-item{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1400px) {

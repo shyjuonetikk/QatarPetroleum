@@ -15,16 +15,16 @@ get_header();
                 </div>
                 <div class="col-12 justify-content-left align-self-top">
                     <ul class="about-sect-links float-left w-100 p-0 col-lg-10 col-md-12">
-                        <li class="abt-nav-item col-lg-3">
+                        <li class="abt-nav-item">
                             <a id="msg-ceo-sel" class="abt-nav-link" href="#msg-ceo">MESSAGE FROM THE CEO</a>
                         </li>
-                        <li class="abt-nav-item col-lg-3 col-md-12">
+                        <li class="abt-nav-item">
                             <a id="strat-sec-sel" class="abt-nav-link" href="#abt-vision">VISION STATEMENT</a>
                         </li>
-                        <li class="abt-nav-item col-lg-3 col-md-12">
+                        <li class="abt-nav-item">
                             <a id="values-sec-sel" class="abt-nav-link" href="#strat-sec">STRATEGY AND VALUES</a>
                         </li>
-                        <li class="abt-nav-item col-lg-3 col-md-12">
+                        <li class="abt-nav-item">
                             <a id="abt-vision-sel" class="abt-nav-link" href="#values-sec">OUR STRATEGY</a>
                         </li>
                     </ul>
@@ -95,8 +95,10 @@ $message = $msgceo['message'];
 the_field('our_values_intro');
 if (have_rows('our_values_list')):
 	while (have_rows('our_values_list')): the_row();
+        echo '<div class="mt-5">';
 		echo '<h6>' . get_sub_field('value_name') . '</h6>';
 		the_sub_field('value_description');
+        echo '</div>';
 	endwhile;
 else:
 endif;

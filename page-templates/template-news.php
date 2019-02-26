@@ -37,13 +37,29 @@ if ($query->have_posts()) {
 		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 		?>
 	  <div>
-	  	<div class="news-slider-image w-100">
+	  	<div class="news-slider-image w-100" id="slider-thumb-<?php echo $post_id; ?>">
 			<img class="w-100" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post_title; ?>">
 			 <div class="news-slider-image-content">
 			 	<div class="post-date text-left pb-2 font-weight-light"> <span><?php echo get_the_date('M j, Y'); ?></span></div>
 			 	<h1 class="text-left"><?php echo $post_title; ?></h1>
 			 </div>
 		</div>
+		<script type="text/javascript">
+			var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+			var $jq = jQuery.noConflict();
+			$jq('#slider-thumb-<?php echo $post_id; ?>').click(function(){
+				var id = '<?php echo $post_id; ?>';
+		        $jq.post(ajaxUrl,{action:"newsPopup",
+		          post_id: id,
+		        },
+		           function(data){
+		              $jq("html, body").animate({ scrollTop: "0" },500);
+		              $jq('#qp-news-popup').html(data);
+		              $jq("#qp-news-popup").fadeIn();
+		              $jq("body").addClass("modal-open");   
+		          });
+			});
+		</script>
 	  </div>
 	<?php	}
 	wp_reset_query();}?>

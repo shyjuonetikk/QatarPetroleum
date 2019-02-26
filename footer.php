@@ -62,17 +62,17 @@ wp_nav_menu(
   $jq('#overlay').fadeOut();
 });
 
-   $jq(document).ready(function(){
+$jq(document).ready(function(){
 
       var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
       var page = 1;
-$jq(".dropdown-toggle").dropdown();
-  // Video Lightbox
+      $jq(".dropdown-toggle").dropdown();
+        // Video Lightbox
 
-  $jq(document).on('click', '[data-toggle="lightbox"]', function(event) {
-    event.preventDefault();
-    $jq(this).ekkoLightbox();
-});
+        $jq(document).on('click', '[data-toggle="lightbox"]', function(event) {
+          event.preventDefault();
+          $jq(this).ekkoLightbox();
+      });
 
     // Slick
     $jq('.center').slick({
@@ -335,8 +335,9 @@ $jq(".dropdown-toggle").dropdown();
             }
         });
       // Events popup ends
+      
 
-   });
+});
 
 </script>
 </body>

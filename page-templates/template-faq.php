@@ -53,17 +53,19 @@ get_header();
                     <div class="nav-panes" id="nav-job">
                         <h2>Job Offer Process Review</h2>
                         <?php
-the_field('job_offer_process_overview_intro');
-if (have_rows('job_offer_stages')):
-	while (have_rows('job_offer_stages')): the_row();
-    echo '<div class="mt-5">';
-		echo '<p class="faq-textp">' . get_sub_field('stage_head') . '</p>';
-		the_sub_field('stage_description');
-    echo '</div>';
-	endwhile;
-else:
-endif;
-?>
+                          the_field('job_offer_process_overview_intro');
+                          if (have_rows('job_offer_stages')):
+                          	while (have_rows('job_offer_stages')): the_row();
+
+                              echo '<div class="mt-5">';
+                          		echo '<p class="faq-textp">' . get_sub_field('stage_head') . '</p>';
+                          		the_sub_field('stage_description');
+                              echo '</div>';
+                          	endwhile;
+                          else:
+                          endif;
+                          ?>
+
 
                         <h4>Related Questions</h4>
 

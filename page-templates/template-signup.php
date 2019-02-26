@@ -45,10 +45,4 @@ get_header('login');
         </div>
       </div>
   </section>
-  <?php
-
- $str = "Hello";
-echo md5($str);
-
-  ?>
 <?php get_footer('login');?>

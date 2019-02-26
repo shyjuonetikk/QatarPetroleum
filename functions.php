@@ -1086,15 +1086,24 @@ function newsignup_list() {
 			<?php
 				global $wpdb;
 				$result = $wpdb->get_results( "SELECT ID,username,password FROM wp_signups" );
-				foreach( $result as $results ) {
-        			echo '
-        					<tr>
-								<td>'.$results->username.'</td>
-								<td><a href="#" data-value="approve" data-id="'.$results->ID.'">Approve</a> / <a href="#" data-value="reject" data-id="'.$results->ID.'">Reject</a></td>
-							</tr>
+				if(empty($result)){
+					echo '
+						<tr>
+							<td><h3>No new user sign ups found..</h3></td>
+						</tr>
+					';
+				}
+				else{
+					foreach( $result as $results ) {
+	        			echo '
+	        					<tr>
+									<td>'.$results->username.'</td>
+									<td><a href="#" data-value="approve" data-id="'.$results->ID.'">Approve</a> / <a href="#" data-value="reject" data-id="'.$results->ID.'">Reject</a></td>
+								</tr>
 
-        			';
-    			}
+	        			';
+	    			}
+				}
 			?>
 			
 		</table>

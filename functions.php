@@ -704,8 +704,8 @@ add_action('wp_ajax_eventsPopup', 'eventsPopup');
 function signUp(){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
+	$admin_email = get_option( 'admin_email' );
 	$password = wp_hash_password($password);
-
 	$users = get_user_by('login', $username);
 	$parts = explode('@', $username);
 	$user = $parts[0];
@@ -728,9 +728,45 @@ function signUp(){
 			    'password' => $password,
 			));
 
-			echo "success";
+			if($insert){
+				$to = $username;
+				$subject = "Registration";
+
+				$message = "
+				<html>
+				<head>
+					<title>Registration</title>
+				</head>
+				<body>
+				<p>Thank you for Signing up with Qatar Petroleum. Your registration is being verified by the Admin</p>
+				</body>
+				</html>
+				";
+
+				// Always set content-type when sending HTML email
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+				// More headers
+				$headers .= 'From: Qatar Petroleum <'.$admin_email.'>' . "\r\n";
+				if(mail($to,$subject,$message,$headers)){
+					echo '<div class="alert alert-info">
+			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Mail Sent! </strong> Please check your email for password reset link.
+					    </div>';
+				}
+				else{
+					echo '<div class="alert alert-danger">
+			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Mail Not Sent! </strong> Something went wrong.
+					    </div>';
+				}
+				echo "success";
+			}
+
+			
 		} else {
-			echo "inner error";
+			echo "error";
 		}
 	}
 	else{
@@ -851,7 +887,6 @@ function add_loginout_link( $items, $args ) {
 	$redirect = get_site_url() . "/login";
     if (is_user_logged_in() && $args->theme_location == 'primary') {
         $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
-        				
         				<div class="dropdown">
 						  <a class="wel-user dropdown-toggle nav-link" data-toggle="dropdown">
 						    WELCOME USER 
@@ -1033,7 +1068,7 @@ function getDomain(){
 		</div>";
 	}
 	else{
-		echo "Domain not added..";
+		echo "Not able to add domain..";
 	} ?>
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -1089,7 +1124,7 @@ function newsignup_list() {
 				if(empty($result)){
 					echo '
 						<tr>
-							<td><h3>No new user sign ups found..</h3></td>
+							<td><h3>No new user signups found..</h3></td>
 						</tr>
 					';
 				}
@@ -1141,6 +1176,8 @@ add_action('wp_ajax_nopriv_newsignup_list', 'newsignup_list');
 add_action('wp_ajax_newsignup_list', 'newsignup_list');
 
 function createUser(){
+	$admin_email = get_option( 'admin_email' );
+	$loginurl = site_url().'/login/';
 
 	$action = $_POST['status'];
 	$id 	= $_POST['id'];
@@ -1159,6 +1196,40 @@ function createUser(){
         $user_id = wp_create_user( $username, $password, $username );
         if($user_id){
         	$wpdb->delete( 'wp_signups', array( 'ID' =>  $id) );
+        	$to = $username;
+			$subject = "Registration Approved";
+
+			$message = "
+			<html>
+			<head>
+				<title>Registration Approved</title>
+			</head>
+			<body>
+			<p>
+				Congratulations! Your registration has been confimed. Please proceed to  login at <a href='".$loginurl."'>Click here to login</a>
+			</p>
+			</body>
+			</html>
+			";
+
+			// Always set content-type when sending HTML email
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+			// More headers
+			$headers .= 'From: Qatar Petroleum <'.$admin_email.'>' . "\r\n";
+			if(mail($to,$subject,$message,$headers)){
+				echo '<div class="alert alert-info">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Sent! </strong> Please check your email for password reset link.
+				    </div>';
+			}
+			else{
+				echo '<div class="alert alert-danger">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Not Sent! </strong> Something went wrong.
+				    </div>';
+			}
         	echo "New user approved Successfully";
         }
         else{
@@ -1175,6 +1246,8 @@ function createUser(){
 
 add_action('wp_ajax_nopriv_createUser', 'createUser');
 add_action('wp_ajax_createUser', 'createUser');
+
+
 
 
 

@@ -150,7 +150,7 @@ function more_news_ajax() {
 			$post_url = get_the_permalink();
 			$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
 			?>
-			<div class="qp-h-latestnews-content">
+			<div class="qp-h-latestnews-content" data-post-id="<?php echo $post_id; ?>">
               <div class="row">
                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 post-image float-left">
                   <a href="#">
@@ -167,7 +167,30 @@ function more_news_ajax() {
             </div>
 				<?php	}
 		wp_reset_query();
-	} else {
+	 ?>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq(document).ready(function(){
+				var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+				$jq(".qp-h-latestnews-content").click(function() {
+			        var postid = $jq(this).data('post-id');
+			        $jq.post(ajaxUrl,{action:"newsPopup",
+			          post_id: postid,
+			        },
+			           function(data){
+			              $jq("html, body").animate({ scrollTop: "0" },500);
+			              $jq('#qp-news-popup').html(data);
+			              $jq("#qp-news-popup").fadeIn();
+			              $jq("body").addClass("modal-open");   
+			          });
+			      });
+			});
+		</script>
+<?php } else {
 	}
 	exit;
 }
@@ -253,7 +276,7 @@ function news_filter() {
 				$featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";
 			}
 			?>
-			<div class="qp-h-latestnews-content">
+			<div class="qp-h-latestnews-content" data-post-id="<?php echo $post_id; ?>">
               <div class="row">
                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 post-image float-left">
                   <a href="#">
@@ -270,6 +293,28 @@ function news_filter() {
             </div>
 		<?php	}
 		wp_reset_query();?>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<script type="text/javascript">
+				var $jq = jQuery.noConflict();
+				$jq(document).ready(function(){
+					var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+					$jq(".qp-h-latestnews-content").click(function() {
+				        var postid = $jq(this).data('post-id');
+				        $jq.post(ajaxUrl,{action:"newsPopup",
+				          post_id: postid,
+				        },
+				           function(data){
+				              $jq("html, body").animate({ scrollTop: "0" },500);
+				              $jq('#qp-news-popup').html(data);
+				              $jq("#qp-news-popup").fadeIn();
+				              $jq("body").addClass("modal-open");   
+				          });
+				      });
+				});
+			</script>
 		</div> <!-- news-container -->
 		<hr>
 			<?php if ($maxpages > 1) {?>
@@ -511,12 +556,12 @@ function newsPopup(){
 
 	wp_reset_postdata();
 	?>
-	<div class="container">
+	<div class="container" id="pop-container">
 		<div class="row">
 			<div class="news-popup w-100 bg-white">
 				<div class="col-10 mx-auto mb-5">
 					<div class="arrow-nav">
-					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">go back</a>
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" id="go-back">go back</a>
 					</div>
 					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
 					</div>
@@ -571,14 +616,14 @@ function newsPopup(){
 								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" id="inner-thumb" data-post-id="<?php echo $post_id; ?>">
 									<div class="row">
 										<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 post-image float-left pb-sm-3">
-											<a href="#">
-												<img src="<?php echo $featured_img_url; ?>" class="img-fluid w-100 border-0" alt="">
+											<a href="<?php echo $post_url; ?>">
+												<img src="<?php echo $featured_img_url; ?>" class="img-fluid w-100 border-0" alt="<?php echo $post_title; ?>">
 											</a>
 										</div>
 										<div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 post-content pt-1 pl-lg-0 pl-md-0 pl-xl-0 pt-md-0 pt-lg-1 pt-xl-4">
 											<div class="post-date text-left pb-2"> <span><?php echo get_the_date('M j, Y'); ?></span>
 											</div>
-											<h6 class="text-left font-weight-bold"><a href="#"><?php echo $post_title; ?></a></h6>
+											<h6 class="text-left font-weight-bold"><a href="<?php echo $post_url; ?>"><?php echo $post_title; ?></a></h6>
 										</div>
 									</div>
 								</div>
@@ -588,6 +633,17 @@ function newsPopup(){
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+				<script type="text/javascript">
+					var $jq = jQuery.noConflict();
+					$jq(document).ready(function(){
+						$jq("#go-back").click(function(){
+							$jq("#qp-news-popup").fadeOut(500);
+							$jq("body").removeClass("modal-open");
+						});
+					});
+				</script>
 			<!-- news-popup -->
 		</div>
 	</div>
@@ -621,7 +677,7 @@ function eventsPopup(){
         <div class="news-popup w-100 bg-white">
             <div class="col-10 mx-auto mb-5">
 					<div class="arrow-nav">
-					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">go back</a>
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" id="back-btnn" href="">go back</a>
 					</div>
 					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
 					</div>
@@ -689,6 +745,17 @@ function eventsPopup(){
                     <?php } wp_reset_query(); } ?>
                 </div>
             </div>
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+				<script type="text/javascript">
+					var $jq = jQuery.noConflict();
+					$jq(document).ready(function(){
+						$jq("#back-btn").click(function(){
+							$jq("#event-news-popup").fadeOut(500);
+							$jq("body").removeClass("modal-open");
+						});
+					});
+				</script>
         </div>
     </div>
 
@@ -704,8 +771,8 @@ add_action('wp_ajax_eventsPopup', 'eventsPopup');
 function signUp(){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
+	$admin_email = get_option( 'admin_email' );
 	$password = wp_hash_password($password);
-
 	$users = get_user_by('login', $username);
 	$parts = explode('@', $username);
 	$user = $parts[0];
@@ -728,9 +795,45 @@ function signUp(){
 			    'password' => $password,
 			));
 
-			echo "success";
+			if($insert){
+				$to = $username;
+				$subject = "Registration";
+
+				$message = "
+				<html>
+				<head>
+					<title>Registration</title>
+				</head>
+				<body>
+				<p>Thank you for Signing up with Qatar Petroleum. Your registration is being verified by the Admin</p>
+				</body>
+				</html>
+				";
+
+				// Always set content-type when sending HTML email
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+				// More headers
+				$headers .= 'From: Qatar Petroleum <'.$admin_email.'>' . "\r\n";
+				if(mail($to,$subject,$message,$headers)){
+					echo '<div class="alert alert-info">
+			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Mail Sent! </strong> Please check your email for password reset link.
+					    </div>';
+				}
+				else{
+					echo '<div class="alert alert-danger">
+			    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Mail Not Sent! </strong> Something went wrong.
+					    </div>';
+				}
+				echo "success";
+			}
+
+			
 		} else {
-			echo "inner error";
+			echo "error";
 		}
 	}
 	else{
@@ -851,7 +954,6 @@ function add_loginout_link( $items, $args ) {
 	$redirect = get_site_url() . "/login";
     if (is_user_logged_in() && $args->theme_location == 'primary') {
         $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item">
-        				
         				<div class="dropdown">
 						  <a class="wel-user dropdown-toggle nav-link" data-toggle="dropdown">
 						    WELCOME USER 
@@ -1033,7 +1135,7 @@ function getDomain(){
 		</div>";
 	}
 	else{
-		echo "Domain not added..";
+		echo "Not able to add domain..";
 	} ?>
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -1086,15 +1188,24 @@ function newsignup_list() {
 			<?php
 				global $wpdb;
 				$result = $wpdb->get_results( "SELECT ID,username,password FROM wp_signups" );
-				foreach( $result as $results ) {
-        			echo '
-        					<tr>
-								<td>'.$results->username.'</td>
-								<td><a href="#" data-value="approve" data-id="'.$results->ID.'">Approve</a> / <a href="#" data-value="reject" data-id="'.$results->ID.'">Reject</a></td>
-							</tr>
+				if(empty($result)){
+					echo '
+						<tr>
+							<td><h3>No new user signups found..</h3></td>
+						</tr>
+					';
+				}
+				else{
+					foreach( $result as $results ) {
+	        			echo '
+	        					<tr>
+									<td>'.$results->username.'</td>
+									<td><a href="#" data-value="approve" data-id="'.$results->ID.'">Approve</a> / <a href="#" data-value="reject" data-id="'.$results->ID.'">Reject</a></td>
+								</tr>
 
-        			';
-    			}
+	        			';
+	    			}
+				}
 			?>
 			
 		</table>
@@ -1132,6 +1243,8 @@ add_action('wp_ajax_nopriv_newsignup_list', 'newsignup_list');
 add_action('wp_ajax_newsignup_list', 'newsignup_list');
 
 function createUser(){
+	$admin_email = get_option( 'admin_email' );
+	$loginurl = site_url().'/login/';
 
 	$action = $_POST['status'];
 	$id 	= $_POST['id'];
@@ -1150,6 +1263,40 @@ function createUser(){
         $user_id = wp_create_user( $username, $password, $username );
         if($user_id){
         	$wpdb->delete( 'wp_signups', array( 'ID' =>  $id) );
+        	$to = $username;
+			$subject = "Registration Approved";
+
+			$message = "
+			<html>
+			<head>
+				<title>Registration Approved</title>
+			</head>
+			<body>
+			<p>
+				Congratulations! Your registration has been confimed. Please proceed to  login at <a href='".$loginurl."'>Click here to login</a>
+			</p>
+			</body>
+			</html>
+			";
+
+			// Always set content-type when sending HTML email
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+			// More headers
+			$headers .= 'From: Qatar Petroleum <'.$admin_email.'>' . "\r\n";
+			if(mail($to,$subject,$message,$headers)){
+				echo '<div class="alert alert-info">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Sent! </strong> Please check your email for password reset link.
+				    </div>';
+			}
+			else{
+				echo '<div class="alert alert-danger">
+		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Mail Not Sent! </strong> Something went wrong.
+				    </div>';
+			}
         	echo "New user approved Successfully";
         }
         else{
@@ -1166,6 +1313,8 @@ function createUser(){
 
 add_action('wp_ajax_nopriv_createUser', 'createUser');
 add_action('wp_ajax_createUser', 'createUser');
+
+
 
 
 

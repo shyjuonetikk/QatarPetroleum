@@ -64,7 +64,6 @@ get_header();
                           else:
                           endif;
                           ?>
-
                         <div class="w-100">
                           <?php
                           if (have_rows('job_file_upload')):
@@ -78,7 +77,7 @@ get_header();
                           endif;
                           ?>
                         </div>
-
+                        
                         <h4>Related Questions</h4>
 
                         <!-- Accordion -->

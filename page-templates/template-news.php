@@ -70,34 +70,34 @@ if ($query->have_posts()) {
             <div class="clearfix"></div>
         <div id="news-main">
         	<?php
-$query = new WP_Query(array(
-	'post_type' => array('qp_news'),
-	'post_status' => 'publish',
-	'posts_per_page' => 4,
-	'tag' => 'latest-news',
-	'orderby' => 'date',
-	'order' => 'DESC',
-));
-$maxpages = $query->max_num_pages;
-?>
+				$query = new WP_Query(array(
+					'post_type' => array('qp_news'),
+					'post_status' => 'publish',
+					'posts_per_page' => 4,
+					'tag' => 'latest-news',
+					'orderby' => 'date',
+					'order' => 'DESC',
+				));
+				$maxpages = $query->max_num_pages;
+			?>
 			<div class="news-container">
             <?php
-if ($query->have_posts()) {
-	while ($query->have_posts()) {
-		$query->the_post();
-		$post_id = get_the_ID();
-		$post_title = get_the_title();
-		$post_title_len = strlen($post_title);
-		$title_length = strlen($post_title);
-		if ($title_length > "98") {
-			$post_title = substr($post_title, 0, 98) . "...";
-		}
-		$post_content = get_the_excerpt();
-		$post_url = get_the_permalink();
-		if (has_post_thumbnail()) {
-			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
-		?>
+				if ($query->have_posts()) {
+					while ($query->have_posts()) {
+						$query->the_post();
+						$post_id = get_the_ID();
+						$post_title = get_the_title();
+						$post_title_len = strlen($post_title);
+						$title_length = strlen($post_title);
+						if ($title_length > "98") {
+							$post_title = substr($post_title, 0, 98) . "...";
+						}
+						$post_content = get_the_excerpt();
+						$post_url = get_the_permalink();
+						if (has_post_thumbnail()) {
+							$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+						} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
+			?>
 			<div class="qp-h-latestnews-content" data-post-id="<?php echo $post_id; ?>">
               <div class="row">
                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 post-image float-left">
@@ -134,33 +134,33 @@ if ($query->have_posts()) {
 
              <?php
 
-$query = new WP_Query(array(
-	'post_type' => array('qp_news'),
-	'post_status' => 'publish',
-	'tag' => 'recent-news',
-	'posts_per_page' => 4,
-));
-$maxpages = $query->max_num_pages;
+				$query = new WP_Query(array(
+					'post_type' => array('qp_news'),
+					'post_status' => 'publish',
+					'tag' => 'recent-news',
+					'posts_per_page' => 4,
+				));
+				$maxpages = $query->max_num_pages;
 
-?>
+			?>
 
             <?php
-if ($query->have_posts()) {
-	while ($query->have_posts()) {
-		$query->the_post();
-		$post_id = get_the_ID();
-		$post_title = get_the_title();
-		$post_title_len = strlen($post_title);
-		$title_length = strlen($post_title);
-		if ($title_length > "80") {
-			$post_title = substr($post_title, 0, 80) . "...";
-		}
-		$post_content = get_the_excerpt();
-		$post_url = get_the_permalink();
-		if (has_post_thumbnail()) {
-			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
-		?>
+				if ($query->have_posts()) {
+					while ($query->have_posts()) {
+						$query->the_post();
+						$post_id = get_the_ID();
+						$post_title = get_the_title();
+						$post_title_len = strlen($post_title);
+						$title_length = strlen($post_title);
+						if ($title_length > "80") {
+							$post_title = substr($post_title, 0, 80) . "...";
+						}
+						$post_content = get_the_excerpt();
+						$post_url = get_the_permalink();
+						if (has_post_thumbnail()) {
+							$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+						} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
+			?>
 
             <div class="qp-h-recentnews-content" data-post-id="<?php echo $post_id; ?>">
               <div class="row">
@@ -177,8 +177,7 @@ if ($query->have_posts()) {
               </div>
             </div>
 
-            <?php	}
-	wp_reset_query();}?>
+            <?php	} wp_reset_query(); } ?>
 
           </div>
         </div>

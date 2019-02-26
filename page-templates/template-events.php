@@ -67,7 +67,7 @@ if ($query->have_posts()) {
                         </div>
                     </div>
                 <?php }
-	wp_reset_query();}?>
+	wp_reset_query(); }?>
                 </div>
             </div>
         </div>
@@ -81,33 +81,33 @@ if ($query->have_posts()) {
             <div id="past-content" class="col-xl-12 float-left px-0">
                 <div class="row col-lg-12 mx-auto p-0 mt-5">
                     <?php
-$today = date('Ymd');
-$query = new WP_Query(array(
-	'post_type' => 'events',
-	'order' => 'DESC',
-	'posts_per_page' => 8,
-	'meta_key' => 'event_date',
-	'meta_query' => array(
-		array(
-			'key' => 'event_date',
-			'value' => $today,
-			'compare' => '<',
-		),
-	),
-));
-if ($query->have_posts()) {
-	while ($query->have_posts()) {
-		$query->the_post();
-		$post_id = get_the_ID();
-		$post_title = get_the_title();
-		$post_content = get_the_excerpt();
-		$post_url = get_the_permalink();
-		$location = get_post_meta($post_id, 'event_place', true);
-		$date = get_post_meta($post_id, 'event_date', true);
-		if (has_post_thumbnail()) {
-			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
-		?>
+                        $today = date('Ymd');
+                        $query = new WP_Query(array(
+                        	'post_type' => 'events',
+                        	'order' => 'DESC',
+                        	'posts_per_page' => 8,
+                        	'meta_key' => 'event_date',
+                        	'meta_query' => array(
+                        		array(
+                        			'key' => 'event_date',
+                        			'value' => $today,
+                        			'compare' => '<',
+                        		),
+                        	),
+                        ));
+                        if ($query->have_posts()) {
+                        	while ($query->have_posts()) {
+                        		$query->the_post();
+                        		$post_id = get_the_ID();
+                        		$post_title = get_the_title();
+                        		$post_content = get_the_excerpt();
+                        		$post_url = get_the_permalink();
+                        		$location = get_post_meta($post_id, 'event_place', true);
+                        		$date = get_post_meta($post_id, 'event_date', true);
+                        		if (has_post_thumbnail()) {
+                        			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+                        		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		              ?>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-flex px-2">
                         <div class="up-past-block" data-post-id="<?php echo $post_id; ?>">
                             <div class="col-12 float-left px-0 pb-3">
@@ -124,8 +124,7 @@ if ($query->have_posts()) {
                             <a id="past-event-pop" data-post-id="<?php echo $post_id; ?>" class="readmore-arrow"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <?php }
-	wp_reset_query();}?>
+                    <?php } wp_reset_query(); } ?>
                 </div>
             </div>
         </div>

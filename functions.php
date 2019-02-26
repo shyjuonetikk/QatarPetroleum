@@ -639,7 +639,7 @@ function newsPopup(){
 										<div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 post-content pt-1 pl-lg-0 pl-md-0 pl-xl-0 pt-md-0 pt-lg-1 pt-xl-4">
 											<div class="post-date text-left pb-2"> <span><?php echo get_the_date('M j, Y'); ?></span>
 											</div>
-											<h6 class="text-left font-weight-bold"><a href="<?php echo $post_url; ?>"><?php echo $post_title; ?></a></h6>
+											<h6 class="text-left font-weight-bold"><a href="#"><?php echo $post_title; ?></a></h6>
 										</div>
 									</div>
 								</div>

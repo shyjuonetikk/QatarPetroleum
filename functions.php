@@ -613,10 +613,26 @@ function newsPopup(){
 												$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 											} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 								?>
-								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" id="inner-thumb" data-post-id="<?php echo $post_id; ?>">
+								<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+								<script type="text/javascript">
+									function innerpopup(post_id){
+										var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+										var $jq = jQuery.noConflict();
+									        $jq.post(ajaxUrl,{action:"newsPopup",
+									          post_id: post_id,
+									        },
+									           function(data){
+									              $jq("html, body").animate({ scrollTop: "0" },500);
+									              $jq('#qp-news-popup').html(data);
+									              $jq("#qp-news-popup").fadeIn();
+									              $jq("body").addClass("modal-open");   
+									          });
+									}
+								</script>
+								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" id="inner-thumb" onclick="innerpopup(<?php echo $post_id; ?>)" data-post-id="<?php echo $post_id; ?>">
 									<div class="row">
 										<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 post-image float-left pb-sm-3">
-											<a href="<?php echo $post_url; ?>">
+											<a>
 												<img src="<?php echo $featured_img_url; ?>" class="img-fluid w-100 border-0" alt="<?php echo $post_title; ?>">
 											</a>
 										</div>

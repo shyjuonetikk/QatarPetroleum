@@ -520,19 +520,19 @@ function more_gallery() {
             </div>
         <?php }
 		wp_reset_query();}?>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript">
-	var $jq = jQuery.noConflict();
-   	$jq(document).ready(function(){
-   		$jq(function(){
-		    var $gallery = $jq('.gallery > div > a').simpleLightbox();
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/simple-lightbox.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+		   	$jq(document).ready(function(){
+		   		$jq(function(){
+				    var $gallery = $jq('.gallery > div > a').simpleLightbox();
 
-		});
-   	});
-</script>
+				});
+		   	});
+		</script>
 
 <?php
 exit;
@@ -1051,27 +1051,51 @@ function adddomain_list() {
 
 <hr class="wp-header-end">
 	<div class="row" id="domain-list">
-		<h2 class="screen-reader-text">Domain list</h2>
+		<?php
+				global $wpdb;
+				$result = $wpdb->get_results( "SELECT ID,domain_name FROM wp_domains" );
+				if($result){ ?>
 		<table class="wp-list-table widefat fixed striped users">
 			<tr>
 				<th>Domain Name</th>
 				<th>Action</th>
 			</tr>
 			<?php
-				global $wpdb;
-				$result = $wpdb->get_results( "SELECT domain_name FROM wp_domains" );
-				foreach( $result as $results ) {
-        			echo '
-        					<tr>
-								<td>'.$results->domain_name.'</td>
-							</tr>
-
-        			';
-    			}
+					foreach( $result as $results ) {
+	        			echo '
+	        					<tr>
+									<td>'.$results->domain_name.'</td>
+									<td><a data-option="delete" data-id="'.$results->ID.'">delete</a></td>
+								</tr>
+	        				';
+	    			}
 			?>
-			
+			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<script type="text/javascript">
+				var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+				var $jq = jQuery.noConflict();
+
+				$jq("#domain-list a").click(function(){
+					var option = $jq(this).data('option');
+					var id = $jq(this).data('id');
+					$jq.post(ajaxUrl,{action:"updateDomain",
+				      	option: option,
+				      	id: id,
+				      },
+				      function(data){
+				      	$jq('#domain-list').html(data);
+				      });
+				});
+			</script>
 		</table>
+		<?php }
+				else{
+					echo "<h3>No domain names found..</h3>";
+				}
+		?>
 	</div>
+
 	<div class="row" style="display: none;" id="new-domain">
 		<div class="form-group">
 			<hr class="wp-header-end">
@@ -1118,6 +1142,38 @@ function adddomain_list() {
 add_action('wp_ajax_nopriv_adddomain_list', 'adddomain_list');
 add_action('wp_ajax_adddomain_list', 'adddomain_list');
 
+// Update Domain
+
+function updateDomain(){
+
+	$option = $_POST['option'];
+	$id = $_POST['id'];
+
+	global $wpdb;
+
+	$delete = $wpdb->delete( 'wp_domains', array( 'ID' => $id ) );
+
+	if($delete){
+		echo "Domain deleted successfully !
+			<button class='btn' id='del-success'>Ok</button>
+			";
+	}
+?>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+	var $jq = jQuery.noConflict();
+	$jq('#del-success').click(function(){
+		location.reload();
+	});
+</script>
+<?php
+	exit;
+}
+
+add_action('wp_ajax_nopriv_updateDomain', 'updateDomain');
+add_action('wp_ajax_updateDomain', 'updateDomain');
+
 
 function getDomain(){
 
@@ -1139,13 +1195,13 @@ function getDomain(){
 	} ?>
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript">
-	var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
-	var $jq = jQuery.noConflict();
-		$jq('#ok-btn').click(function(){
-		location.reload();
-	});
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript">
+		var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+		var $jq = jQuery.noConflict();
+			$jq('#ok-btn').click(function(){
+			location.reload();
+		});
 	</script>
 
 <?php

@@ -496,86 +496,6 @@ exit;
 add_action('wp_ajax_nopriv_more_gallery', 'more_gallery');
 add_action('wp_ajax_more_gallery', 'more_gallery');
 
-
-
-// Sign up Form
-
-function signUp(){
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	$users = get_user_by('login', $username);
-
-	$user_id = $users->ID;
-
-	if ( username_exists( $username ) ){
-		$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
-		 if ( is_wp_error( $user_data ) ) {
-		    // There was an error; possibly this user doesn't exist.
-		    echo 'Error.';
-		} else {
-		    // Success!
-		    echo 'Success';
-		}
-	}
-    else {
-        echo 'error';
-    }
-	exit;
-}
-
-add_action('wp_ajax_nopriv_signUp', 'signUp');
-add_action('wp_ajax_signUp', 'signUp');
-
-// Disable change password email
-
-//add_filter( 'send_password_change_email', '__return_false' );
-
-function override_reset_password_form_redirect() {
-    $action = isset( $_GET['action'] ) ? $_GET['action'] : '';
-    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
-    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
-
-    if($_GET['action']==='rp' && strpos($_SERVER['REQUEST_URI'],'wp-login.php')) {
-	    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
-	    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
-	    wp_redirect( site_url( '/reset-password/' ) . '?key=' . $key . '&login=' . $login );
-	    exit;
-	}
-}
-add_action( 'init', 'override_reset_password_form_redirect' );
-
-
-// Reset password
-
-function resetpassword(){
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	$users = get_user_by('login', $username);
-
-	$user_id = $users->ID;
-
-	if ( username_exists( $username ) ){
-		$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
-		 if ( is_wp_error( $user_data ) ) {
-		    // There was an error; possibly this user doesn't exist.
-		    echo 'Error.';
-		} else {
-		    // Success!
-		    echo 'Success';
-		}
-	}
-    else {
-        echo 'error';
-    }
-	exit;
-}
-
-add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
-add_action('wp_ajax_resetpassword', 'resetpassword');
-
-
 // News pop up
 
 function newsPopup(){
@@ -779,6 +699,111 @@ function eventsPopup(){
 add_action('wp_ajax_nopriv_eventsPopup', 'eventsPopup');
 add_action('wp_ajax_eventsPopup', 'eventsPopup');
 
+// Sign up Form
+
+function signUp(){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$password = wp_hash_password($password);
+
+	$users = get_user_by('login', $username);
+	$parts = explode('@', $username);
+	$user = $parts[0];
+	$domain = $parts[1];
+	$name = explode('.', $domain);
+	$domainname = $name[0];
+
+	$user_id = $users->ID;
+
+	global $wpdb;
+
+	$myrows = $wpdb->get_results( "SELECT domain_name FROM wp_domains WHERE domain_name LIKE '%$domainname%'" );
+
+	if(!empty($myrows)){
+		$user_id = username_exists( $user_name );
+		if ( !$user_id and email_exists($username) == false ) {
+
+			$insert = $wpdb->insert('wp_signups', array(
+			    'username' => $username,
+			    'password' => $password,
+			));
+
+			echo "success";
+		} else {
+			echo "inner error";
+		}
+	}
+	else{
+		echo "error";
+	}
+
+	// if ( username_exists( $username ) ){
+	// 	$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
+	// 	 if ( is_wp_error( $user_data ) ) {
+	// 	    // There was an error; possibly this user doesn't exist.
+	// 	    echo 'Error.';
+	// 	} else {
+	// 	    // Success!
+	// 	    echo 'Success';
+	// 	}
+	// }
+ //    else {
+ //        echo 'error';
+ //    }
+	exit;
+}
+
+add_action('wp_ajax_nopriv_signUp', 'signUp');
+add_action('wp_ajax_signUp', 'signUp');
+
+// Disable change password email
+
+//add_filter( 'send_password_change_email', '__return_false' );
+
+function override_reset_password_form_redirect() {
+    $action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
+    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
+
+    if($_GET['action']==='rp' && strpos($_SERVER['REQUEST_URI'],'wp-login.php')) {
+	    $key = isset( $_GET['key'] ) ? $_GET['key'] : '';
+	    $login = isset( $_GET['login'] ) ? $_GET['login'] : '';
+	    wp_redirect( site_url( '/reset-password/' ) . '?key=' . $key . '&login=' . $login );
+	    exit;
+	}
+}
+add_action( 'init', 'override_reset_password_form_redirect' );
+
+
+// Reset password
+
+function resetpassword(){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	$users = get_user_by('login', $username);
+
+	$user_id = $users->ID;
+
+	if ( username_exists( $username ) ){
+		$user_data = wp_update_user( array ('ID' => $user_id, 'user_pass' => $password) ) ;
+		 if ( is_wp_error( $user_data ) ) {
+		    // There was an error; possibly this user doesn't exist.
+		    echo 'Error.';
+		} else {
+		    // Success!
+		    echo 'Success';
+		}
+	}
+    else {
+        echo 'error';
+    }
+	exit;
+}
+
+add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
+add_action('wp_ajax_resetpassword', 'resetpassword');
+
 
 // login page
 
@@ -911,7 +936,7 @@ function adddomain_submenu_page() {
         'Domains',
         'manage_options',
         'domains',
-        'adddomian_list' );
+        'adddomain_list' );
 }
  
 function adddomain_list() {
@@ -920,22 +945,68 @@ function adddomain_list() {
 <div class="wrap">
 <h1 class="wp-heading-inline">Domain Names</h1>
 
-	<a href="#" class="page-title-action">Add New</a>
+	<a href="#" class="page-title-action" id="add" data-value="add">Add New</a>
 
 <hr class="wp-header-end">
-<h2 class="screen-reader-text">Domain list</h2><table class="wp-list-table widefat fixed striped users">
-	<thead>
-		<tr>
-			<th>Domain Name</th>
-			<th>Action</th>
-		</tr>
-		<tr>
-			<td>qp.com</td>
-			<td><a href="#" id="edit" data-value="edit">edit/delete</a></td>
-		</tr>
-	</thead>
-</table>
+	<div class="row" id="domain-list">
+		<h2 class="screen-reader-text">Domain list</h2>
+		<table class="wp-list-table widefat fixed striped users">
+			<tr>
+				<th>Domain Name</th>
+				<th>Action</th>
+			</tr>
+			<?php
+				global $wpdb;
+				$result = $wpdb->get_results( "SELECT domain_name FROM wp_domains" );
+				foreach( $result as $results ) {
+        			echo '
+        					<tr>
+								<td>'.$results->domain_name.'</td>
+							</tr>
+
+        			';
+    			}
+			?>
+			
+		</table>
+	</div>
+	<div class="row" style="display: none;" id="new-domain">
+		<div class="form-group">
+			<hr class="wp-header-end">
+			<h3>Enter your email extension domain name to add</h3>
+		    <label for="domain_name">Domain Name:</label>
+		    <input type="text" class="form-control" id="domain_name" name="domain_name">
+		    <button id="btn-add" class="btn btn-info">Add</button>
+		 </div>
+		 <div class="add-success"></div>
+	</div>
 </div>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+	var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+	var $jq = jQuery.noConflict();
+
+	$jq('#add').click(function(){
+
+		$jq('#domain-list').hide();
+		$jq('#new-domain').show();
+
+	});
+
+	$jq("#btn-add").click(function(){
+		var domainName = $jq('#domain_name').val();
+		$jq.post(ajaxUrl,{action:"getDomain",
+	      	domain_name: domainName,
+	      },
+	      function(data){
+	         $jq('.add-success').append(data);
+	      });
+	});
+
+	
+	
+</script>
 <?php    
     echo '</div>';
     exit;
@@ -946,30 +1017,157 @@ add_action('wp_ajax_nopriv_adddomain_list', 'adddomain_list');
 add_action('wp_ajax_adddomain_list', 'adddomain_list');
 
 
-function domainInner(){ ?>
+function getDomain(){
 
+	$domain_name = $_POST['domain_name'];
+	
+	global $wpdb;
 
+	$insert = $wpdb->insert('wp_domains', array(
+			    'domain_name' => $domain_name,
+			));
+	if($insert){
+		echo "<div class='success-msg'>
+				<p>Domain added Successfully..</p>
+				<button id='ok-btn'>Ok</button>
+		</div>";
+	}
+	else{
+		echo "Domain not added..";
+	} ?>
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
 	var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
 	var $jq = jQuery.noConflict();
-	$jq("#edit").click(function(){
-		var value = $jq(this).data('value');
-		$jq.post(ajaxUrl,{action:"adddomain_list",
-	      	value: value,
-	      },
-	      function(data){
-	         	alert(data);
-	      });
+		$jq('#ok-btn').click(function(){
+		location.reload();
 	});
-	
-</script>
+	</script>
 
-<?php 
+<?php
+
+	exit;
 
 }
 
-add_action('wp_ajax_nopriv_domainInner', 'domainInner');
-add_action('wp_ajax_domainInner', 'domainInner');
+add_action('wp_ajax_nopriv_getDomain', 'getDomain');
+add_action('wp_ajax_getDomain', 'getDomain');
+
+
+// add newsignup list to users menu
+
+add_action('admin_menu', 'newsignup_submenu_page');
+ 
+function newsignup_submenu_page() {
+    add_submenu_page(
+        'users.php',
+        'New SignUps',
+        'New SignUps',
+        'manage_options',
+        'newsignups',
+        'newsignup_list' );
+}
+ 
+function newsignup_list() {
+    echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>'; ?>
+
+<div class="wrap">
+<h1 class="wp-heading-inline">New SignUp List</h1>
+
+<hr class="wp-header-end">
+	<div class="row" id="domain-list">
+		<table class="wp-list-table widefat fixed striped users" id="signuplist">
+			<tr>
+				<th>Username</th>
+				<th>Action</th>
+			</tr>
+			<?php
+				global $wpdb;
+				$result = $wpdb->get_results( "SELECT ID,username,password FROM wp_signups" );
+				foreach( $result as $results ) {
+        			echo '
+        					<tr>
+								<td>'.$results->username.'</td>
+								<td><a href="#" data-value="approve" data-id="'.$results->ID.'">Approve</a> / <a href="#" data-value="reject" data-id="'.$results->ID.'">Reject</a></td>
+							</tr>
+
+        			';
+    			}
+			?>
+			
+		</table>
+	</div>
+</div>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+	var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+	var $jq = jQuery.noConflict();
+
+	$jq("#signuplist a").click(function(){
+		var status = $jq(this).data('value');
+		var id = $jq(this).data('id');
+		$jq.post(ajaxUrl,{action:"createUser",
+	      	status: status,
+	      	id: id,
+	      },
+	      function(data){
+	         alert(data);
+	         location.reload();
+	      });
+	});
+
+	
+	
+</script>
+<?php    
+    echo '</div>';
+    exit;
+}
+
+
+add_action('wp_ajax_nopriv_newsignup_list', 'newsignup_list');
+add_action('wp_ajax_newsignup_list', 'newsignup_list');
+
+function createUser(){
+
+	$action = $_POST['status'];
+	$id 	= $_POST['id'];
+
+	global $wpdb;
+
+	$results = $wpdb->get_results( "SELECT username, password FROM wp_signups WHERE ID = '$id'" );
+
+	foreach ($results as $values) {
+		$username = $values->username;
+		$password = $values->password;
+	}
+
+	switch ($action) {
+    case "approve":
+        $user_id = wp_create_user( $username, $password, $username );
+        if($user_id){
+        	$wpdb->delete( 'wp_signups', array( 'ID' =>  $id) );
+        	echo "New user approved Successfully";
+        }
+        else{
+        	echo "User already exist";
+        }
+        break;
+    case "reject":
+        echo "Rejected";
+        break;
+}
+
+	exit;
+}
+
+add_action('wp_ajax_nopriv_createUser', 'createUser');
+add_action('wp_ajax_createUser', 'createUser');
+
+
 
 
 

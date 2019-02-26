@@ -750,6 +750,30 @@ function eventsPopup(){
                 <?php echo $content; ?>
             </div>
             <div class="container news-popup-latestnews">
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+				<script type="text/javascript">
+					var $jq = jQuery.noConflict();
+					var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+					$jq(document).ready(function(){
+						$jq("#back-btn").click(function(){
+							$jq("#event-news-popup").fadeOut(500);
+							$jq("body").removeClass("modal-open");
+						});
+					});
+					function eventsInner(post_id){
+			           $jq.post(ajaxUrl,{action:"eventsPopup",
+			            post_id: postid,
+			          },
+			             function(data){
+			                $jq("html, body").animate({ scrollTop: "0" },500);
+			                $jq("#event-news-popup").css({"overflow-y":"scroll"});
+			                $jq('#event-news-popup').html(data);
+			                $jq("#event-news-popup").fadeIn();
+			                $jq("body").addClass("modal-open");   
+			            });
+					}
+				</script>
                 <div class="row col-lg-12 mx-auto">
                 <?php
 					$query = new WP_Query(array(
@@ -774,24 +798,13 @@ function eventsPopup(){
                         <div class="upop card">
                             <div class="card-body pl-0 pr-0">
                                 <p class="card-header"><?php echo date("M j, Y", strtotime($date)); ?></p>
-                                <h6 class="card-text"><a href="#"><b><?php echo $post_title; ?></b></a></h6>
+                                <h6 class="card-text"><a href="#" onclick="eventsInner(<?php echo $post_id; ?>)"><b><?php echo $post_title; ?></b></a></h6>
                             </div>
                         </div>
                     </div>
                     <?php } wp_reset_query(); } ?>
                 </div>
             </div>
-            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-				<script type="text/javascript">
-					var $jq = jQuery.noConflict();
-					$jq(document).ready(function(){
-						$jq("#back-btn").click(function(){
-							$jq("#event-news-popup").fadeOut(500);
-							$jq("body").removeClass("modal-open");
-						});
-					});
-				</script>
         </div>
     </div>
 

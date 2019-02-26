@@ -677,7 +677,7 @@ function eventsPopup(){
         <div class="news-popup w-100 bg-white">
             <div class="col-10 mx-auto mb-5">
 					<div class="arrow-nav">
-					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">go back</a>
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" id="back-btnn" href="">go back</a>
 					</div>
 					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
 					</div>
@@ -745,6 +745,17 @@ function eventsPopup(){
                     <?php } wp_reset_query(); } ?>
                 </div>
             </div>
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+				<script type="text/javascript">
+					var $jq = jQuery.noConflict();
+					$jq(document).ready(function(){
+						$jq("#back-btn").click(function(){
+							$jq("#event-news-popup").fadeOut(500);
+							$jq("body").removeClass("modal-open");
+						});
+					});
+				</script>
         </div>
     </div>
 

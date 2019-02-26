@@ -459,7 +459,7 @@ function events_filter() {
 				$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
 			} else { $featured_img_url = get_template_directory_uri() . "/img/no-news-cover.jpg";}
 			?>
-                    <div class="up-event-list col-xl-12 float-left pl-0 pr-0">
+                    <div class="up-event-list col-xl-12 float-left pl-0 pr-0" data-post-id="<?php echo $post_id; ?>">
                         <div class="up-txt col-xl-9 pl-0">
                             <h5>
                                 <a href="#" class="font-weight-bold"><?php echo $post_title; ?><i class="ml-2 fas fa-arrow-right d-none faa-horizontal animated" aria-hidden="true"></i></a>
@@ -472,7 +472,27 @@ function events_filter() {
                         </div>
                     </div>
                 <?php }
-		wp_reset_query();}
+		wp_reset_query();} ?>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+			$jq(".up-event-list, #past-event-pop, .up-past-block").click(function() {
+	          var postid = $jq(this).data('post-id');
+	           $jq.post(ajaxUrl,{action:"eventsPopup",
+	            post_id: postid,
+	          },
+	             function(data){
+	                $jq("html, body").animate({ scrollTop: "0" },500);
+	                $jq("#event-news-popup").css({"overflow-y":"scroll"});
+	                $jq('#event-news-popup').html(data);
+	                $jq("#event-news-popup").fadeIn();
+	                $jq("body").addClass("modal-open");   
+	            });
+	        });
+		</script>
+<?php
 	exit;
 }
 add_action('wp_ajax_nopriv_events_filter', 'events_filter');

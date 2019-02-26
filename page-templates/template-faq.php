@@ -53,86 +53,88 @@ get_header();
                     <div class="nav-panes" id="nav-job">
                         <h2>Job Offer Process Review</h2>
                         <?php
-the_field('job_offer_process_overview_intro');
-if (have_rows('job_offer_stages')):
-	while (have_rows('job_offer_stages')): the_row();
-    echo '<div class="mt-5">';
-		echo '<p class="faq-textp">' . get_sub_field('stage_head') . '</p>';
-		the_sub_field('stage_description');
-    echo '</div>';
-	endwhile;
-else:
-endif;
-?>
+                          the_field('job_offer_process_overview_intro');
+                          if (have_rows('job_offer_stages')):
+                          	while (have_rows('job_offer_stages')): the_row();
+                              echo '<div class="mt-5">';
+                          		echo '<p class="faq-textp">' . get_sub_field('stage_head') . '</p>';
+                          		the_sub_field('stage_description');
+                              echo '</div>';
+                          	endwhile;
+                          else:
+                          endif;
+                          ?>
+
+                        <div class="w-100">
+                          <?php
+                          if (have_rows('job_file_upload')):
+                            while (have_rows('job_file_upload')): the_row(); 
+
+                            echo '<a href="'. get_sub_field('file_link') .'" target="_blank">';
+                              echo '  <div class="border-a">'. get_sub_field('file_name') . '</div>';
+                            echo '</a><br>';
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
+                        </div>
 
                         <h4>Related Questions</h4>
 
                         <!-- Accordion -->
                         <div id="accordion" class="faq-acc">
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
-                              <div class="card-header" id="heading-1"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-1" class="collapse" data-parent="#accordion" aria-labelledby="heading-1">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-                              <div class="card-header" id="heading-2"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-2" class="collapse" data-parent="#accordion" aria-labelledby="heading-2">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-                              <div class="card-header" id="heading-3"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum"?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-3" class="collapse" data-parent="#accordion" aria-labelledby="heading-3">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
+                          <?php
+                          $i = 1;
+                          if (have_rows('job_offer_question_&_answer')):
+                            while (have_rows('job_offer_question_&_answer')): the_row(); 
+                            echo '<div class="card my-3"><a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-'. $i . '" aria-expanded="false" aria-controls="collapse-'. $i . '">';
+                            echo '<div class="card-header" id="heading-'. $i . '"> <span class="mb-0">'. get_sub_field('question') . '</span></div></a>';
+                            echo '<div id="collapse-'. $i . '" class="collapse" data-parent="#accordion" aria-labelledby="heading-'. $i . '">';
+                             echo '<div class="card-body card-padding h4-p-grey">'. get_sub_field('answer') .'</div></div></div>';
+                             $i++;
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
                         </div>
                         <!--  -->
+
                         <hr class="hr-border">
                     </div>
                     <div class="nav-panes" id="nav-theory">
                         <h2>Theory of constraints</h2>
                         <?php the_field('theory_of_constraints');?>
+
+                        <div class="w-100">
+                          <?php
+                          if (have_rows('theory_of_constraints_file_upload')):
+                            while (have_rows('theory_of_constraints_file_upload')): the_row(); 
+
+                            echo '<a href="'. get_sub_field('file_link') .'" target="_blank">';
+                              echo '  <div class="border-a">'. get_sub_field('file_name') . '</div>';
+                            echo '</a><br>';
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
+                        </div>
+
                          <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion2" class="faq-acc">
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
-                              <div class="card-header" id="heading-12"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-12" class="collapse" data-parent="#accordion2" aria-labelledby="heading-12">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-22" aria-expanded="false" aria-controls="collapse-22">
-                              <div class="card-header" id="heading-22"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-22" class="collapse" data-parent="#accordion2" aria-labelledby="heading-22">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-32" aria-expanded="false" aria-controls="collapse-32">
-                              <div class="card-header" id="heading-32"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum"?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-32" class="collapse" data-parent="#accordion2" aria-labelledby="heading-32">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
+                          <?php
+                          $i = 21;
+                          if (have_rows('theory_of_constraints_question_&_answer')):
+                            while (have_rows('theory_of_constraints_question_&_answer')): the_row(); 
+                            echo '<div class="card my-3"><a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-'. $i . '" aria-expanded="false" aria-controls="collapse-'. $i . '">';
+                            echo '<div class="card-header" id="heading-'. $i . '"> <span class="mb-0">'. get_sub_field('question') . '</span></div></a>';
+                            echo '<div id="collapse-'. $i . '" class="collapse" data-parent="#accordion2" aria-labelledby="heading-'. $i . '">';
+                             echo '<div class="card-body card-padding h4-p-grey">'. get_sub_field('answer') .'</div></div></div>';
+                             $i++;
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
                         </div>
                         <!--  -->
                         <hr class="hr-border">
@@ -140,51 +142,40 @@ endif;
                     <div class="nav-panes" id="nav-learn">
                         <h2>Learning development</h2>
                        <?php the_field('leading_development_intro');?>
-                        <div class="w-100">
-                            <a href="<?php the_field('learning_pdf');?>" target="_blank">
-                                <div class="border-a">
-                                    LEARNING PDF (20MB)
-                                </div>
-                            </a><br>
-                            <a href="<?php the_field('study_development_pdf');?>" target="_blank">
-                                <div class="border-a mb-5">
-                                    STUDY DEVELOPMENT PDF (12MB)
-                                </div>
-                            </a>
-                        </div>
-                         <h4>Related Questions</h4>
 
+                        <div class="w-100">
+                          <?php
+                          if (have_rows('learning_development_file_upload')):
+                            while (have_rows('learning_development_file_upload')): the_row(); 
+
+                            echo '<a href="'. get_sub_field('file_link') .'" target="_blank">';
+                              echo '  <div class="border-a">'. get_sub_field('file_name') . '</div>';
+                            echo '</a><br>';
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
+                        </div>
+
+                         <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion3" class="faq-acc">
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-13" aria-expanded="false" aria-controls="collapse-13">
-                              <div class="card-header" id="heading-13"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-13" class="collapse" data-parent="#accordion3" aria-labelledby="heading-13">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-23" aria-expanded="false" aria-controls="collapse-23">
-                              <div class="card-header" id="heading-22"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-23" class="collapse" data-parent="#accordion3" aria-labelledby="heading-23">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-33" aria-expanded="false" aria-controls="collapse-33">
-                              <div class="card-header" id="heading-33"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum"?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-33" class="collapse" data-parent="#accordion3" aria-labelledby="heading-33">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
+                          <?php
+                          $i = 31;
+                          if (have_rows('learning_development_question_&_answer')):
+                            while (have_rows('learning_development_question_&_answer')): the_row(); 
+                            echo '<div class="card my-3"><a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-'. $i . '" aria-expanded="false" aria-controls="collapse-'. $i . '">';
+                            echo '<div class="card-header" id="heading-'. $i . '"> <span class="mb-0">'. get_sub_field('question') . '</span></div></a>';
+                            echo '<div id="collapse-'. $i . '" class="collapse" data-parent="#accordion3" aria-labelledby="heading-'. $i . '">';
+                             echo '<div class="card-body card-padding h4-p-grey">'. get_sub_field('answer') .'</div></div></div>';
+                             $i++;
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
                         </div>
                         <!--  -->
+
                         <hr class="hr-border">
                     </div>
                     <div class="nav-panes" id="nav-onboard">
@@ -201,75 +192,78 @@ endif;
 echo '</ol>';
 the_field('onboarding_description_second');
 ?>
-                        <h4>Related Questions</h4>
+ 
+                        <div class="w-100">
+                          <?php
+                          if (have_rows('onboarding_file_upload')):
+                            while (have_rows('onboarding_file_upload')): the_row(); 
+
+                            echo '<a href="'. get_sub_field('file_link') .'" target="_blank">';
+                              echo '  <div class="border-a">'. get_sub_field('file_name') . '</div>';
+                            echo '</a><br>';
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
+                        </div>
+
+                         <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion4" class="faq-acc">
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-14" aria-expanded="false" aria-controls="collapse-14">
-                              <div class="card-header" id="heading-14"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-14" class="collapse" data-parent="#accordion4" aria-labelledby="heading-14">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-24" aria-expanded="false" aria-controls="collapse-24">
-                              <div class="card-header" id="heading-24"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-24" class="collapse" data-parent="#accordion4" aria-labelledby="heading-24">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-34" aria-expanded="false" aria-controls="collapse-34">
-                              <div class="card-header" id="heading-34"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum"?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-34" class="collapse" data-parent="#accordion4" aria-labelledby="heading-34">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
+                          <?php
+                          $i = 41;
+                          if (have_rows('onboarding_question_&_answer')):
+                            while (have_rows('onboarding_question_&_answer')): the_row(); 
+                            echo '<div class="card my-3"><a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-'. $i . '" aria-expanded="false" aria-controls="collapse-'. $i . '">';
+                            echo '<div class="card-header" id="heading-'. $i . '"> <span class="mb-0">'. get_sub_field('question') . '</span></div></a>';
+                            echo '<div id="collapse-'. $i . '" class="collapse" data-parent="#accordion4" aria-labelledby="heading-'. $i . '">';
+                             echo '<div class="card-body card-padding h4-p-grey">'. get_sub_field('answer') .'</div></div></div>';
+                             $i++;
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
                         </div>
                         <!--  -->
+
                         <hr class="hr-border">
                     </div>
                     <div class="nav-panes" id="nav-isdn">
                         <h2>ISND & QP Future</h2>
                         <?php the_field('isnd_and_qp_future_description');?>
-                         <h4>Related Questions</h4>
 
+                        <div class="w-100">
+                          <?php
+                          if (have_rows('isnd_&_qp_future_file_upload')):
+                            while (have_rows('isnd_&_qp_future_file_upload')): the_row(); 
+
+                            echo '<a href="'. get_sub_field('file_link') .'" target="_blank">';
+                              echo '  <div class="border-a">'. get_sub_field('file_name') . '</div>';
+                            echo '</a><br>';
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
+                        </div>
+
+                         <h4>Related Questions</h4>
                         <!-- Accordion -->
                         <div id="accordion5" class="faq-acc">
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-15" aria-expanded="false" aria-controls="collapse-15">
-                              <div class="card-header" id="heading-15"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-15" class="collapse" data-parent="#accordion5" aria-labelledby="heading-15">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-25" aria-expanded="false" aria-controls="collapse-25">
-                              <div class="card-header" id="heading-25"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-25" class="collapse" data-parent="#accordion5" aria-labelledby="heading-25">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
-                          <div class="card my-3">
-                            <a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-35" aria-expanded="false" aria-controls="collapse-35">
-                              <div class="card-header" id="heading-35"> <span class="mb-0">Section 1.10.32 of "de Finibus Bonorum et Malorum"?</span>
-                              </div>
-                            </a>
-                            <div id="collapse-35" class="collapse" data-parent="#accordion5" aria-labelledby="heading-35">
-                              <div class="card-body card-padding h4-p-grey">Suspendisse non consectetur ipsum, in mollis lacus. Sed a sollicitudin elit. Pellentesque in dolor congue, tempor erat nec, sagittis est. Vivamus cursus ante ut tellus ullamcorper accumsan ac sit amet odio. Mauris ac ligula dictum.</div>
-                            </div>
-                          </div>
+                          <?php
+                          $i = 51;
+                          if (have_rows('isnd_&_qp_future_question_&_answer')):
+                            while (have_rows('isnd_&_qp_future_question_&_answer')): the_row(); 
+                            echo '<div class="card my-3"><a class="collapsed p-grey" role="button" data-toggle="collapse" href="#collapse-'. $i . '" aria-expanded="false" aria-controls="collapse-'. $i . '">';
+                            echo '<div class="card-header" id="heading-'. $i . '"> <span class="mb-0">'. get_sub_field('question') . '</span></div></a>';
+                            echo '<div id="collapse-'. $i . '" class="collapse" data-parent="#accordion5" aria-labelledby="heading-'. $i . '">';
+                             echo '<div class="card-body card-padding h4-p-grey">'. get_sub_field('answer') .'</div></div></div>';
+                             $i++;
+                             endwhile;
+                          else:
+                          endif;
+                          ?>
                         </div>
+                        <!--  -->
                         <!--  -->
                     </div>
                 </div>

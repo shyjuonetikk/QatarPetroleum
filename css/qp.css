@@ -175,9 +175,6 @@ footer .list-inline-item a:hover {
 #main-menu li.active > a {
     color: #71CC98 !important;
 }
-body.logged-in nav{
-	    top: 30px;
-}
 /************Home Page*******************/
 #mainNav {
     background: #fff;
@@ -1565,7 +1562,6 @@ nav#qp-sticky {
     width: 100%;
     background: #ffffff;
     position: fixed;
-   /* top:0;*/
 }
 .main-content {
     padding-top: 85px;

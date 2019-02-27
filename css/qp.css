@@ -1371,6 +1371,7 @@ body.upcoming-events {
 
 .upop .card-text a {
     color: #14171a;
+    cursor: pointer;
 }
 
 .qp-h-latestnews .nav .nav-item a:hover {

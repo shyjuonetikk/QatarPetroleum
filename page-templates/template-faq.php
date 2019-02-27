@@ -28,7 +28,8 @@ get_header();
         </div>
     </div>
 </header>
-<section class="position-relative" data-spy="scroll" data-target="#myScrollspy" data-offset="100">
+<div id="ful-contr">
+<section class="position-relative" id="full-sec" data-spy="scroll" data-target="#myScrollspy" data-offset="100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 text-left mb-5">
@@ -49,7 +50,7 @@ get_header();
                     <img style="width: 30%;" class="pt-4" src="<?php echo get_template_directory_uri(); ?>/img/setting.png">
 
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" id="right-content">
                     <div class="nav-panes" id="nav-job">
                         <h2>Job Offer Process Review</h2>
                         <?php
@@ -180,17 +181,17 @@ get_header();
                     <div class="nav-panes" id="nav-onboard">
                         <h2>Onboarding</h2>
                         <?php
-the_field('onboarding_description_first');
-echo '<ol class="faq-textp pb-3 pl-3">';
-if (have_rows('onboarding_lists')):
-	while (have_rows('onboarding_lists')): the_row();
-		echo '<li>' . get_sub_field('onboarding_list_name') . '</li>';
-		the_sub_field('stage_description');
-	endwhile;
-endif;
-echo '</ol>';
-the_field('onboarding_description_second');
-?>
+                          the_field('onboarding_description_first');
+                          echo '<ol class="faq-textp pb-3 pl-3">';
+                          if (have_rows('onboarding_lists')):
+                          	while (have_rows('onboarding_lists')): the_row();
+                          		echo '<li>' . get_sub_field('onboarding_list_name') . '</li>';
+                          		the_sub_field('stage_description');
+                          	endwhile;
+                          endif;
+                          echo '</ol>';
+                          the_field('onboarding_description_second');
+                        ?>
  
                         <div class="w-100">
                           <?php
@@ -270,5 +271,6 @@ the_field('onboarding_description_second');
             </div>
         </div>
     </section>
+  </div>
 
 <?php get_footer();?>

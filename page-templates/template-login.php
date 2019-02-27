@@ -27,8 +27,8 @@ get_header('login');
 			      </div>
 			    </div>
 			  </div>
-			  <p>Don't have an account yet? <a href="./sign-up/" class="text-left">Sign Up</a> <a href="./forgot-password/" class="float-right">Forgot Password?</a></p>
-  			<button class="btn btn-signup mt-3 float-left" id="btn-signin" type="submit">Login</button>
+			  <p>Don't have an account yet? <a href="./sign-up/" class="text-left"><strong>Sign Up</strong></a> <a href="./forgot-password/" class="float-right">Forgot Password?</a></p>
+  			<button class="btn btn-signup mt-3 float-left" id="btn-signin" type="submit">SIGN IN</button>
 		  </form>
 			<div class="float-left w-100 mt-3" id="error-signin">
 			</div>

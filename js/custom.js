@@ -95,29 +95,30 @@ $jq(document).ready(function(){
         if(text) {
             $jq("#right-content").find("div:Contains("+text+")").show();
             $jq("#MyNavPills li").click(function(){
-                var filter = $jq(this).attr('id');
-                switch(filter) {
-                  case "job-offer":
-                    window.location.hash = '#nav-job';
-                    window.location.reload(true);
-                    break;
-                  case "theory":
-                    window.location.hash = '#nav-theory';
-                    window.location.reload(true);
-                    break;
-                  case "learn":
-                    window.location.hash = '#nav-learn';
-                    window.location.reload(true);
-                    break;
-                  case "onboard":
-                    window.location.hash = '#nav-onboard';
-                    window.location.reload(true);
-                    break;
-                  case "isdn":
-                    window.location.hash = '#nav-isdn';
-                    window.location.reload(true);
-                    break;
-                }
+                window.location.reload(true);
+                // var filter = $jq(this).attr('id');
+                // switch(filter) {
+                //   case "job-offer":
+                //     window.location.hash = '#nav-job';
+                //     window.location.reload(true);
+                //     break;
+                //   case "theory":
+                //     window.location.hash = '#nav-theory';
+                //     window.location.reload(true);
+                //     break;
+                //   case "learn":
+                //     window.location.hash = '#nav-learn';
+                //     window.location.reload(true);
+                //     break;
+                //   case "onboard":
+                //     window.location.hash = '#nav-onboard';
+                //     window.location.reload(true);
+                //     break;
+                //   case "isdn":
+                //     window.location.hash = '#nav-isdn';
+                //     window.location.reload(true);
+                //     break;
+                // }
                 
             });
         }

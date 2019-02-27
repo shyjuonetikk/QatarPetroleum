@@ -334,6 +334,7 @@ footer .list-inline-item a:hover {
 .news-slider-image {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .news-popup-image:after {
@@ -1376,6 +1377,15 @@ body.upcoming-events {
     color: #003C71 !important;
     border-bottom: 3px solid #71CC98;
     cursor: pointer;
+}
+
+section#event-news-popup {
+    position: fixed;
+    top: 0;
+    z-index: 9999 !important;
+    display: none;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 /************Upcoming Event-pop-up ends *******************/

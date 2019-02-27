@@ -88,32 +88,7 @@ $jq(window).scroll(function() {
     }
 }); //missing );
 
-// Events Page popup
-$jq(".up-event-list, #past-event-pop, .up-past-block").click(function() {
-    eventPopUp();
-});
-// To Close Events page popup
-$jq("#event-news-popup").click(function(e) {
-    var container = $jq("#event-news-popup > .container");
-    $jq("#event-news-popup").css({"overflow-y":"visible"});
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-        $jq("#event-news-popup").fadeOut();
-        $jq("body").removeClass("modal-open");
-    }
-    else{
-        eventPopUp();
-    }
-});
 
-function eventPopUp(){
-    $jq("html, body").animate({ scrollTop: "0" },500);
-    $jq("#event-news-popup").css({"overflow-y":"scroll"});
-    $jq("#event-news-popup").fadeIn();
-    $jq("body").addClass("modal-open");
-}
-// $jq("#pop-up-content").click(function(e) {
-//     e.preventDefault();
-// }
 $jq(document).ready(function(){
     $jq(".qp-gal-vid", this).click(function(e){
          // e.preventDefault();

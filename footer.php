@@ -303,7 +303,7 @@ $jq(document).ready(function(){
           var container = $jq("section#qp-news-popup > .container");
           $jq(".qp-h-latestnews-content").css({"overflow-y":"visible"});
           if (!container.is(e.target) && container.has(e.target).length === 0) {
-              $jq("#qp-news-popup").fadeOut(500);
+              $jq("#qp-news-popup").fadeOut();
               $jq("body").removeClass("modal-open");
           }
       });
@@ -318,19 +318,17 @@ $jq(document).ready(function(){
           },
              function(data){
                 $jq("html, body").animate({ scrollTop: "0" },500);
-                $jq("#event-news-popup").css({"overflow-y":"scroll"});
                 $jq('#event-news-popup').html(data);
                 $jq("#event-news-popup").fadeIn();
                 $jq("body").addClass("modal-open");   
             });
         });
         // To Close Events page popup
-        $jq("#event-news-popup").click(function(e) {
-          var postid = $jq(this).data('post-id');
-            var container = $jq("#event-news-popup > .container");
-            $jq("#event-news-popup").css({"overflow-y":"visible"});
+        $jq("section#event-news-popup").click(function(e) {
+            var container = $jq("section#event-news-popup > .container");
+            $jq(".up-event-list").css({"overflow-y":"visible"});
             if (!container.is(e.target) && container.has(e.target).length === 0) {
-                $jq("#event-news-popup").fadeOut(500);
+                $jq("#event-news-popup").fadeOut();
                 $jq("body").removeClass("modal-open");
             }
         });

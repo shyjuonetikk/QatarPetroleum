@@ -675,7 +675,7 @@ function newsPopup(){
 					var $jq = jQuery.noConflict();
 					$jq(document).ready(function(){
 						$jq("#go-back").click(function(){
-							$jq("#qp-news-popup").fadeOut(500);
+							$jq("#qp-news-popup").fadeOut();
 							$jq("body").removeClass("modal-open");
 						});
 					});
@@ -713,7 +713,7 @@ function eventsPopup(){
         <div class="news-popup w-100 bg-white">
             <div class="col-10 mx-auto mb-5">
 					<div class="arrow-nav">
-					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" id="back-btnn" href="">go back</a>
+					<div class="go-back float-left"> <a class="btn btn-lg btn-qp qp-theme-bg" id="back-btn">go back</a>
 					</div>
 					<div class="go-next float-right d-none"> <a class="btn btn-lg btn-qp qp-theme-bg" href="">next</a>
 					</div>
@@ -728,24 +728,6 @@ function eventsPopup(){
                     <h1 class="text-left"><?php echo $title; ?></h1>
                 </div>
             </div>
-            <!-- <div class="container mb-2">
-                <div class="row">
-                    <div class="col-lg-12 mx-auto text-center pr-0">
-                        <div class="qp-h-latestnews">
-                            <div class="">
-                                <ul class="upop-nav float-right nav">
-                                    <li class="nav-item active"><a class="nav-link" href="#">01</a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">02</a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">03</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-10 mx-auto news-popup-content">
                 <?php echo $content; ?>
             </div>
@@ -757,20 +739,19 @@ function eventsPopup(){
 					var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
 					$jq(document).ready(function(){
 						$jq("#back-btn").click(function(){
-							$jq("#event-news-popup").fadeOut(500);
+							$jq("#event-news-popup").fadeOut();
 							$jq("body").removeClass("modal-open");
 						});
 					});
 					function eventsInner(post_id){
 			           $jq.post(ajaxUrl,{action:"eventsPopup",
-			            post_id: postid,
+			            post_id: post_id,
 			          },
 			             function(data){
 			                $jq("html, body").animate({ scrollTop: "0" },500);
-			                $jq("#event-news-popup").css({"overflow-y":"scroll"});
 			                $jq('#event-news-popup').html(data);
 			                $jq("#event-news-popup").fadeIn();
-			                $jq("body").addClass("modal-open");   
+			                $jq("body").addClass("modal-open"); 
 			            });
 					}
 				</script>
@@ -798,7 +779,7 @@ function eventsPopup(){
                         <div class="upop card">
                             <div class="card-body pl-0 pr-0">
                                 <p class="card-header"><?php echo date("M j, Y", strtotime($date)); ?></p>
-                                <h6 class="card-text"><a href="#" onclick="eventsInner(<?php echo $post_id; ?>)"><b><?php echo $post_title; ?></b></a></h6>
+                                <h6 class="card-text"><a onclick="eventsInner(<?php echo $post_id; ?>)"><b><?php echo $post_title; ?></b></a></h6>
                             </div>
                         </div>
                     </div>

@@ -33,27 +33,27 @@ get_header();
             <div id="upcoming-month" class="col-xl-12 float-left p-0">
                 <div class="col-xl-12 float-left p-0" id="event-list-inner">
                     <?php
-$query = new WP_Query(array(
-	'post_type' => 'events',
-	'post_status' => 'publish',
-	'posts_per_page' => 6,
-	'meta_key' => 'event_date',
-	'orderby' => 'meta_value',
-	'order' => 'DESC',
-));
-if ($query->have_posts()) {
-	while ($query->have_posts()) {
-		$query->the_post();
-		$post_id = get_the_ID();
-		$post_title = get_the_title();
-		$post_content = get_the_excerpt();
-		$post_url = get_the_permalink();
-		$location = get_post_meta($post_id, 'event_place', true);
-		$date = get_post_meta($post_id, 'event_date', true);
-		if (has_post_thumbnail()) {
-			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
-		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
-		?>
+                        $query = new WP_Query(array(
+                        	'post_type' => 'events',
+                        	'post_status' => 'publish',
+                        	'posts_per_page' => 6,
+                        	'meta_key' => 'event_date',
+                        	'orderby' => 'meta_value',
+                        	'order' => 'DESC',
+                        ));
+                        if ($query->have_posts()) {
+                        	while ($query->have_posts()) {
+                        		$query->the_post();
+                        		$post_id = get_the_ID();
+                        		$post_title = get_the_title();
+                        		$post_content = get_the_excerpt();
+                        		$post_url = get_the_permalink();
+                        		$location = get_post_meta($post_id, 'event_place', true);
+                        		$date = get_post_meta($post_id, 'event_date', true);
+                        		if (has_post_thumbnail()) {
+                        			$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+                        		} else { $featured_img_url = get_template_directory_uri() . "/img/No_image.png";}
+		            ?>
                     <div class="up-event-list col-xl-12 float-left pl-0 pr-0" data-post-id="<?php echo $post_id; ?>">
                         <div class="up-txt col-xl-9 pl-0">
                             <h5>
@@ -130,7 +130,7 @@ if ($query->have_posts()) {
         </div>
     </section>
 
-    <section id="event-news-popup" class="bg-news-popup w-100 h-100 float-left">
+    <section id="event-news-popup" class="bg-news-popup float-left w-100">
         
     </section>
 

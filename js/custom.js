@@ -61,23 +61,6 @@ $jq(".pop-up-hover").mouseleave(function(){
 });
 
 
-// News Page popup
-// $jq(".qp-h-latestnews-content").click(function() {
-//     $jq("html, body").animate({ scrollTop: "0" },500);
-//     // $jq(".qp-h-latestnews-content").css({"overflow-y":"scroll"});
-//     $jq("#qp-news-popup").fadeIn();
-//     $jq("body").addClass("modal-open");
-// });
-// // To Close new page popup
-// $jq("section#qp-news-popup").click(function(e) {
-//     var container = $jq("section#qp-news-popup > .container");
-//     $jq(".qp-h-latestnews-content").css({"overflow-y":"visible"});
-//     if (!container.is(e.target) && container.has(e.target).length === 0) {
-//         $jq("#qp-news-popup").fadeOut();
-//         $jq("body").removeClass("modal-open");
-//     }
-// });
-
 $jq(window).scroll(function() {    
     var scroll = $jq(window).scrollTop();
     if (scroll >= "50") {
@@ -91,32 +74,27 @@ $jq(window).scroll(function() {
 
 $jq(document).ready(function(){
     $jq(".qp-gal-vid", this).click(function(e){
-         // e.preventDefault();
-        // var videoQp = $jq(".qp-gal-vid", this);
-        // var vidSrc = $jq(".qp-gal-vid > source", this).attr('src');
-        // var newStr = vidSrc.substring(0, vidSrc.length-1);
         $jq(this).attr("controls", "");
-        // $jq(".qp-gal-vid > source", this).attr("src", newStr);
     });
 
     $jq.expr[':'].contains = function(a, i, m) {
       return $jq(a).text().toUpperCase()
           .indexOf(m[3].toUpperCase()) >= 0;
     };
+    var right_content = $jq("#right-content").html();
 
-    $jq("#faq-submit").click(function(e){
+    $jq("#faq-search").keyup(function(e){
         e.preventDefault();
-        var text = $jq("#faq-search").val();
-         $jq("#right-content").find('div').hide();
-        if(text) {
-            $jq("#right-content").find("div:Contains("+text+")").show();
+        var textlen = $jq(this).val().length;
+        if(textlen > 3){
+            var text = $jq(this).val();
+            $jq("#right-content").find('div').hide();
+            if(text) {
+               $jq("#right-content").find("div:Contains("+text+")").show();
+            }
         }
-        //$jq("#right-content").html(text);
-    });
-    $jq('#faq-search').keyup(function(){
-         var page = $jq('#faq-search').val();
-         if(page == ''){
-            location.reload();
-         }
+        else{
+            $jq("#right-content").html(right_content);
+        }
     });
 });

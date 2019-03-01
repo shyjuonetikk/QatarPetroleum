@@ -971,7 +971,7 @@ add_action( 'template_redirect', 'redirect_to_specific_page' );
 
 function redirect_to_specific_page() {
 
-if ( is_page('news') || is_page('about') || is_page('contact') || is_page('faq') || is_page('multimedia') || is_page('upcoming-events') && ! is_user_logged_in() ) {
+if ( is_page('news') && ! is_user_logged_in() ) {
 	$location = get_site_url() . "/login";
 	wp_redirect($location, 302);
     }

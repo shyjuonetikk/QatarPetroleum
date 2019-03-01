@@ -77,10 +77,11 @@ add_filter('wp_mail_from_name', 'wpb_sender_name');
 
 function more_news_ajax() {
 
+	if ( is_int( $_POST["offset"] ) )
 	$offset = $_POST["offset"];
 	$ppp = 4;
-	$postype = $_POST["posttype"];
-	$filtertype = $_POST["filtertype"];
+	$postype = strip_tags( trim($_POST["posttype"]));
+	$filtertype = strip_tags( trim($_POST["filtertype"]));
 	$year = date('Y');
 	$month = date('m');
 	switch ($filtertype) {
@@ -200,8 +201,8 @@ add_action('wp_ajax_more_news_ajax', 'more_news_ajax');
 // filter using types
 
 function news_filter() {
-	$filtertype = $_POST['filtertype'];
-	$posttype = $_POST['posttype'];
+	$filtertype = strip_tags( trim($_POST['filtertype']));
+	$posttype = strip_tags( trim($_POST['posttype']));
 	$ppp = 4;
 	$year = date('Y');
 	$month = date('m');
@@ -369,7 +370,7 @@ add_action('wp_ajax_news_filter', 'news_filter');
 // Events filter
 
 function events_filter() {
-	$eventFilter = $_POST['eventfilter'];
+	$eventFilter = strip_tags( trim($_POST['eventfilter']));
 	switch ($eventFilter) {
 	case "all":
 		$query = new WP_Query(array(
@@ -502,6 +503,7 @@ add_action('wp_ajax_events_filter', 'events_filter');
 
 function more_gallery() {
 
+	if ( is_int( $_POST["offset"] ) )
 	$offset = $_POST["offset"];
 	$ppp = 3;
 	$query = new WP_Query(array(
@@ -549,7 +551,6 @@ function more_gallery() {
 		   	$jq(document).ready(function(){
 		   		$jq(function(){
 				    var $gallery = $jq('.gallery > div > a').simpleLightbox();
-
 				});
 		   	});
 		</script>
@@ -564,7 +565,7 @@ add_action('wp_ajax_more_gallery', 'more_gallery');
 // News pop up
 
 function newsPopup(){
-
+	if ( is_int( $_POST['post_id'] ) )
 	$post_id = $_POST['post_id'];
 	$content_post = get_post($post_id);
 	$content = $content_post->post_content;
@@ -696,7 +697,7 @@ add_action('wp_ajax_newsPopup', 'newsPopup');
 // Events popup
 
 function eventsPopup(){
-
+	if ( is_int( $_POST['post_id'] ) )
 	$post_id = $_POST['post_id'];
 	$content_post = get_post($post_id);
 	$content = $content_post->post_content;
@@ -799,8 +800,9 @@ add_action('wp_ajax_eventsPopup', 'eventsPopup');
 // Sign up Form
 
 function signUp(){
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+
+	$username = strip_tags( trim( $_POST['username'] ) );
+	$password = strip_tags( trim( $_POST['password'] ) );
 	$admin_email = get_option( 'admin_email' );
 	$password = wp_hash_password($password);
 	$users = get_user_by('login', $username);
@@ -911,8 +913,9 @@ add_action( 'init', 'override_reset_password_form_redirect' );
 // Reset password
 
 function resetpassword(){
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+
+	$username = strip_tags( trim( $_POST['username'] ) );
+	$password = strip_tags( trim( $_POST['password'] ) );
 
 	$users = get_user_by('login', $username);
 
@@ -941,8 +944,8 @@ add_action('wp_ajax_resetpassword', 'resetpassword');
 // login page
 
 function signIn(){
-	$username = esc_attr($_POST['username']);
-	$password = esc_attr($_POST['password']);
+	$username = strip_tags( trim( $_POST['username'] ) );
+	$password = strip_tags( trim( $_POST['password'] ) );
 
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -1001,7 +1004,7 @@ function add_loginout_link( $items, $args ) {
 
 function forgotPassword(){
 
-	$username = $_POST['username'];
+	$username = strip_tags( trim( $_POST['username'] ) );
 	if(username_exists($username)){
 		$user = get_userdatabylogin($username);
 		if($user){
@@ -1177,6 +1180,7 @@ add_action('wp_ajax_adddomain_list', 'adddomain_list');
 function updateDomain(){
 
 	$option = $_POST['option'];
+	if ( is_int( $_POST['id'] ) )
 	$id = $_POST['id'];
 
 	global $wpdb;
@@ -1207,8 +1211,7 @@ add_action('wp_ajax_updateDomain', 'updateDomain');
 
 function getDomain(){
 
-	$domain_name = $_POST['domain_name'];
-	
+	$domain_name = strip_tags( trim( $_POST['domain_name'] ) );
 	global $wpdb;
 
 	$insert = $wpdb->insert('wp_domains', array(
@@ -1333,6 +1336,7 @@ function createUser(){
 	$loginurl = site_url().'/login/';
 
 	$action = $_POST['status'];
+	if ( is_int( $_POST['id'] ) )
 	$id 	= $_POST['id'];
 
 	global $wpdb;

@@ -1211,7 +1211,7 @@ add_action('wp_ajax_updateDomain', 'updateDomain');
 
 function getDomain(){
 
-	$domain_name = strip_tags( trim( $_POST['domain_name'] ) );
+	$domain_name = mysql_real_escape_string( $_POST['domain_name'] );
 	global $wpdb;
 
 	$insert = $wpdb->insert('wp_domains', array(

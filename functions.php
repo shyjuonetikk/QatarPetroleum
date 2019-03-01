@@ -1372,16 +1372,10 @@ function createUser(){
 			// More headers
 			$headers .= 'From: Qatar Petroleum <'.$admin_email.'>' . "\r\n";
 			if(mail($to,$subject,$message,$headers)){
-				echo '<div class="alert alert-info">
-		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-					  <strong>Mail Sent! </strong> Please check your email for password reset link.
-				    </div>';
+				echo 'Mail Sent! Please check your email for password reset link.';
 			}
 			else{
-				echo '<div class="alert alert-danger">
-		    		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-					  <strong>Mail Not Sent! </strong> Something went wrong.
-				    </div>';
+				echo 'Mail Not Sent! Something went wrong.';
 			}
         	echo "New user approved Successfully";
         }

@@ -19,18 +19,18 @@ get_header('login');
 			  <div class="form-row">
 			    <div class="col-md-12 mb-3 mb-sm-3 mb-md-3 mb-lg-4 mb-xl-5">
 			      <div class="input-group">
-			        <input type="text" class="form-control qp-fields" id="username" name="username" placeholder="QATAR ID" aria-describedby="inputGroupPrepend" required>
+			        <input type="text" class="form-control qp-fields" id="username" name="username" placeholder="QATAR ID" aria-describedby="inputGroupPrepend" autocomplete="off" required>
 			      </div>
 			    </div>
 			    <div class="col-md-12 mb-3 mb-sm-3 mb-md-3 mb-lg-4 mb-xl-5">
 			      <div class="input-group">
-			        <input id="password" type="password" class="form-control qp-fields" name="password" placeholder="PASSWORD">
+			        <input id="password" type="password" class="form-control qp-fields" name="password" autocomplete="off" placeholder="PASSWORD">
               		<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 			      </div>
 			    </div>
 			    <div class="col-md-12 mb-3 mb-sm-3 mb-md-3 mb-lg-4 mb-xl-5">
 			      <div class="input-group">
-			        <input id="co_password" type="password" class="form-control qp-fields" name="co_password" placeholder="CONFIRM PASSWORD">
+			        <input id="co_password" type="password" class="form-control qp-fields" name="co_password" autocomplete="off" placeholder="CONFIRM PASSWORD">
 			        <span toggle="#co_password" class="fa fa-fw fa-eye field-icon toggle-copassword"></span>
 			      </div>
 			    </div>

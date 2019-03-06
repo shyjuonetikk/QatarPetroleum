@@ -1421,6 +1421,18 @@ function set_archive_tag_on_publish($post_id,$post) {
   }
 add_action('save_post','set_archive_tag_on_publish',10,2);
 
+add_action( 'send_headers', 'tgm_io_strict_transport_security' );
+/**
+ * Enables the HTTP Strict Transport Security (HSTS) header.
+ *
+ * @since 1.0.0
+ */
+function tgm_io_strict_transport_security() {
+ 
+    header( 'Strict-Transport-Security: max-age=10886400' );
+ 
+}
+
 
 
 

@@ -1398,6 +1398,19 @@ function createUser(){
 add_action('wp_ajax_nopriv_createUser', 'createUser');
 add_action('wp_ajax_createUser', 'createUser');
 
+// Autocomplete in wp-login 
+
+function wpse_159462_login_form() {
+    echo '
+<script>
+    document.getElementById( "user_login" ).autocomplete = "off";
+    document.getElementById( "user_pass" ).autocomplete = "off";
+</script>
+';
+}
+
+add_action( 'login_form', 'wpse_159462_login_form' );
+
 
 function set_archive_tag_on_publish($post_id,$post) {
   if ($post->post_type == 'qp_news'

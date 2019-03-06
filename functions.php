@@ -1399,6 +1399,15 @@ add_action('wp_ajax_nopriv_createUser', 'createUser');
 add_action('wp_ajax_createUser', 'createUser');
 
 
+function set_archive_tag_on_publish($post_id,$post) {
+  if ($post->post_type == 'qp_news'
+    && $post->post_status == 'publish') {
+      wp_set_post_tags( $post_id, 'latest-news', true );
+    }
+  }
+add_action('save_post','set_archive_tag_on_publish',10,2);
+
+
 
 
 

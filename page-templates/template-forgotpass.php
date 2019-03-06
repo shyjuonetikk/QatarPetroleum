@@ -18,7 +18,7 @@ get_header('login');
 		    <div class="form-row">
 		        <div class="col-md-12 mb-3">
 			      <div class="input-group">
-			        <input type="text" class="form-control qp-fields input" id="username" name="username" placeholder="QATAR ID" >
+			        <input type="text" class="form-control qp-fields input" id="username" autocomplete="off" name="username" placeholder="QATAR ID" >
 			      </div>
 			    </div>
 		    </div>

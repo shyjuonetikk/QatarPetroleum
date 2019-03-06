@@ -1411,6 +1411,7 @@ function wpse_159462_login_form() {
 
 add_action( 'login_form', 'wpse_159462_login_form' );
 
+// setting default tag for qp news
 
 function set_archive_tag_on_publish($post_id,$post) {
   if ($post->post_type == 'qp_news'

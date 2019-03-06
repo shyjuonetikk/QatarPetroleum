@@ -87,7 +87,7 @@ get_header();
                         $title = get_the_title();
                         $post_content = get_the_content();
                     ?>
-                    <div class="nav-panes" id="nav-job-<?php echo $post_id; ?>">
+                    <div class="nav-panes mb-5" id="nav-job-<?php echo $post_id; ?>">
                     <?php
                         echo '<h2>'.$title.'</h2>';
                         echo $post_content;

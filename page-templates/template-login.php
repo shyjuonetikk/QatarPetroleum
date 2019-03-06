@@ -17,12 +17,12 @@ get_header('login');
 			  <div class="form-row">
 			    <div class="col-md-12 mb-3">
 			      <div class="input-group">
-			        <input type="text" class="form-control qp-fields" id="username" name="username" placeholder="QATAR ID" aria-describedby="inputGroupPrepend" required>
+			        <input type="text" class="form-control qp-fields" id="username" name="username" autocomplete="off" placeholder="QATAR ID" aria-describedby="inputGroupPrepend" required>
 			      </div>
 			    </div>
 			    <div class="col-md-12 mb-3">
 			      <div class="input-group">
-			        <input id="password" type="password" class="form-control qp-fields" name="password" placeholder="PASSWORD">
+			        <input id="password" type="password" class="form-control qp-fields" name="password" autocomplete="off" placeholder="PASSWORD">
               		<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 			      </div>
 			    </div>

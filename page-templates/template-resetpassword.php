@@ -25,13 +25,13 @@ get_header('login');
 			    <input type="hidden" id="username" name="username" value="<?php echo $username; ?>" >
 			    <div class="col-md-12 mb-3">
 			      <div class="input-group">
-			        <input id="password" type="password" class="form-control qp-fields" name="password" placeholder="PASSWORD">
+			        <input id="password" type="password" class="form-control qp-fields" name="password" autocomplete="off" placeholder="PASSWORD">
               		<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 			      </div>
 			    </div>
 			    <div class="col-md-12 mb-3">
 			      <div class="input-group">
-			        <input id="co_password" type="password" class="form-control qp-fields" name="co_password" placeholder="CONFIRM PASSWORD">
+			        <input id="co_password" type="password" class="form-control qp-fields" name="co_password" autocomplete="off" placeholder="CONFIRM PASSWORD">
 			        <span toggle="#co_password" class="fa fa-fw fa-eye field-icon toggle-copassword"></span>
 			      </div>
 			    </div>
